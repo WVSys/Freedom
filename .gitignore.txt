@@ -1,0 +1,7 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# GameMaker user-specific asset tree ordering
+.resource_order
