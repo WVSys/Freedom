@@ -9,12 +9,17 @@ enum MoveState {
 enum CombatState {
     NONE,
     ATTACK1,
-	AIR_ATTACK
+	AIR_ATTACK,
+	GUARD,
 }
+hp = 100
+hp_max = 100;
 
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
 
+is_blocking = false;
+invincible_timer = 2;
 move_x = 0;
 
 hsp = 0;
@@ -22,7 +27,7 @@ vsp = 0;
 
 move_speed = 4;
 jump_speed = -10;
-grav = 0.30;
+grav = 0.15;
 max_fall = 35;
 
 deadzone = 0.2;

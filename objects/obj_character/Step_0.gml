@@ -5,7 +5,8 @@ if (keyboard_check(vk_left))  move_x -= 1;
 if (keyboard_check(vk_right)) move_x += 1;
 
 var jump_pressed = keyboard_check_pressed(vk_space);
-var attack_pressed = false;
+var attack_pressed = keyboard_check_pressed(ord("F"));
+var guard_held = keyboard_check(ord("Z"));
 
 // controller
 if (gamepad_is_connected(0))
@@ -18,6 +19,9 @@ if (gamepad_is_connected(0))
 
     // X = attack
     if (gamepad_button_check_pressed(0, gp_face3)) attack_pressed = true;
+	
+	//left shoulder for guard
+    if (gamepad_button_check(0, gp_shoulderl)) guard_held = true;
 }
 
 // face direction
@@ -32,7 +36,7 @@ var min_air_attack_clearance = 90;
 var can_start_air_attack = !place_meeting(x, y + min_air_attack_clearance, obj_wall);
 
 // jump
-if (jump_pressed && on_ground)
+if (jump_pressed && on_ground && combat_state != CombatState.GUARD)
 {
     vsp = jump_speed;
 }
@@ -46,6 +50,22 @@ if (!on_ground || vsp < 0)
 else
 {
     vsp = 0;
+}
+
+// block start / hold
+if (guard_held && on_ground && combat_state != CombatState.ATTACK1 && combat_state != CombatState.AIR_ATTACK)
+{
+    combat_state = CombatState.GUARD;
+    is_blocking = true;
+}
+else if (combat_state == CombatState.GUARD)
+{
+    combat_state = CombatState.NONE;
+    is_blocking = false;
+}
+else
+{
+    is_blocking = false;
 }
 
 // attack start
@@ -74,7 +94,11 @@ if (combat_state == CombatState.NONE && attack_pressed)
 }
 
 // horizontal movement
-hsp = move_x * move_speed;
+if (combat_state == CombatState.GUARD) {
+    hsp = 0;
+} else {
+    hsp = move_x * move_speed;
+}
 
 if (!place_meeting(x + hsp, y, obj_wall))
 {
@@ -160,7 +184,7 @@ if (combat_state == CombatState.ATTACK1)
 }
 else if (combat_state == CombatState.AIR_ATTACK)
 {
-    // best fix: cancel immediately on landing
+    // cancel immediately on landing
     if (on_ground)
     {
         combat_state = CombatState.NONE;
@@ -206,6 +230,10 @@ if (combat_state != CombatState.NONE)
         case CombatState.AIR_ATTACK:
             sprite_index = spr_jump_attack;
         break;
+		
+		case CombatState.GUARD:
+			sprite_index = spr_guard;
+		break;
     }
 }
 else
