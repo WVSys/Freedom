@@ -39,6 +39,30 @@ function enemy_attack() {
         attack_cooldown = attack_cooldown_max;
         attack_active = true;
     }
+	
+	if (!attack_active && image_index >= 2) {
+
+    var hb = instance_create_layer(x, y, "Instances", obj_enemy_hitbox);
+
+    hb.owner = id;
+    hb.damage = attack_damage;
+
+    // 🔥 Define sword hitbox shape
+    if (facing == 1) {
+        hb.x1 = 10;
+        hb.y1 = -12;
+        hb.x2 = 40;
+        hb.y2 = 4;
+    } else {
+        hb.x1 = -40;
+        hb.y1 = -12;
+        hb.x2 = -10;
+        hb.y2 = 4;
+    }
+
+    attack_active = true;
+}
+
 
     // End attack only when animation finishes
     if (image_index >= image_number - 1) {

@@ -44,3 +44,16 @@ air_attack_hits_done = 0;
 air_attack_max_hits = 3;
 air_attack_hit_cooldown = 0;
 air_attack_last_target = noone;
+
+invincible = false;
+
+function take_damage(amount)
+{
+    if (invincible) return;
+
+    hp -= amount;
+    show_debug_message("HP: " + string(hp));
+
+    invincible = true;
+    alarm[0] = 20;
+}
