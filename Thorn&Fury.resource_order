@@ -1,8 +1,8 @@
 {
   "FolderOrderSettings":[
     {"name":"group1","order":49,"path":"folders/group1.yy",},
-    {"name":"scripts","order":50,"path":"folders/scripts.yy",},
     {"name":"Objects","order":47,"path":"folders/Objects.yy",},
+    {"name":"scripts","order":50,"path":"folders/scripts.yy",},
     {"name":"Sprites","order":48,"path":"folders/Sprites.yy",},
     {"name":"Background","order":2,"path":"folders/Sprites/Background.yy",},
     {"name":"Green Gorgon","order":1,"path":"folders/Sprites/Green Gorgon.yy",},

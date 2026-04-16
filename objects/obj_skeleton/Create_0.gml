@@ -15,11 +15,11 @@ chase_range = 300;
 attack_range = 150;
 hp = 3;
 target = obj_character;
-attack_cooldown = 0;
-attack_cooldown_max = 25;
+attack_cooldown = 25;
+attack_cooldown_max = 30;
 attack_damage = 5;
 
-move_speed = 3;
+move_speed = 2;
 jump_speed = -10;
 grav = 0.30;
 max_fall = 35;

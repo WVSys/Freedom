@@ -27,7 +27,7 @@ vsp = 0;
 
 move_speed = 4;
 jump_speed = -10;
-grav = 0.15;
+grav = 0.25;
 max_fall = 35;
 
 deadzone = 0.2;
