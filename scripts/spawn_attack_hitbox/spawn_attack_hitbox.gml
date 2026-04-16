@@ -1,43 +1,24 @@
-function spawn_attack_hitbox(owner, offset_x, offset_y, damage, life, hitbox_sprite)
+function spawn_attack_hitbox(owner, target_object, x1, y1, x2, y2, damage, life, thickness)
 {
     var hb = instance_create_layer(
         owner.x,
         owner.y,
         "Instances",
-        obj_enemy_hitbox
+        obj_attack_hitbox
     );
 
     hb.owner = owner;
+    hb.target_object = target_object;
+
     hb.damage = damage;
-    hb.facing = owner.facing;
     hb.life = life;
+    hb.thickness = thickness;
 
-    hb.sprite_index = hitbox_sprite;
-    hb.image_index = 0;
-    hb.image_speed = 0;
-
-	// sword hitbox (adjust the numbers here)
-    var sword_length = 40;
-    var sword_height = 25;
-
-    // 🔥 SCALE THE HITBOX
-    hb.image_xscale = (sword_length / sprite_get_width(hitbox_sprite)) * owner.facing;
-    hb.image_yscale = sword_height / sprite_get_height(hitbox_sprite);
-
-    // 🔥 POSITION ALONG THE SWORD
-	var left_extend = 40; // how much to extend left side
-    var total_offset = offset_x + (sword_length / 2) - left_extend;
-	
-
-    hb.x = owner.x + (total_offset * owner.facing);
-    hb.y = owner.y + offset_y;
-	
-	// 🔥 ROTATION (applied on creation)
-	if (owner.facing == 1) {
-	    hb.image_angle = 0;
-	} else {
-	    hb.image_angle = 195;
-	}
+    // Mirror horizontal offsets based on owner facing
+    hb.x1 = x1 * owner.facing;
+    hb.y1 = y1;
+    hb.x2 = x2 * owner.facing;
+    hb.y2 = y2;
 
     return hb;
 }

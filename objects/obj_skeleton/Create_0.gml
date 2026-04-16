@@ -35,8 +35,10 @@ landing_time = 4;
 facing = 1; // 1 = right, -1 = left
 is_turning = false;
 
-attack_hitbox_sprite = spr_hitbox_sword;
-attack_hitbox_offset_x = 100;
-attack_hitbox_offset_y = -16;
-attack_hitbox_life = 4;
+attack_hitbox_x1 = 64;
+attack_hitbox_y1 = -14;
+attack_hitbox_x2 = 114;
+attack_hitbox_y2 = -29;
+attack_hitbox_thickness = 3;
 attack_active = false;
+attack_hitbox_life = 100;

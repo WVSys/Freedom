@@ -24,13 +24,13 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"Thorn&Fury",
   "resources":[
+    {"id":{"name":"obj_attack_hitbox","path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},},
     {"id":{"name":"obj_camera_controller_rm1","path":"objects/obj_camera_controller_rm1/obj_camera_controller_rm1.yy",},},
     {"id":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},},
-    {"id":{"name":"obj_enemy_hitbox","path":"objects/obj_enemy_hitbox/obj_enemy_hitbox.yy",},},
     {"id":{"name":"obj_global_controller","path":"objects/obj_global_controller/obj_global_controller.yy",},},
     {"id":{"name":"obj_green_gorgon","path":"objects/obj_green_gorgon/obj_green_gorgon.yy",},},
     {"id":{"name":"obj_skeleton","path":"objects/obj_skeleton/obj_skeleton.yy",},},

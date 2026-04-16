@@ -93,3 +93,21 @@ if (state != EnemyState.TURN && state != EnemyState.ATTACK) {
         image_index = 0;
     }
 }
+
+// DEBUG: live hitbox tuning
+if (keyboard_check_pressed(ord("J"))) attack_hitbox_x1 -= 1;
+if (keyboard_check_pressed(ord("L"))) attack_hitbox_x1 += 1;
+
+if (keyboard_check_pressed(ord("I"))) attack_hitbox_y1 -= 1;
+if (keyboard_check_pressed(ord("K"))) attack_hitbox_y1 += 1;
+
+if (keyboard_check_pressed(ord("A"))) attack_hitbox_x2 -= 1;
+if (keyboard_check_pressed(ord("D"))) attack_hitbox_x2 += 1;
+
+if (keyboard_check_pressed(ord("W"))) attack_hitbox_y2 -= 1;
+if (keyboard_check_pressed(ord("S"))) attack_hitbox_y2 += 1;
+
+if (keyboard_check_pressed(ord("Q"))) attack_hitbox_thickness -= 1;
+if (keyboard_check_pressed(ord("E"))) attack_hitbox_thickness += 1;
+
+attack_hitbox_thickness = max(1, attack_hitbox_thickness);

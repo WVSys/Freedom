@@ -47,6 +47,12 @@ air_attack_last_target = noone;
 
 invincible = false;
 
+attack_hitbox_x1 = 12;
+attack_hitbox_y1 = -8;
+attack_hitbox_x2 = 70;
+attack_hitbox_y2 = 6;
+attack_hitbox_thickness = 8;
+
 function take_damage(amount)
 {
     if (invincible) return;
