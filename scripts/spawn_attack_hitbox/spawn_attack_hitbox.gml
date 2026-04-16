@@ -18,7 +18,7 @@ function spawn_attack_hitbox(owner, offset_x, offset_y, damage, life, hitbox_spr
 
 	// sword hitbox (adjust the numbers here)
     var sword_length = 40;
-    var sword_height = 25;
+    var sword_height = 8;
 
     // 🔥 SCALE THE HITBOX
     hb.image_xscale = (sword_length / sprite_get_width(hitbox_sprite)) * owner.facing;
@@ -34,7 +34,7 @@ function spawn_attack_hitbox(owner, offset_x, offset_y, damage, life, hitbox_spr
 	
 	// 🔥 ROTATION (applied on creation)
 	if (owner.facing == 1) {
-	    hb.image_angle = 0;
+	    hb.image_angle = -45;
 	} else {
 	    hb.image_angle = 195;
 	}

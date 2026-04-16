@@ -25,8 +25,10 @@ if (gamepad_is_connected(0))
 }
 
 // face direction
-if (move_x > 0) image_xscale = 1;
-if (move_x < 0) image_xscale = -1;
+if (move_x > 0) facing = 1;
+if (move_x < 0) facing = -1;
+
+image_xscale = facing;
 
 // grounded check
 var on_ground = place_meeting(x, y + 1, obj_wall);
@@ -71,6 +73,8 @@ else
 // attack start
 if (combat_state == CombatState.NONE && attack_pressed)
 {
+    attack_active = false; // 🔥 reset hitbox spawn
+
     if (on_ground)
     {
         combat_state = CombatState.ATTACK1;
@@ -81,7 +85,7 @@ if (combat_state == CombatState.NONE && attack_pressed)
     else if (!air_attack_used && can_start_air_attack)
     {
         combat_state = CombatState.AIR_ATTACK;
-        //air_attack_used = true;
+
         air_attack_active = false;
         air_attack_hits_done = 0;
         air_attack_hit_cooldown = 0;
@@ -177,6 +181,22 @@ if (combat_state == CombatState.NONE)
 // combat update
 if (combat_state == CombatState.ATTACK1)
 {
+    // 🔥 spawn hitbox at correct animation frame
+    if (!attack_active && image_index >= 2)
+    {
+        spawn_attack_hitbox(
+            id,
+            attack_hitbox_offset_x,
+            attack_hitbox_offset_y,
+            attack_damage,
+            attack_hitbox_life,
+            attack_hitbox_sprite
+        );
+
+        attack_active = true;
+    }
+
+    // end attack
     if (image_index >= image_number - 1)
     {
         combat_state = CombatState.NONE;

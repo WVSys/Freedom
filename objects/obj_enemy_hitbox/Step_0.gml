@@ -16,7 +16,6 @@ with (obj_character) {
 }
 
 
-
 if (life <= 0) {
     instance_destroy();
 }

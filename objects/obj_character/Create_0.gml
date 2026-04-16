@@ -47,6 +47,16 @@ air_attack_last_target = noone;
 
 invincible = false;
 
+attack_active = false;
+
+attack_hitbox_offset_x = 20;
+attack_hitbox_offset_y = -10;
+
+attack_damage = 10;
+attack_hitbox_life = 5;
+attack_hitbox_sprite = spr_hitbox_sword; // make sure this exists
+facing = 1;
+
 function take_damage(amount)
 {
     if (invincible) return;
