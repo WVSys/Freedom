@@ -7,6 +7,12 @@ if (other.is_blocking) {
     if (other.image_xscale == -1 && x < other.x) blocked = true;
 }
 
+// if hitbox connects with player, player takes damage
+if (other != owner) {
+    other.take_damage(damage);
+}
+
+
 if (blocked) {
     show_debug_message("BLOCKED");
 } else {
