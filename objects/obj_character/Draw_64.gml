@@ -21,3 +21,24 @@ draw_rectangle(
 // Optional border
 draw_set_color(c_white);
 draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true);
+
+
+if (global.debug)
+{
+    draw_set_alpha(1);
+	draw_set_color(c_white);
+
+	var i = debug_arc_index;
+
+	draw_text(20, 40, "Editing segment: " + string(i + 1));
+
+	draw_set_color(c_lime);
+	draw_text(20, 70,  "arc_x1[" + string(i) + "] = " + string(arc_x1[i]) + ";");
+	draw_text(20, 90,  "arc_y1[" + string(i) + "] = " + string(arc_y1[i]) + ";");
+	draw_text(20, 110, "arc_x2[" + string(i) + "] = " + string(arc_x2[i]) + ";");
+	draw_text(20, 130, "arc_y2[" + string(i) + "] = " + string(arc_y2[i]) + ";");
+	draw_text(20, 150, "arc_thickness[" + string(i) + "] = " + string(arc_thickness[i]) + ";");
+
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+}

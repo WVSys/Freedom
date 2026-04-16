@@ -25,8 +25,10 @@ if (gamepad_is_connected(0))
 }
 
 // face direction
-if (move_x > 0) image_xscale = 1;
-if (move_x < 0) image_xscale = -1;
+if (move_x > 0) facing = 1;
+if (move_x < 0) facing = -1;
+
+image_xscale = facing;
 
 // grounded check
 var on_ground = place_meeting(x, y + 1, obj_wall);
@@ -72,12 +74,15 @@ else
 if (combat_state == CombatState.NONE && attack_pressed)
 {
     if (on_ground)
-    {
-        combat_state = CombatState.ATTACK1;
-        sprite_index = spr_first_attack;
-        image_index = 0;
-        image_speed = 1;
-    }
+	{
+	    combat_state = CombatState.ATTACK1;
+	    attack_active = false;
+	    attack_spawned_frame = -1;
+
+	    sprite_index = spr_first_attack;
+	    image_index = 0;
+	    image_speed = 1;
+	}
     else if (!air_attack_used && can_start_air_attack)
     {
         combat_state = CombatState.AIR_ATTACK;
@@ -177,9 +182,39 @@ if (combat_state == CombatState.NONE)
 // combat update
 if (combat_state == CombatState.ATTACK1)
 {
+    var f = floor(image_index);
+
+    if (f != attack_spawned_frame)
+    {
+        var i = -1;
+
+        if (f == 0) i = 0;
+        if (f == 1) i = 1;
+        if (f == 2) i = 2;
+
+        if (i != -1)
+        {
+            spawn_attack_hitbox(
+                id,
+                obj_skeleton,
+                arc_x1[i],
+                arc_y1[i],
+                arc_x2[i],
+                arc_y2[i],
+                attack_damage,
+                attack_hitbox_life,
+                arc_thickness[i]
+            );
+
+            attack_spawned_frame = f;
+        }
+    }
+
     if (image_index >= image_number - 1)
     {
         combat_state = CombatState.NONE;
+        attack_active = false;
+        attack_spawned_frame = -1;
     }
 }
 else if (combat_state == CombatState.AIR_ATTACK)
@@ -265,4 +300,32 @@ else
             }
         break;
     }
+}
+
+if (global.debug)
+{
+    // Pick segment
+    if (keyboard_check_pressed(ord("1"))) debug_arc_index = 0;
+    if (keyboard_check_pressed(ord("2"))) debug_arc_index = 1;
+    if (keyboard_check_pressed(ord("3"))) debug_arc_index = 2;
+
+    var i = debug_arc_index;
+
+    // Move start point
+    if (keyboard_check_pressed(ord("J"))) arc_x1[i] -= 1;
+    if (keyboard_check_pressed(ord("L"))) arc_x1[i] += 1;
+    if (keyboard_check_pressed(ord("I"))) arc_y1[i] -= 1;
+    if (keyboard_check_pressed(ord("K"))) arc_y1[i] += 1;
+
+    // Move end point
+    if (keyboard_check_pressed(ord("A"))) arc_x2[i] -= 1;
+    if (keyboard_check_pressed(ord("D"))) arc_x2[i] += 1;
+    if (keyboard_check_pressed(ord("W"))) arc_y2[i] -= 1;
+    if (keyboard_check_pressed(ord("S"))) arc_y2[i] += 1;
+
+    // Thickness
+    if (keyboard_check_pressed(ord("Q"))) arc_thickness[i] -= 1;
+    if (keyboard_check_pressed(ord("E"))) arc_thickness[i] += 1;
+
+    arc_thickness[i] = max(1, arc_thickness[i]);
 }
