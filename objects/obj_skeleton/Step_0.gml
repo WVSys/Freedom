@@ -1,3 +1,53 @@
+if (state == EnemyState.DEAD)
+{
+    if (!bones_burst && image_index >= 3)
+    {
+        bones_burst = true;
+
+        var burst = instance_create_layer(x, y, "Instances", obj_bone_burst);
+        burst.start_xscale = image_xscale;
+
+        instance_destroy();
+    }
+
+    exit;
+}
+
+if (state == EnemyState.HURT)
+{
+    recoil_timer--;
+
+    // small shove backward
+    if (!place_meeting(x + hsp, y, obj_wall))
+    {
+        x += hsp;
+    }
+    else
+    {
+        hsp = 0;
+    }
+
+    hsp *= 0.65;
+
+    // keep recoil sprite active
+    sprite_index = spr_skeleton_damage;
+
+   if (recoil_timer <= 0)
+	{
+	    recoil_timer = 0;
+	    hsp = 0;
+
+	    attack_active = false; // safety reset
+
+	    state = EnemyState.CHASE;
+	    sprite_index = spr_skeleton_walking;
+	    image_index = 0;
+	    image_speed = 1;
+	}
+
+    exit;
+}
+
 var old_x = x;
 
 var on_ground = place_meeting(x, y + 1, obj_wall);
@@ -64,7 +114,8 @@ switch (state) {
         break;
 
     case EnemyState.HURT:
-        state_hurt();
+        //state_hurt();
+		sprite_index = spr_skeleton_damage;
         break;
 
     case EnemyState.DEAD:
@@ -83,7 +134,11 @@ if (place_meeting(x + hsp, y, obj_wall)) {
 x += hsp;
 
 // AFTER movement
-if (state != EnemyState.TURN && state != EnemyState.ATTACK) {
+if (state != EnemyState.TURN 
+&& state != EnemyState.ATTACK 
+&& state != EnemyState.HURT
+&& state != EnemyState.DEAD)
+{
     if (x != old_x) {
         sprite_index = spr_skeleton_walking;
         image_speed = 1;

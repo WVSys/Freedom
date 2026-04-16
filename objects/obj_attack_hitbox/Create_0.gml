@@ -8,3 +8,5 @@ y1 = 0;
 x2 = 0;
 y2 = 0;
 has_hit = false;
+
+hitbox_type = "damage";

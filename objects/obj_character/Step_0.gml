@@ -22,6 +22,7 @@ if (gamepad_is_connected(0))
 	
 	//left shoulder for guard
     if (gamepad_button_check(0, gp_shoulderl)) guard_held = true;
+
 }
 
 // face direction
@@ -44,14 +45,21 @@ if (jump_pressed && on_ground && combat_state != CombatState.GUARD)
 }
 
 // gravity
-if (!on_ground || vsp < 0)
+if (global.debug && debug_no_gravity)
 {
-    vsp += grav;
-    if (vsp > max_fall) vsp = max_fall;
+    vsp = 0;
 }
 else
 {
-    vsp = 0;
+    if (!on_ground || vsp < 0)
+    {
+        vsp += grav;
+        if (vsp > max_fall) vsp = max_fall;
+    }
+    else
+    {
+        vsp = 0;
+    }
 }
 
 // block start / hold
@@ -59,6 +67,24 @@ if (guard_held && on_ground && combat_state != CombatState.ATTACK1 && combat_sta
 {
     combat_state = CombatState.GUARD;
     is_blocking = true;
+
+    spawn_attack_hitbox(
+        id,
+        noone,
+        shield_x1,
+        shield_y1,
+        shield_x2,
+        shield_y2,
+        guard_damage_cost,
+        2,
+        shield_thickness,
+        "guard"
+    );
+}
+else if (combat_state == CombatState.GUARD)
+{
+    combat_state = CombatState.NONE;
+    is_blocking = false;
 }
 else if (combat_state == CombatState.GUARD)
 {
@@ -219,13 +245,14 @@ if (combat_state == CombatState.ATTACK1)
 }
 else if (combat_state == CombatState.AIR_ATTACK)
 {
-    // cancel immediately on landing
+    // Cancel immediately on landing
     if (on_ground)
     {
         combat_state = CombatState.NONE;
         air_attack_active = false;
         air_attack_hit_cooldown = 0;
         air_attack_last_target = noone;
+        air_attack_spawned_frame = -1;
 
         move_state = MoveState.LAND;
         image_index = 0;
@@ -233,12 +260,43 @@ else if (combat_state == CombatState.AIR_ATTACK)
     }
     else
     {
-        // active frames
-        air_attack_active = (image_index >= 2 && image_index <= 5);
+        var f = floor(image_index);
+
+        // Optional active window flag
+        air_attack_active = (f >= 1 && f <= 3);
 
         if (air_attack_hit_cooldown > 0)
         {
             air_attack_hit_cooldown -= 1;
+        }
+
+        // Spawn one hitbox segment per animation frame
+        if (f != air_attack_spawned_frame)
+        {
+            var i = -1;
+
+            if (f == 1) i = 0;
+            if (f == 2) i = 1;
+            if (f == 3) i = 2;
+			if (f == 4) i = 3;
+			if (f == 5) i = 4;
+
+            if (i != -1)
+            {
+                spawn_attack_hitbox(
+                    id,
+                    obj_skeleton,
+                    air_arc_x1[i],
+                    air_arc_y1[i],
+                    air_arc_x2[i],
+                    air_arc_y2[i],
+                    attack_damage,
+                    attack_hitbox_life,
+                    air_arc_thickness[i]
+                );
+
+                air_attack_spawned_frame = f;
+            }
         }
 
         if (image_index >= image_number - 1)
@@ -247,6 +305,7 @@ else if (combat_state == CombatState.AIR_ATTACK)
             air_attack_active = false;
             air_attack_hit_cooldown = 0;
             air_attack_last_target = noone;
+            air_attack_spawned_frame = -1;
         }
     }
 }
@@ -301,7 +360,7 @@ else
         break;
     }
 }
-
+/*
 if (global.debug)
 {
     // Pick segment
@@ -328,4 +387,60 @@ if (global.debug)
     if (keyboard_check_pressed(ord("E"))) arc_thickness[i] += 1;
 
     arc_thickness[i] = max(1, arc_thickness[i]);
+}*/
+
+// Press T to toggle shield tuning mode
+if (global.debug && keyboard_check_pressed(ord("T"))) {
+    debug_tune_shield = !debug_tune_shield;
+}
+
+if (global.debug && debug_tune_shield)
+{
+    if (keyboard_check_pressed(ord("J"))) shield_x1 -= 1;
+    if (keyboard_check_pressed(ord("L"))) shield_x1 += 1;
+    if (keyboard_check_pressed(ord("I"))) shield_y1 -= 1;
+    if (keyboard_check_pressed(ord("K"))) shield_y1 += 1;
+
+    if (keyboard_check_pressed(ord("A"))) shield_x2 -= 1;
+    if (keyboard_check_pressed(ord("D"))) shield_x2 += 1;
+    if (keyboard_check_pressed(ord("W"))) shield_y2 -= 1;
+    if (keyboard_check_pressed(ord("S"))) shield_y2 += 1;
+
+    if (keyboard_check_pressed(ord("Q"))) shield_thickness -= 1;
+    if (keyboard_check_pressed(ord("E"))) shield_thickness += 1;
+
+    shield_thickness = max(1, shield_thickness);
+}
+
+if (global.debug && debug_no_gravity)
+{
+    if (keyboard_check_pressed(ord("1"))) debug_arc_index = 0;
+    if (keyboard_check_pressed(ord("2"))) debug_arc_index = 1;
+    if (keyboard_check_pressed(ord("3"))) debug_arc_index = 2;
+	if (keyboard_check_pressed(ord("4"))) debug_arc_index = 3;
+	if (keyboard_check_pressed(ord("5"))) debug_arc_index = 4;
+
+    var i = debug_arc_index;
+
+    if (keyboard_check_pressed(ord("J"))) air_arc_x1[i] -= 1;
+    if (keyboard_check_pressed(ord("L"))) air_arc_x1[i] += 1;
+
+    if (keyboard_check_pressed(ord("I"))) air_arc_y1[i] -= 1;
+    if (keyboard_check_pressed(ord("K"))) air_arc_y1[i] += 1;
+
+    if (keyboard_check_pressed(ord("A"))) air_arc_x2[i] -= 1;
+    if (keyboard_check_pressed(ord("D"))) air_arc_x2[i] += 1;
+
+    if (keyboard_check_pressed(ord("W"))) air_arc_y2[i] -= 1;
+    if (keyboard_check_pressed(ord("S"))) air_arc_y2[i] += 1;
+
+    if (keyboard_check_pressed(ord("Q"))) air_arc_thickness[i] -= 1;
+    if (keyboard_check_pressed(ord("E"))) air_arc_thickness[i] += 1;
+
+    air_arc_thickness[i] = max(1, air_arc_thickness[i]);
+}
+
+if (global.debug && keyboard_check_pressed(ord("Y")))
+{
+    debug_no_gravity = !debug_no_gravity;
 }

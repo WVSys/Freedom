@@ -10,6 +10,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_attack_hitbox","order":6,"path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},
+    {"name":"obj_bone_burst","order":7,"path":"objects/obj_bone_burst/obj_bone_burst.yy",},
     {"name":"obj_camera_controller_rm1","order":2,"path":"objects/obj_camera_controller_rm1/obj_camera_controller_rm1.yy",},
     {"name":"obj_global_controller","order":5,"path":"objects/obj_global_controller/obj_global_controller.yy",},
     {"name":"obj_green_gorgon","order":1,"path":"objects/obj_green_gorgon/obj_green_gorgon.yy",},

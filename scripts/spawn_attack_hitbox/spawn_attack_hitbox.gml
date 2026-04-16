@@ -1,4 +1,4 @@
-function spawn_attack_hitbox(owner, target_object, x1, y1, x2, y2, damage, life, thickness)
+function spawn_attack_hitbox(owner, target_object, x1, y1, x2, y2, damage, life, thickness, hitbox_type = "damage")
 {
     var hb = instance_create_layer(
         owner.x,
@@ -13,8 +13,8 @@ function spawn_attack_hitbox(owner, target_object, x1, y1, x2, y2, damage, life,
     hb.damage = damage;
     hb.life = life;
     hb.thickness = thickness;
+    hb.hitbox_type = hitbox_type;
 
-    // Mirror horizontal offsets based on owner facing
     hb.x1 = x1 * owner.facing;
     hb.y1 = y1;
     hb.x2 = x2 * owner.facing;

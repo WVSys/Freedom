@@ -56,4 +56,72 @@ if (global.debug)
     
     draw_set_color(c_white);
     draw_set_alpha(1);*/
+	
+	if (global.debug && (combat_state == CombatState.GUARD || debug_tune_shield))
+	{
+	    var sx = x + (shield_x1 * facing);
+	    var sy = y + shield_y1;
+	    var ex = x + (shield_x2 * facing);
+	    var ey = y + shield_y2;
+
+	    draw_set_alpha(0.35);
+	    draw_set_color(c_aqua);
+	    draw_line_width(sx, sy, ex, ey, shield_thickness * 2);
+
+	    draw_set_alpha(1);
+	    draw_set_color(c_blue);
+	    draw_circle(sx, sy, 4, false);
+
+	    draw_set_color(c_fuchsia);
+	    draw_circle(ex, ey, 4, false);
+	}
+	
+	// Air attack tuning preview
+    if (combat_state == CombatState.AIR_ATTACK || debug_no_gravity)
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            var start_x = x + (air_arc_x1[i] * facing);
+            var start_y = y + air_arc_y1[i];
+            var end_x   = x + (air_arc_x2[i] * facing);
+            var end_y   = y + air_arc_y2[i];
+
+            // highlight selected segment
+            if (i == debug_arc_index)
+            {
+                draw_set_alpha(0.45);
+                draw_set_color(c_aqua);
+            }
+            else
+            {
+                draw_set_alpha(0.18);
+                draw_set_color(c_yellow);
+            }
+
+            // thick hit area
+            draw_line_width(
+                start_x,
+                start_y,
+                end_x,
+                end_y,
+                air_arc_thickness[i] * 2
+            );
+
+            // center line
+            draw_set_alpha(1);
+            draw_set_color(c_white);
+            draw_line_width(start_x, start_y, end_x, end_y, 1);
+
+            // endpoints
+            draw_set_color(c_blue);
+            draw_circle(start_x, start_y, 3, false);
+
+            draw_set_color(c_fuchsia);
+            draw_circle(end_x, end_y, 3, false);
+        }
+
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+	
+	}
 }

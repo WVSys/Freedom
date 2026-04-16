@@ -84,6 +84,55 @@ arc_x2[2] = 109;
 arc_y2[2] = 20;
 arc_thickness[2] = 2;
 
+guard_meter_max = 100;
+guard_meter = guard_meter_max;
+guard_damage_cost = 15;
+
+parry_active = false;
+parry_timer = 0;
+parry_duration = 8; // quick parry window, tune this
+
+debug_tune_shield = false;
+shield_x1 = -2;
+shield_y1 = -19;
+shield_x2 = -2;
+shield_y2 = 30;
+shield_thickness = 43;
+
+air_attack_spawned_frame = -1;
+
+air_arc_x1[0] = 26;
+air_arc_y1[0] = -47;
+air_arc_x2[0] = 46;
+air_arc_y2[0] = -34;
+air_arc_thickness[0] = 2;
+
+air_arc_x1[1] = 48;
+air_arc_y1[1] = -32;
+air_arc_x2[1] = 66;
+air_arc_y2[1] = -16;
+air_arc_thickness[1] = 2;
+
+air_arc_x1[2] = 68;
+air_arc_y1[2] = -14;
+air_arc_x2[2] = 98;
+air_arc_y2[2] = 22;
+air_arc_thickness[2] = 2;
+
+air_arc_x1[3] = 96;
+air_arc_y1[3] = 26;
+air_arc_x2[3] = 73;
+air_arc_y2[3] = 20;
+air_arc_thickness[3] = 2;
+
+air_arc_x1[4] = 70;
+air_arc_y1[4] = 19;
+air_arc_x2[4] = 45;
+air_arc_y2[4] = 10;
+air_arc_thickness[4] = 2;
+
+debug_no_gravity = false;
+
 function take_damage(amount)
 {
     if (invincible) return;

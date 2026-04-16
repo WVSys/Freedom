@@ -1,7 +1,8 @@
 draw_self();
 
 if (global.debug)
-{	/*
+{	
+	/*
     var start_x = x + (attack_hitbox_x1 * facing);
     var start_y = y + attack_hitbox_y1;
     var end_x   = x + (attack_hitbox_x2 * facing);
@@ -41,7 +42,9 @@ if (global.debug)
 
     draw_set_alpha(1);
     draw_set_color(c_white);*/
+	
 }
+
 
 // HP bar settings
 var bar_width = 40;

@@ -32,6 +32,8 @@ was_on_ground = false;
 landing_timer = 0;
 landing_time = 4;
 
+hitbox_type = "damage";
+
 facing = 1; // 1 = right, -1 = left
 is_turning = false;
 
@@ -43,13 +45,83 @@ attack_hitbox_thickness = 3;
 attack_active = false;
 attack_hitbox_life = 2;
 
+recoil_timer = 0;
+recoil_speed = 2.5;
+recoil_duration = 35;
+
+bones_burst = false;
+
+function recoil_from_shield(blocker)
+{
+    if (state == EnemyState.HURT) return;
+
+    var dir = sign(x - blocker.x);
+
+    if (dir == 0)
+    {
+        dir = blocker.facing;
+    }
+
+    hsp = dir * recoil_speed;
+    recoil_timer = recoil_duration;
+
+    // IMPORTANT: recoil interrupts attack, so reset attack flags
+    attack_active = false;
+    attack_cooldown = attack_cooldown_max;
+
+    state = EnemyState.HURT;
+    sprite_index = spr_skeleton_damage;
+    image_index = 0;
+    image_speed = 1;
+
+    show_debug_message("Skeleton recoil triggered");
+}
+
 function take_damage(amount)
 {
-    hp = clamp(hp-amount, 0, hp_max);
+    if (state == EnemyState.DEAD) return;
+
+    hp = clamp(hp-amount,0 , hp_max);
     show_debug_message("Skeleton HP: " + string(hp));
 
     if (hp <= 0)
     {
-        instance_destroy();
+        hp = 0;
+        state = EnemyState.DEAD;
+        hsp = 0;
+        vsp = 0;
+        recoil_timer = 0;
+        attack_active = false;
+
+        sprite_index = spr_skeleton_death;
+        image_index = 0;
+        image_speed = 0.25;
+
+        exit;
+    }
+
+    if (state != EnemyState.HURT)
+    {
+        var dir = sign(x - obj_character.x);
+
+        if (dir == 0)
+        {
+            dir = -facing;
+        }
+
+        hsp = dir * 1.5;
+        recoil_timer = 8;
+
+        state = EnemyState.HURT;
+        sprite_index = spr_skeleton_damage;
+        image_index = 0;
+        image_speed = 1;
     }
 }
+
+function state_dead()
+{
+    hsp = 0;
+}
+
+
