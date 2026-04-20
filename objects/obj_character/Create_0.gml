@@ -32,7 +32,7 @@ max_fall = 35;
 
 deadzone = 0.2;
 ground_buffer = 0;
-ground_buffer_max = 4;
+ground_buffer_max = 6;
 
 was_on_ground = false;
 landing_timer = 0;
