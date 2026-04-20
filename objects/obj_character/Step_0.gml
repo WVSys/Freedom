@@ -32,7 +32,7 @@ if (move_x < 0) facing = -1;
 image_xscale = facing;
 
 // grounded check
-var on_ground = place_meeting(x, y + 1, obj_wall);
+var on_ground = place_meeting(x, y + 2, obj_wall);
 
 // prevent late air attack too close to the floor
 var min_air_attack_clearance = 90;
@@ -159,7 +159,7 @@ else
 }
 
 // refresh grounded state after moving
-var touching_ground = place_meeting(x, y + 1, obj_wall);
+var touching_ground = place_meeting(x, y + 2, obj_wall);
 
 if (touching_ground)
 {
