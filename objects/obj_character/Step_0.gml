@@ -19,10 +19,9 @@ if (gamepad_is_connected(0))
 
     // X = attack
     if (gamepad_button_check_pressed(0, gp_face3)) attack_pressed = true;
-	
-	//left shoulder for guard
+    
+    // left shoulder for guard
     if (gamepad_button_check(0, gp_shoulderl)) guard_held = true;
-
 }
 
 // face direction
@@ -86,11 +85,6 @@ else if (combat_state == CombatState.GUARD)
     combat_state = CombatState.NONE;
     is_blocking = false;
 }
-else if (combat_state == CombatState.GUARD)
-{
-    combat_state = CombatState.NONE;
-    is_blocking = false;
-}
 else
 {
     is_blocking = false;
@@ -100,19 +94,18 @@ else
 if (combat_state == CombatState.NONE && attack_pressed)
 {
     if (on_ground)
-	{
-	    combat_state = CombatState.ATTACK1;
-	    attack_active = false;
-	    attack_spawned_frame = -1;
+    {
+        combat_state = CombatState.ATTACK1;
+        attack_active = false;
+        attack_spawned_frame = -1;
 
-	    sprite_index = spr_first_attack;
-	    image_index = 0;
-	    image_speed = 1;
-	}
+        sprite_index = spr_first_attack;
+        image_index = 0;
+        image_speed = 1;
+    }
     else if (!air_attack_used && can_start_air_attack)
     {
         combat_state = CombatState.AIR_ATTACK;
-        //air_attack_used = true;
         air_attack_active = false;
         air_attack_hits_done = 0;
         air_attack_hit_cooldown = 0;
@@ -121,11 +114,50 @@ if (combat_state == CombatState.NONE && attack_pressed)
         sprite_index = spr_jump_attack;
         image_index = 0;
         image_speed = 1;
+
+        // push player out if the attack state starts in a slight overlap
+        if (place_meeting(x, y, obj_wall))
+        {
+            var fixed = false;
+
+            // try upward first
+            repeat (8)
+            {
+                if (!place_meeting(x, y - 1, obj_wall))
+                {
+                    y -= 1;
+                    fixed = true;
+                    break;
+                }
+                y -= 1;
+            }
+
+            // if still overlapping, try opposite of facing
+            if (place_meeting(x, y, obj_wall))
+            {
+                repeat (8)
+                {
+                    if (!place_meeting(x - facing, y, obj_wall))
+                    {
+                        x -= facing;
+                        fixed = true;
+                        break;
+                    }
+                    x -= facing;
+                }
+            }
+
+            // final cleanup
+            while (place_meeting(x, y, obj_wall))
+            {
+                y -= 1;
+            }
+        }
     }
 }
 
 // horizontal movement
-if (combat_state == CombatState.GUARD) {
+if (combat_state == CombatState.GUARD || combat_state == CombatState.ATTACK1) {
     hsp = 0;
 } else {
     hsp = move_x * move_speed;
@@ -154,6 +186,16 @@ else
     while (!place_meeting(x, y + sign(vsp), obj_wall))
     {
         y += sign(vsp);
+    }
+    vsp = 0;
+}
+
+// extra cleanup in case of tiny overlap after vertical resolution
+if (vsp >= 0 && place_meeting(x, y, obj_wall))
+{
+    while (place_meeting(x, y, obj_wall))
+    {
+        y -= 1;
     }
     vsp = 0;
 }
@@ -278,8 +320,8 @@ else if (combat_state == CombatState.AIR_ATTACK)
             if (f == 1) i = 0;
             if (f == 2) i = 1;
             if (f == 3) i = 2;
-			if (f == 4) i = 3;
-			if (f == 5) i = 4;
+            if (f == 4) i = 3;
+            if (f == 5) i = 4;
 
             if (i != -1)
             {
@@ -324,10 +366,10 @@ if (combat_state != CombatState.NONE)
         case CombatState.AIR_ATTACK:
             sprite_index = spr_jump_attack;
         break;
-		
-		case CombatState.GUARD:
-			sprite_index = spr_guard;
-		break;
+        
+        case CombatState.GUARD:
+            sprite_index = spr_guard;
+        break;
     }
 }
 else
@@ -360,34 +402,6 @@ else
         break;
     }
 }
-/*
-if (global.debug)
-{
-    // Pick segment
-    if (keyboard_check_pressed(ord("1"))) debug_arc_index = 0;
-    if (keyboard_check_pressed(ord("2"))) debug_arc_index = 1;
-    if (keyboard_check_pressed(ord("3"))) debug_arc_index = 2;
-
-    var i = debug_arc_index;
-
-    // Move start point
-    if (keyboard_check_pressed(ord("J"))) arc_x1[i] -= 1;
-    if (keyboard_check_pressed(ord("L"))) arc_x1[i] += 1;
-    if (keyboard_check_pressed(ord("I"))) arc_y1[i] -= 1;
-    if (keyboard_check_pressed(ord("K"))) arc_y1[i] += 1;
-
-    // Move end point
-    if (keyboard_check_pressed(ord("A"))) arc_x2[i] -= 1;
-    if (keyboard_check_pressed(ord("D"))) arc_x2[i] += 1;
-    if (keyboard_check_pressed(ord("W"))) arc_y2[i] -= 1;
-    if (keyboard_check_pressed(ord("S"))) arc_y2[i] += 1;
-
-    // Thickness
-    if (keyboard_check_pressed(ord("Q"))) arc_thickness[i] -= 1;
-    if (keyboard_check_pressed(ord("E"))) arc_thickness[i] += 1;
-
-    arc_thickness[i] = max(1, arc_thickness[i]);
-}*/
 
 // Press T to toggle shield tuning mode
 if (global.debug && keyboard_check_pressed(ord("T"))) {
@@ -417,8 +431,8 @@ if (global.debug && debug_no_gravity)
     if (keyboard_check_pressed(ord("1"))) debug_arc_index = 0;
     if (keyboard_check_pressed(ord("2"))) debug_arc_index = 1;
     if (keyboard_check_pressed(ord("3"))) debug_arc_index = 2;
-	if (keyboard_check_pressed(ord("4"))) debug_arc_index = 3;
-	if (keyboard_check_pressed(ord("5"))) debug_arc_index = 4;
+    if (keyboard_check_pressed(ord("4"))) debug_arc_index = 3;
+    if (keyboard_check_pressed(ord("5"))) debug_arc_index = 4;
 
     var i = debug_arc_index;
 

@@ -10,7 +10,7 @@ enum EnemyState {
 state = EnemyState.IDLE;
 hp = 100;
 hp_max = 100;
-hsp = 0;
+hsp = 2;
 vsp = 0;
 chase_range = 300;
 attack_range = 150;
@@ -50,6 +50,11 @@ recoil_speed = 2.5;
 recoil_duration = 35;
 
 bones_burst = false;
+
+coins_dropped = false;
+coin_drop_min = 1;
+coin_drop_max = 3;
+coin_value = 1;
 
 function recoil_from_shield(blocker)
 {
@@ -110,7 +115,7 @@ function take_damage(amount)
         }
 
         hsp = dir * 1.5;
-        recoil_timer = 8;
+        recoil_timer = 20;
 
         state = EnemyState.HURT;
         sprite_index = spr_skeleton_damage;

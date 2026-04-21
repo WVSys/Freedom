@@ -12,12 +12,15 @@ enum CombatState {
 	AIR_ATTACK,
 	GUARD,
 }
+
+mask_index = spr_idle_stand1;
+
 hp = 100
 hp_max = 100;
 
 guard_meter_max = 100;
 guard_meter = guard_meter_max;
-guard_damage_cost = 15;
+guard_damage_cost = 25;
 
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
@@ -55,8 +58,8 @@ facing = 1;
 
 attack_active = false;
 attack_spawned_frame = -1;
-attack_damage = 2;
-attack_hitbox_life = 3;
+attack_damage = 8;
+attack_hitbox_life = 2;
 
 attack_hitbox_x1 = 12;
 attack_hitbox_y1 = -8;
