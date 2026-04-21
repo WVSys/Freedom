@@ -45,11 +45,3 @@ for (var i = 0; i < count; i++)
     }
 }
 
-if (all_landed)
-{
-    // keep burst around as a corpse pile
-    // or destroy after delay
-    // alarm[0] = room_speed * 5;
-
-    // optional: stop stepping once done
-}

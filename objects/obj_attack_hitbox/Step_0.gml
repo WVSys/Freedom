@@ -101,7 +101,6 @@ if (hitbox_type == "guard")
     exit;
 }
 
-// If this is an enemy damage hitbox targeting the character,
 // check for character guard hitboxes first.
 if (hitbox_type == "damage" && target_object == obj_character)
 {
@@ -119,7 +118,7 @@ if (hitbox_type == "damage" && target_object == obj_character)
             var gx2 = g.x + g.x2;
             var gy2 = g.y + g.y2;
 
-            // Treat guard as a fat rectangle around its line
+        
             var pad = g.thickness;
 
             var g_left   = min(gx1, gx2) - pad;

@@ -1,6 +1,6 @@
-var bar_x = 20;
-var bar_y = 20;
-var bar_width = 200;
+var bar_x = 80;
+var bar_y = 35;
+var bar_width = 180;
 var bar_height = 16;
 
 // Background (empty bar)
@@ -22,6 +22,63 @@ draw_rectangle(
 draw_set_color(c_white);
 draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, true);
 
+// Scaled sprite on top
+var hicon_x = bar_x + bar_width / 2;
+var hicon_y = bar_y + bar_height / 2;
+
+draw_sprite_ext(
+    spr_hp_bar, // sprite
+    0,              // frame
+    hicon_x,         // x
+    hicon_y,         // y
+    0.2,            // x scale
+    0.2,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
+
+//--------------------------------------------------------------------------
+
+var gbar_x = 100;
+var gbar_y = 100;
+var gbar_width = 122;
+var gbar_height = 11;
+
+// Background (empty bar)
+draw_set_color(c_black);
+draw_rectangle(gbar_x, gbar_y, gbar_x + gbar_width, gbar_y + gbar_height, false);
+
+//fill
+var guard_ratio = guard_meter / guard_meter_max;
+draw_set_color(c_green);
+draw_rectangle(
+    gbar_x,
+    gbar_y,
+    gbar_x + (gbar_width * guard_ratio),
+    gbar_y + gbar_height,
+    false
+);
+
+// Optional border
+draw_set_color(c_dkgray);
+draw_rectangle(gbar_x, gbar_y, gbar_x + gbar_width, gbar_y + gbar_height, true);
+
+// Scaled sprite on top
+var gicon_x = gbar_x + gbar_width / 2;
+var gicon_y = gbar_y + gbar_height / 2;
+
+draw_sprite_ext(
+    spr_guard_meter, // sprite
+    0,              // frame
+    gicon_x,         // x
+    gicon_y,         // y
+    0.15,            // x scale
+    0.15,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
 
 if (global.debug)
 {

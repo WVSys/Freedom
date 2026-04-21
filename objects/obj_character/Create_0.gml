@@ -15,6 +15,10 @@ enum CombatState {
 hp = 100
 hp_max = 100;
 
+guard_meter_max = 100;
+guard_meter = guard_meter_max;
+guard_damage_cost = 15;
+
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
 
@@ -60,7 +64,7 @@ attack_hitbox_x2 = 70;
 attack_hitbox_y2 = 6;
 attack_hitbox_thickness = 8;
 
-// Which arc segment you are tuning: 0, 1, or 2
+//tuning arc hitbox
 debug_arc_index = 1;
 
 // Arc segment 0: high slash
@@ -83,14 +87,6 @@ arc_y1[2] = -10;
 arc_x2[2] = 109;
 arc_y2[2] = 20;
 arc_thickness[2] = 2;
-
-guard_meter_max = 100;
-guard_meter = guard_meter_max;
-guard_damage_cost = 15;
-
-parry_active = false;
-parry_timer = 0;
-parry_duration = 8; // quick parry window, tune this
 
 debug_tune_shield = false;
 shield_x1 = -2;
