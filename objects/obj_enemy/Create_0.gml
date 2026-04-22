@@ -1,4 +1,4 @@
-enum EnemyState {
+enum EnemiesState {
     IDLE,
     CHASE,
     ATTACK,
@@ -7,7 +7,7 @@ enum EnemyState {
     DEAD
 }
 
-state = EnemyState.IDLE;
+state = EnemiesState.IDLE;
 
 hp = 100;
 hp_max = 100;
@@ -16,7 +16,6 @@ hsp = 0;
 vsp = 0;
 
 move_speed = 2;
-jump_speed = -10;
 grav = 0.30;
 max_fall = 35;
 
@@ -30,10 +29,6 @@ attack_damage = 5;
 ground_buffer = 0;
 ground_buffer_max = 4;
 
-was_on_ground = false;
-landing_timer = 0;
-landing_time = 4;
-
 facing = 1;
 is_turning = false;
 
@@ -41,28 +36,18 @@ recoil_timer = 0;
 recoil_speed = 2.5;
 recoil_duration = 35;
 
-bones_burst = false;
-
 coins_dropped = false;
 coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
 
-target = obj_character;
-
-// child-specific sprite hooks
-spr_idle = noone;
-spr_walk = noone;
-spr_attack = noone;
-spr_turn = noone;
-spr_hurt = noone;
-spr_death = noone;
-
-// child-specific burst object hook
-death_burst_object = noone;
-
-// optional enemy blocker object
-enemy_blocker_object = object_index;
+// optional animation hooks
+spr_idle_anim = noone;
+spr_walk_anim = noone;
+spr_attack_anim = noone;
+spr_turn_anim = noone;
+spr_hurt_anim = noone;
+spr_death_anim = noone;
 
 function enemy_drop_coins()
 {
@@ -85,15 +70,14 @@ function enemy_drop_coins()
 function enemy_enter_dead_state()
 {
     hp = 0;
-    state = EnemyState.DEAD;
+    state = EnemiesState.DEAD;
     hsp = 0;
     vsp = 0;
     recoil_timer = 0;
-    attack_active = false;
 
-    if (spr_death != noone)
+    if (spr_death_anim != noone)
     {
-        sprite_index = spr_death;
+        sprite_index = spr_death_anim;
         image_index = 0;
         image_speed = 0.25;
     }
@@ -101,7 +85,7 @@ function enemy_enter_dead_state()
 
 function enemy_take_damage(amount)
 {
-    if (state == EnemyState.DEAD) return;
+    if (state == EnemiesState.DEAD) return;
 
     hp = clamp(hp - amount, 0, hp_max);
 
@@ -111,57 +95,20 @@ function enemy_take_damage(amount)
         exit;
     }
 
-    if (state != EnemyState.HURT)
+    if (state != EnemiesState.HURT)
     {
         var dir = sign(x - obj_character.x);
-
-        if (dir == 0)
-        {
-            dir = -facing;
-        }
+        if (dir == 0) dir = -facing;
 
         hsp = dir * 1.5;
         recoil_timer = 20;
+        state = EnemiesState.HURT;
 
-        state = EnemyState.HURT;
-
-        if (spr_hurt != noone)
+        if (spr_hurt_anim != noone)
         {
-            sprite_index = spr_hurt;
+            sprite_index = spr_hurt_anim;
             image_index = 0;
             image_speed = 1;
         }
     }
-}
-
-function recoil_from_shield(blocker)
-{
-    if (state == EnemyState.HURT) return;
-
-    var dir = sign(x - blocker.x);
-
-    if (dir == 0)
-    {
-        dir = blocker.facing;
-    }
-
-    hsp = dir * recoil_speed;
-    recoil_timer = recoil_duration;
-
-    attack_active = false;
-    attack_cooldown = attack_cooldown_max;
-
-    state = EnemyState.HURT;
-
-    if (spr_hurt != noone)
-    {
-        sprite_index = spr_hurt;
-        image_index = 0;
-        image_speed = 1;
-    }
-}
-
-function state_dead()
-{
-    hsp = 0;
 }
