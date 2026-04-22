@@ -15,6 +15,7 @@ hp_max = 100;
 hsp = 0;
 vsp = 0;
 
+enemy_blocker_object = object_index;
 move_speed = 2;
 grav = 0.30;
 max_fall = 35;
@@ -25,6 +26,7 @@ attack_range = 150;
 attack_cooldown = 25;
 attack_cooldown_max = 30;
 attack_damage = 5;
+attack_active = false;
 
 ground_buffer = 0;
 ground_buffer_max = 4;
@@ -42,12 +44,12 @@ coin_drop_max = 3;
 coin_value = 1;
 
 // optional animation hooks
-spr_idle_anim = noone;
-spr_walk_anim = noone;
-spr_attack_anim = noone;
-spr_turn_anim = noone;
-spr_hurt_anim = noone;
-spr_death_anim = noone;
+spr_idle = noone;
+spr_walk = noone;
+spr_attack = noone;
+spr_turn = noone;
+spr_hurt = noone;
+spr_death = noone;
 
 function enemy_drop_coins()
 {
@@ -75,9 +77,9 @@ function enemy_enter_dead_state()
     vsp = 0;
     recoil_timer = 0;
 
-    if (spr_death_anim != noone)
+    if (spr_death != noone)
     {
-        sprite_index = spr_death_anim;
+        sprite_index = spr_death;
         image_index = 0;
         image_speed = 0.25;
     }
@@ -104,9 +106,9 @@ function enemy_take_damage(amount)
         recoil_timer = 20;
         state = EnemiesState.HURT;
 
-        if (spr_hurt_anim != noone)
+        if (spr_hurt != noone)
         {
-            sprite_index = spr_hurt_anim;
+            sprite_index = spr_hurt;
             image_index = 0;
             image_speed = 1;
         }
