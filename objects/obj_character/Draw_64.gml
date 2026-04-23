@@ -112,15 +112,15 @@ if (global.debug)
 	draw_text(20, 220, "shield_y1 = " + string(shield_y1));
 	draw_text(20, 240, "shield_x2 = " + string(shield_x2));
 	draw_text(20, 260, "shield_y2 = " + string(shield_y2));
-	draw_text(20, 280, "shield_thickness = " + string(shield_thickness));
+	draw_text(20, 280, "shield_thickness = " + string(shield_thickness));*/
 
 	draw_set_alpha(1);
-	draw_set_color(c_white);*/
+	draw_set_color(c_white);
 	var i = debug_arc_index;
-    draw_text(20, 40, "AIR ATTACK SEGMENT: " + string(i + 1));
-    draw_text(20, 70,  "air_arc_x1[" + string(i) + "] = " + string(air_arc_x1[i]) + ";");
-    draw_text(20, 90,  "air_arc_y1[" + string(i) + "] = " + string(air_arc_y1[i]) + ";");
-    draw_text(20, 110, "air_arc_x2[" + string(i) + "] = " + string(air_arc_x2[i]) + ";");
-    draw_text(20, 130, "air_arc_y2[" + string(i) + "] = " + string(air_arc_y2[i]) + ";");
-    draw_text(20, 150, "air_arc_thickness[" + string(i) + "] = " + string(air_arc_thickness[i]) + ";");
+    draw_text(800, 40, "AIR ATTACK SEGMENT: " + string(i + 1));
+    draw_text(800, 70,  "air_arc_x1[" + string(i) + "] = " + string(air_arc_x1[i]) + ";");
+    draw_text(800, 90,  "air_arc_y1[" + string(i) + "] = " + string(air_arc_y1[i]) + ";");
+    draw_text(800, 110, "air_arc_x2[" + string(i) + "] = " + string(air_arc_x2[i]) + ";");
+    draw_text(800, 130, "air_arc_y2[" + string(i) + "] = " + string(air_arc_y2[i]) + ";");
+    draw_text(800, 150, "air_arc_thickness[" + string(i) + "] = " + string(air_arc_thickness[i]) + ";");
 }

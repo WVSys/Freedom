@@ -1,16 +1,9 @@
-enum EnemyState {
-    IDLE,
-    CHASE,
-    ATTACK,
-	TURN,
-    HURT,
-    DEAD
-}
+// Inherit the parent event
+event_inherited();
 
-state = EnemyState.IDLE;
 hp = 100;
 hp_max = 100;
-hsp = 2;
+hsp = 0;
 vsp = 0;
 chase_range = 300;
 attack_range = 150;
@@ -56,77 +49,29 @@ coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
 
-function recoil_from_shield(blocker)
-{
-    if (state == EnemyState.HURT) return;
-
-    var dir = sign(x - blocker.x);
-
-    if (dir == 0)
-    {
-        dir = blocker.facing;
-    }
-
-    hsp = dir * recoil_speed;
-    recoil_timer = recoil_duration;
-
-    // IMPORTANT: recoil interrupts attack, so reset attack flags
-    attack_active = false;
-    attack_cooldown = attack_cooldown_max;
-
-    state = EnemyState.HURT;
-    sprite_index = spr_skeleton_damage;
-    image_index = 0;
-    image_speed = 1;
-
-    show_debug_message("Skeleton recoil triggered");
-}
-
-function take_damage(amount)
-{
-    if (state == EnemyState.DEAD) return;
-
-    hp = clamp(hp-amount,0 , hp_max);
-    show_debug_message("Skeleton HP: " + string(hp));
-
-    if (hp <= 0)
-    {
-        hp = 0;
-        state = EnemyState.DEAD;
-        hsp = 0;
-        vsp = 0;
-        recoil_timer = 0;
-        attack_active = false;
-
-        sprite_index = spr_skeleton_death;
-        image_index = 0;
-        image_speed = 0.25;
-
-        exit;
-    }
-
-    if (state != EnemyState.HURT)
-    {
-        var dir = sign(x - obj_character.x);
-
-        if (dir == 0)
-        {
-            dir = -facing;
-        }
-
-        hsp = dir * 1.5;
-        recoil_timer = 20;
-
-        state = EnemyState.HURT;
-        sprite_index = spr_skeleton_damage;
-        image_index = 0;
-        image_speed = 1;
-    }
-}
+spr_idle = spr_skeleton_idle;
+spr_walk = spr_skeleton_walking;
+spr_attack = spr_skeleton_attack;
+spr_hurt = spr_skeleton_damage;
+spr_death = spr_skeleton_death;
 
 function state_dead()
 {
+	show_debug_message("SKELETON state_dead");
+    show_debug_message("image_index=" + string(image_index) + " image_number=" + string(image_number));
     hsp = 0;
+    vsp = 0;
+
+    if (!bones_burst && image_index >= 2)
+    {
+        bones_burst = true;
+
+        var burst = instance_create_layer(x, y, "Instances", obj_bone_burst);
+        burst.start_xscale = image_xscale;
+    }
+
+    if (image_index >= image_number - 1)
+    {
+        instance_destroy();
+    }
 }
-
-

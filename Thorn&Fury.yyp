@@ -46,6 +46,7 @@
     {"id":{"name":"obj_light","path":"objects/obj_light/obj_light.yy",},},
     {"id":{"name":"obj_merchant","path":"objects/obj_merchant/obj_merchant.yy",},},
     {"id":{"name":"obj_player_spawn","path":"objects/obj_player_spawn/obj_player_spawn.yy",},},
+    {"id":{"name":"obj_skeleton_old","path":"objects/obj_skeleton_old/obj_skeleton_old.yy",},},
     {"id":{"name":"obj_skeleton","path":"objects/obj_skeleton/obj_skeleton.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Cave","path":"rooms/Cave/Cave.yy",},},

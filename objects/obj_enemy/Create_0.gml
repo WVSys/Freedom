@@ -1,4 +1,4 @@
-enum EnemiesState {
+enum EnemyState {
     IDLE,
     CHASE,
     ATTACK,
@@ -7,18 +7,24 @@ enum EnemiesState {
     DEAD
 }
 
-state = EnemiesState.IDLE;
+state = EnemyState.IDLE;
 
 hp = 100;
 hp_max = 100;
 
 hsp = 0;
 vsp = 0;
-
+target = obj_character;
 enemy_blocker_object = object_index;
 move_speed = 2;
 grav = 0.30;
 max_fall = 35;
+
+sprite_scale = 1;
+sprite_facing = 1;
+
+image_xscale = sprite_scale * sprite_facing;
+image_yscale = sprite_scale;
 
 chase_range = 300;
 attack_range = 150;
@@ -51,6 +57,41 @@ spr_turn = noone;
 spr_hurt = noone;
 spr_death = noone;
 
+attack_active = false;
+
+attack_hitbox_x1 = 0;
+attack_hitbox_y1 = 0;
+attack_hitbox_x2 = 32;
+attack_hitbox_y2 = 0;
+attack_hitbox_life = 3;
+attack_hitbox_thickness = 12;
+
+function recoil_from_shield(blocker)
+{
+    if (state == EnemyState.HURT) return;
+
+    var dir = sign(x - blocker.x);
+
+    if (dir == 0)
+    {
+        dir = blocker.facing;
+    }
+
+    hsp = dir * recoil_speed;
+    recoil_timer = recoil_duration;
+
+    // IMPORTANT: recoil interrupts attack, so reset attack flags
+    attack_active = false;
+    attack_cooldown = attack_cooldown_max;
+
+    state = EnemyState.HURT;
+    sprite_index = spr_hurt;
+    image_index = 0;
+    image_speed = 1;
+
+    show_debug_message("Skeleton recoil triggered");
+}
+
 function enemy_drop_coins()
 {
     if (!coins_dropped)
@@ -72,7 +113,7 @@ function enemy_drop_coins()
 function enemy_enter_dead_state()
 {
     hp = 0;
-    state = EnemiesState.DEAD;
+    state = EnemyState.DEAD;
     hsp = 0;
     vsp = 0;
     recoil_timer = 0;
@@ -85,9 +126,9 @@ function enemy_enter_dead_state()
     }
 }
 
-function enemy_take_damage(amount)
+function take_damage(amount)
 {
-    if (state == EnemiesState.DEAD) return;
+    if (state == EnemyState.DEAD) return;
 
     hp = clamp(hp - amount, 0, hp_max);
 
@@ -97,14 +138,14 @@ function enemy_take_damage(amount)
         exit;
     }
 
-    if (state != EnemiesState.HURT)
+    if (state != EnemyState.HURT)
     {
         var dir = sign(x - obj_character.x);
         if (dir == 0) dir = -facing;
 
         hsp = dir * 1.5;
         recoil_timer = 20;
-        state = EnemiesState.HURT;
+        state = EnemyState.HURT;
 
         if (spr_hurt != noone)
         {
@@ -112,5 +153,18 @@ function enemy_take_damage(amount)
             image_index = 0;
             image_speed = 1;
         }
+    }
+}
+
+function state_dead()
+{
+	show_debug_message("PARENT state_dead");
+
+    hsp = 0;
+    vsp = 0;
+
+    if (image_index >= image_number - 1)
+    {
+        instance_destroy();
     }
 }

@@ -1,7 +1,31 @@
+
 if (state == EnemyState.DEAD)
 {
-    enemy_drop_coins();
-    state_dead();
+    if (!coins_dropped)
+    {
+        coins_dropped = true;
+
+        var coin_count = irandom_range(coin_drop_min, coin_drop_max);
+
+        for (var i = 0; i < coin_count; i++)
+        {
+            var c = instance_create_layer(x, y, "Instances", obj_coin);
+            c.value = coin_value;
+            c.hsp = random_range(-2.5, 2.5);
+            c.vsp = random_range(-5, -2);
+        }
+    }
+
+    if (!bones_burst && image_index >= 3)
+    {
+        bones_burst = true;
+
+        var burst = instance_create_layer(x, y, "Instances", obj_bone_burst);
+        burst.start_xscale = image_xscale;
+
+        instance_destroy();
+    }
+
     exit;
 }
 
@@ -9,9 +33,10 @@ if (state == EnemyState.HURT)
 {
     recoil_timer--;
 
+    // small shove backward
     if (!place_meeting(x + hsp, y, obj_wall))
     {
-        var hurt_blocker = instance_place(x + hsp, y, enemy_blocker_object);
+        var hurt_blocker = instance_place(x + hsp, y, obj_skeleton_old);
         if (hurt_blocker == noone || hurt_blocker == id || hurt_blocker.state == EnemyState.DEAD)
         {
             x += hsp;
@@ -28,24 +53,20 @@ if (state == EnemyState.HURT)
 
     hsp *= 0.65;
 
-    if (spr_hurt != noone)
-    {
-        sprite_index = spr_hurt;
-    }
+    // keep recoil sprite active
+    sprite_index = spr_skeleton_damage;
 
     if (recoil_timer <= 0)
     {
         recoil_timer = 0;
         hsp = 0;
-        attack_active = false;
-        state = EnemyState.CHASE;
 
-        if (spr_walk != noone)
-        {
-            sprite_index = spr_walk;
-            image_index = 0;
-            image_speed = 1;
-        }
+        attack_active = false; // safety reset
+
+        state = EnemyState.CHASE;
+        sprite_index = spr_skeleton_walking;
+        image_index = 0;
+        image_speed = 1;
     }
 
     exit;
@@ -55,6 +76,7 @@ var old_x = x;
 
 var on_ground = place_meeting(x, y + 1, obj_wall);
 
+// gravity
 if (!on_ground || vsp < 0)
 {
     vsp += grav;
@@ -67,6 +89,7 @@ else
 
 if (attack_cooldown > 0) attack_cooldown--;
 
+// vertical movement
 if (!place_meeting(x, y + vsp, obj_wall))
 {
     y += vsp;
@@ -80,6 +103,7 @@ else
     vsp = 0;
 }
 
+// refresh grounded state after moving
 var touching_ground = place_meeting(x, y + 1, obj_wall);
 
 if (touching_ground)
@@ -93,7 +117,7 @@ else if (ground_buffer > 0)
 
 on_ground = (ground_buffer > 0);
 
-// child will define these
+// state logic
 switch (state)
 {
     case EnemyState.IDLE:
@@ -105,12 +129,17 @@ switch (state)
         break;
 
     case EnemyState.ATTACK:
-        if (spr_attack != noone) sprite_index = spr_attack;
+        sprite_index = spr_skeleton_attack;
         enemy_attack();
         break;
-
+/*
+    case EnemyState.TURN:
+        sprite_index = spr_skeleton_turn;
+        enemy_turn();
+        break;
+*/
     case EnemyState.HURT:
-        if (spr_hurt != noone) sprite_index = spr_hurt;
+        sprite_index = spr_skeleton_damage;
         break;
 
     case EnemyState.DEAD:
@@ -118,9 +147,11 @@ switch (state)
         break;
 }
 
+// clamp movement
 if (hsp > move_speed) hsp = move_speed;
 if (hsp < -move_speed) hsp = -move_speed;
 
+// horizontal movement against walls + skeletons
 var move_step = hsp;
 
 if (move_step != 0)
@@ -132,8 +163,8 @@ if (move_step != 0)
         blocked = true;
     }
 
-    var enemy_blocker = instance_place(x + move_step, y, enemy_blocker_object);
-    if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemyState.DEAD)
+    var skel_blocker = instance_place(x + move_step, y, obj_skeleton_old);
+    if (skel_blocker != noone && skel_blocker != id && skel_blocker.state != EnemyState.DEAD)
     {
         blocked = true;
     }
@@ -155,8 +186,8 @@ if (move_step != 0)
                 blocked = true;
             }
 
-            enemy_blocker = instance_place(x + move_step, y, enemy_blocker_object);
-            if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemyState.DEAD)
+            skel_blocker = instance_place(x + move_step, y, obj_skeleton_old);
+            if (skel_blocker != noone && skel_blocker != id && skel_blocker.state != EnemyState.DEAD)
             {
                 blocked = true;
             }
@@ -172,7 +203,8 @@ if (move_step != 0)
     }
 }
 
-var overlap = instance_place(x, y, enemy_blocker_object);
+// cleanup any existing overlap from previous frames
+var overlap = instance_place(x, y, obj_skeleton_old);
 if (overlap != noone && overlap != id && overlap.state != EnemyState.DEAD)
 {
     var push_dir = sign(x - overlap.x);
@@ -180,7 +212,7 @@ if (overlap != noone && overlap != id && overlap.state != EnemyState.DEAD)
 
     repeat (12)
     {
-        var test_overlap = instance_place(x, y, enemy_blocker_object);
+        var test_overlap = instance_place(x, y, obj_skeleton_old);
         if (test_overlap == noone || test_overlap == id) break;
 
         if (!place_meeting(x + push_dir, y, obj_wall))
@@ -194,25 +226,25 @@ if (overlap != noone && overlap != id && overlap.state != EnemyState.DEAD)
     }
 }
 
-if (state != EnemyState.TURN
-&& state != EnemyState.ATTACK
+// AFTER movement
+if (state != EnemyState.ATTACK
 && state != EnemyState.HURT
 && state != EnemyState.DEAD)
 {
     if (x != old_x)
     {
-        if (spr_walk != noone) sprite_index = spr_walk;
+        sprite_index = spr_skeleton_walking;
         image_speed = 1;
     }
     else
     {
-        if (spr_idle != noone) sprite_index = spr_idle;
+        sprite_index = spr_skeleton_idle;
         image_speed = 1;
         image_index = 0;
     }
 }
 
-
+/*
 // DEBUG: live hitbox tuning
 if (keyboard_check_pressed(ord("J"))) attack_hitbox_x1 -= 1;
 if (keyboard_check_pressed(ord("L"))) attack_hitbox_x1 += 1;
@@ -230,3 +262,4 @@ if (keyboard_check_pressed(ord("Q"))) attack_hitbox_thickness -= 1;
 if (keyboard_check_pressed(ord("E"))) attack_hitbox_thickness += 1;
 
 attack_hitbox_thickness = max(1, attack_hitbox_thickness);
+*/
