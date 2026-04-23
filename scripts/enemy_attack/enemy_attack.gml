@@ -1,28 +1,25 @@
 function enemy_attack() {
     hsp = 0;
 
-    // No player exists, stop attacking
     if (!instance_exists(obj_character)) {
         state = EnemyState.IDLE;
         attack_active = false;
         exit;
     }
 
-    // Distance to player
-    var dist = point_distance(x, y, obj_character.x, obj_character.y);
+    var target = instance_nearest(x, y, obj_character);
+    var dist = point_distance(x, y, target.x, target.y);
 
-    // Face the player
-    facing = (obj_character.x < x) ? -1 : 1;
-    image_xscale = facing;
+    facing = (target.x < x) ? -1 : 1;
+    image_xscale = facing * sprite_scale * sprite_facing;
+    image_yscale = sprite_scale;
 
-    // If player leaves attack range, chase again
     if (dist > attack_range) {
         state = EnemyState.CHASE;
         attack_active = false;
         exit;
     }
 
-    // Spawn one hitbox during the attack animation
     if (!attack_active && image_index >= 2) {
         spawn_attack_hitbox(
             id,
@@ -40,7 +37,6 @@ function enemy_attack() {
         attack_active = true;
     }
 
-    // End attack only when animation finishes
     if (image_index >= image_number - 1) {
         state = EnemyState.CHASE;
         attack_active = false;

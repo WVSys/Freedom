@@ -1,31 +1,18 @@
-if (state == EnemiesState.DEAD)
+if (state == EnemyState.DEAD)
 {
     enemy_drop_coins();
-
-    if (!bones_burst && image_index >= 3)
-    {
-        bones_burst = true;
-
-        if (death_burst_object != noone)
-        {
-            var burst = instance_create_layer(x, y, "Instances", death_burst_object);
-            burst.start_xscale = image_xscale;
-        }
-
-        instance_destroy();
-    }
-
+    state_dead();
     exit;
 }
 
-if (state == EnemiesState.HURT)
+if (state == EnemyState.HURT)
 {
     recoil_timer--;
 
     if (!place_meeting(x + hsp, y, obj_wall))
     {
         var hurt_blocker = instance_place(x + hsp, y, enemy_blocker_object);
-        if (hurt_blocker == noone || hurt_blocker == id || hurt_blocker.state == EnemiesState.DEAD)
+        if (hurt_blocker == noone || hurt_blocker == id || hurt_blocker.state == EnemyState.DEAD)
         {
             x += hsp;
         }
@@ -51,7 +38,7 @@ if (state == EnemiesState.HURT)
         recoil_timer = 0;
         hsp = 0;
         attack_active = false;
-        state = EnemiesState.CHASE;
+        state = EnemyState.CHASE;
 
         if (spr_walk != noone)
         {
@@ -109,29 +96,24 @@ on_ground = (ground_buffer > 0);
 // child will define these
 switch (state)
 {
-    case EnemiesState.IDLE:
+    case EnemyState.IDLE:
         enemy_idle();
         break;
 
-    case EnemiesState.CHASE:
+    case EnemyState.CHASE:
         enemy_chase();
         break;
 
-    case EnemiesState.ATTACK:
+    case EnemyState.ATTACK:
         if (spr_attack != noone) sprite_index = spr_attack;
         enemy_attack();
         break;
 
-    case EnemiesState.TURN:
-        if (spr_turn != noone) sprite_index = spr_turn;
-        enemy_turn();
-        break;
-
-    case EnemiesState.HURT:
+    case EnemyState.HURT:
         if (spr_hurt != noone) sprite_index = spr_hurt;
         break;
 
-    case EnemiesState.DEAD:
+    case EnemyState.DEAD:
         state_dead();
         break;
 }
@@ -151,7 +133,7 @@ if (move_step != 0)
     }
 
     var enemy_blocker = instance_place(x + move_step, y, enemy_blocker_object);
-    if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemiesState.DEAD)
+    if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemyState.DEAD)
     {
         blocked = true;
     }
@@ -174,7 +156,7 @@ if (move_step != 0)
             }
 
             enemy_blocker = instance_place(x + move_step, y, enemy_blocker_object);
-            if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemiesState.DEAD)
+            if (enemy_blocker != noone && enemy_blocker != id && enemy_blocker.state != EnemyState.DEAD)
             {
                 blocked = true;
             }
@@ -191,7 +173,7 @@ if (move_step != 0)
 }
 
 var overlap = instance_place(x, y, enemy_blocker_object);
-if (overlap != noone && overlap != id && overlap.state != EnemiesState.DEAD)
+if (overlap != noone && overlap != id && overlap.state != EnemyState.DEAD)
 {
     var push_dir = sign(x - overlap.x);
     if (push_dir == 0) push_dir = choose(-1, 1);
@@ -212,10 +194,10 @@ if (overlap != noone && overlap != id && overlap.state != EnemiesState.DEAD)
     }
 }
 
-if (state != EnemiesState.TURN
-&& state != EnemiesState.ATTACK
-&& state != EnemiesState.HURT
-&& state != EnemiesState.DEAD)
+if (state != EnemyState.TURN
+&& state != EnemyState.ATTACK
+&& state != EnemyState.HURT
+&& state != EnemyState.DEAD)
 {
     if (x != old_x)
     {
@@ -229,3 +211,22 @@ if (state != EnemiesState.TURN
         image_index = 0;
     }
 }
+
+
+// DEBUG: live hitbox tuning
+if (keyboard_check_pressed(ord("J"))) attack_hitbox_x1 -= 1;
+if (keyboard_check_pressed(ord("L"))) attack_hitbox_x1 += 1;
+
+if (keyboard_check_pressed(ord("I"))) attack_hitbox_y1 -= 1;
+if (keyboard_check_pressed(ord("K"))) attack_hitbox_y1 += 1;
+
+if (keyboard_check_pressed(ord("A"))) attack_hitbox_x2 -= 1;
+if (keyboard_check_pressed(ord("D"))) attack_hitbox_x2 += 1;
+
+if (keyboard_check_pressed(ord("W"))) attack_hitbox_y2 -= 1;
+if (keyboard_check_pressed(ord("S"))) attack_hitbox_y2 += 1;
+
+if (keyboard_check_pressed(ord("Q"))) attack_hitbox_thickness -= 1;
+if (keyboard_check_pressed(ord("E"))) attack_hitbox_thickness += 1;
+
+attack_hitbox_thickness = max(1, attack_hitbox_thickness);
