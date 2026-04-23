@@ -30,7 +30,7 @@ if (state == EnemyState.HURT)
     hsp *= 0.65;
 
     // keep recoil sprite active
-    sprite_index = spr_skeleton_damage;
+    sprite_index = spr_hurt;
 
    if (recoil_timer <= 0)
 	{
@@ -40,7 +40,7 @@ if (state == EnemyState.HURT)
 	    attack_active = false; // safety reset
 
 	    state = EnemyState.CHASE;
-	    sprite_index = spr_skeleton_walking;
+	    sprite_index = spr_walk;
 	    image_index = 0;
 	    image_speed = 1;
 	}
@@ -104,18 +104,18 @@ switch (state) {
         break;
 
     case EnemyState.ATTACK:
-        sprite_index = spr_skeleton_attack;
+        sprite_index = spr_attack;
         enemy_attack();
         break;
 		
     case EnemyState.TURN:
-        sprite_index = spr_skeleton_turn;
+        sprite_index = spr_turn;
         enemy_turn();
         break;
 
     case EnemyState.HURT:
         //state_hurt();
-		sprite_index = spr_skeleton_damage;
+		sprite_index = spr_hurt;
         break;
 
     case EnemyState.DEAD:
@@ -140,10 +140,10 @@ if (state != EnemyState.TURN
 && state != EnemyState.DEAD)
 {
     if (x != old_x) {
-        sprite_index = spr_skeleton_walking;
+        sprite_index = spr_walk;
         image_speed = 1;
     } else {
-        sprite_index = spr_skeleton_idle;
+        sprite_index = spr_idle;
         image_speed = 1;
         image_index = 0;
     }

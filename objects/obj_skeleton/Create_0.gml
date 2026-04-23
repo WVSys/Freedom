@@ -51,6 +51,13 @@ recoil_duration = 35;
 
 bones_burst = false;
 
+spr_idle   = spr_skeleton_idle;
+spr_walk   = spr_skeleton_walking;
+spr_attack = spr_skeleton_attack;
+spr_turn   = spr_skeleton_turn;
+spr_hurt   = spr_skeleton_damage;
+spr_dead   = spr_skeleton_death;
+
 function recoil_from_shield(blocker)
 {
     if (state == EnemyState.HURT) return;
