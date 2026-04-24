@@ -1,1 +1,1 @@
-spawn_id = "default";
+spawn_id = "to_cave";

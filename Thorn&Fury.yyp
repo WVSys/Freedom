@@ -27,7 +27,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.222",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"Thorn&Fury",
   "resources":[
@@ -42,6 +42,7 @@
     {"id":{"name":"obj_global_controller","path":"objects/obj_global_controller/obj_global_controller.yy",},},
     {"id":{"name":"obj_golem","path":"objects/obj_golem/obj_golem.yy",},},
     {"id":{"name":"obj_goto_cave","path":"objects/obj_goto_cave/obj_goto_cave.yy",},},
+    {"id":{"name":"obj_goto_forest","path":"objects/obj_goto_forest/obj_goto_forest.yy",},},
     {"id":{"name":"obj_green_gorgon","path":"objects/obj_green_gorgon/obj_green_gorgon.yy",},},
     {"id":{"name":"obj_light","path":"objects/obj_light/obj_light.yy",},},
     {"id":{"name":"obj_merchant","path":"objects/obj_merchant/obj_merchant.yy",},},

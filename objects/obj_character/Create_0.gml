@@ -130,6 +130,11 @@ air_arc_x2[4] = 45;
 air_arc_y2[4] = 10;
 air_arc_thickness[4] = 2;
 
+if (!variable_global_exists("next_spawn"))
+{
+    global.next_spawn = "default";
+}
+
 debug_no_gravity = false;
 
 function take_damage(amount)
