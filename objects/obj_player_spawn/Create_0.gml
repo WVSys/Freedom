@@ -1,1 +1,1 @@
-spawn_id = "to_cave";
+spawn_id = spawn_id;
