@@ -21,6 +21,7 @@
     {"name":"obj_global_controller","order":5,"path":"objects/obj_global_controller/obj_global_controller.yy",},
     {"name":"obj_golem","order":16,"path":"objects/obj_golem/obj_golem.yy",},
     {"name":"obj_goto_cave","order":11,"path":"objects/obj_goto_cave/obj_goto_cave.yy",},
+    {"name":"obj_goto_forest","order":21,"path":"objects/obj_goto_forest/obj_goto_forest.yy",},
     {"name":"obj_green_gorgon","order":1,"path":"objects/obj_green_gorgon/obj_green_gorgon.yy",},
     {"name":"obj_light","order":15,"path":"objects/obj_light/obj_light.yy",},
     {"name":"obj_merchant_menu","order":19,"path":"objects/obj_merchant_menu/obj_merchant_menu.yy",},
