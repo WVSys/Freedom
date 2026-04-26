@@ -34,6 +34,7 @@
     {"id":{"name":"obj_attack_hitbox","path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},},
     {"id":{"name":"obj_bone_burst","path":"objects/obj_bone_burst/obj_bone_burst.yy",},},
     {"id":{"name":"obj_camera_controller_cave","path":"objects/obj_camera_controller_cave/obj_camera_controller_cave.yy",},},
+    {"id":{"name":"obj_camera_controller_cave2","path":"objects/obj_camera_controller_cave2/obj_camera_controller_cave2.yy",},},
     {"id":{"name":"obj_camera_controller_forest","path":"objects/obj_camera_controller_forest/obj_camera_controller_forest.yy",},},
     {"id":{"name":"obj_cave_mouth","path":"objects/obj_cave_mouth/obj_cave_mouth.yy",},},
     {"id":{"name":"obj_character","path":"objects/obj_character/obj_character.yy",},},
