@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"get_upgrade_cost_runes",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"get_upgrade_cost_runes",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

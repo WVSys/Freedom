@@ -14,7 +14,7 @@ else if (obj_character.hspeed < 0) {
 var look_up_amount = 250;
 var vertical_look = 0;
 
-if (keyboard_check(vk_up)) {
+if (keyboard_check(vk_up) and !global.merchant_menu_open) {
     vertical_look = -look_up_amount;
 }
 

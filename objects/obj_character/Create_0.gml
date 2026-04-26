@@ -3,7 +3,8 @@ enum MoveState {
     RUN,
     JUMP,
     FALL,
-	LAND
+    LAND,
+    DEAD
 }
 
 enum CombatState {
@@ -14,13 +15,48 @@ enum CombatState {
 }
 
 mask_index = spr_idle_stand1;
-
-hp = 100
+is_dead = false;
+hp = 100;
 hp_max = 100;
 
-guard_meter_max = 100;
+guard_meter_max = 15;
 guard_meter = guard_meter_max;
 guard_damage_cost = 25;
+
+helmet = false;
+chestplate = false;
+greaves = false;
+gauntlets = false;
+sword = true;
+shield = true;
+
+helmet_level = 0;
+chestplate_level = 0;
+greaves_level = 0;
+gauntlets_level = 0;
+sword_level = 0;
+shield_level = 0;
+
+helmet_durability = 0;
+chestplate_durability = 0;
+greaves_durability = 0;
+gauntlets_durability = 0;
+sword_durability = 0;
+shield_durability = 0;
+
+helmet_durability_max = 0;
+chestplate_durability_max = 0;
+greaves_durability_max = 0;
+gauntlets_durability_max = 0;
+sword_durability_max = 0;
+shield_durability_max = 0;
+
+hp_potions = 0;
+armor_runes = 0;
+shield_runes = 0;
+sword_runes = 0;
+
+interact_target = noone;
 
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
@@ -134,10 +170,26 @@ debug_no_gravity = false;
 
 function take_damage(amount)
 {
-    if (invincible) return;
-
-    hp = clamp(hp-amount,0,hp_max);
+    if (invincible || is_dead) return;
+    hp = clamp(hp - amount, 0, hp_max);
     show_debug_message("HP: " + string(hp));
+
+    if (hp <= 0)
+    {
+        hp = 0;
+        is_dead = true;
+        move_state = MoveState.DEAD;
+        combat_state = CombatState.NONE;
+
+        hsp = 0;
+        vsp = 0;
+
+        sprite_index = spr_character_dead;
+        image_index = 0;
+        image_speed = 1;
+
+        exit;
+    }
 
     invincible = true;
     alarm[0] = 20;

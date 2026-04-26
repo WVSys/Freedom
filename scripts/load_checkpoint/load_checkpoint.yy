@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"load_checkpoint",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"load_checkpoint",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
