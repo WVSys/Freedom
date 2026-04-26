@@ -1,1 +1,1 @@
-spawn_id = spawn_id;
+spawn_id = "default";
