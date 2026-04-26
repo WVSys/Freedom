@@ -1,3 +1,19 @@
+if (is_dead)
+{
+    hsp = 0;
+    vsp = 0;
+    exit;
+}
+
+if (global.merchant_menu_open)
+{
+    hsp = 0;
+    vsp = 0;
+	sprite_index = spr_idle_stand1;
+    image_speed = 1;
+    exit;
+}
+
 var move_x = 0;
 
 // keyboard movement
@@ -400,6 +416,10 @@ else
                 else move_state = MoveState.IDLE;
             }
         break;
+		
+		case MoveState.DEAD:
+		    sprite_index = spr_character_dead;
+		break;
     }
 }
 
@@ -458,3 +478,13 @@ if (global.debug && keyboard_check_pressed(ord("Y")))
 {
     debug_no_gravity = !debug_no_gravity;
 }
+
+if (instance_exists(interact_target))
+{
+    if (keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed(0, gp_face2))
+    {
+        interact_target.activate();
+    }
+}
+
+interact_target = noone;

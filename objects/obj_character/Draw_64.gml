@@ -123,4 +123,5 @@ if (global.debug)
     draw_text(800, 110, "air_arc_x2[" + string(i) + "] = " + string(air_arc_x2[i]) + ";");
     draw_text(800, 130, "air_arc_y2[" + string(i) + "] = " + string(air_arc_y2[i]) + ";");
     draw_text(800, 150, "air_arc_thickness[" + string(i) + "] = " + string(air_arc_thickness[i]) + ";");
+	draw_text(800, 300,"Merchant menu open: "+string(global.merchant_menu_open));
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"buy_hp_potion",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"buy_hp_potion",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
