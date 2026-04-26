@@ -52,6 +52,7 @@
     {"id":{"name":"obj_skeleton_old","path":"objects/obj_skeleton_old/obj_skeleton_old.yy",},},
     {"id":{"name":"obj_skeleton","path":"objects/obj_skeleton/obj_skeleton.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
+    {"id":{"name":"Cave_2","path":"rooms/Cave_2/Cave_2.yy",},},
     {"id":{"name":"Cave","path":"rooms/Cave/Cave.yy",},},
     {"id":{"name":"Forest","path":"rooms/Forest/Forest.yy",},},
     {"id":{"name":"buy_hp_potion","path":"scripts/buy_hp_potion/buy_hp_potion.yy",},},
@@ -166,6 +167,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Forest","path":"rooms/Forest/Forest.yy",},},
     {"roomId":{"name":"Cave","path":"rooms/Cave/Cave.yy",},},
+    {"roomId":{"name":"Cave_2","path":"rooms/Cave_2/Cave_2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

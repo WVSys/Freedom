@@ -31,6 +31,7 @@
     {"name":"obj_skeleton_old","order":4,"path":"objects/obj_skeleton_old/obj_skeleton_old.yy",},
     {"name":"obj_skeleton","order":17,"path":"objects/obj_skeleton/obj_skeleton.yy",},
     {"name":"obj_wall","order":3,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"Cave_2","order":55,"path":"rooms/Cave_2/Cave_2.yy",},
     {"name":"Cave","order":51,"path":"rooms/Cave/Cave.yy",},
     {"name":"buy_hp_potion","order":8,"path":"scripts/buy_hp_potion/buy_hp_potion.yy",},
     {"name":"enemy_attack","order":2,"path":"scripts/enemy_attack/enemy_attack.yy",},
