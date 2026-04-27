@@ -1,3 +1,12 @@
+if (global.game_paused || global.tutorial_pause)
+{
+    image_speed = 0;
+    exit;
+}
+else
+{
+    image_speed = 1;
+}
 if (is_dead)
 {
     hsp = 0;

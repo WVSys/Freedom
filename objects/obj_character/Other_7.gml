@@ -5,11 +5,18 @@ if (is_dead)
 
     global.death_screen_active = true;
 
-    var dui = instance_create_depth(x, y-120, -100000, obj_death_ui);
-    dui.active = true;
-    dui.visible = true;
-    dui.image_alpha = 0;
-    dui.continue_created = false;
+    if (!death_ui_created)
+    {
+        death_ui_created = true;
 
-    show_debug_message("FORCED NEW DEATH UI CREATED");
+        var dui = instance_create_depth(x, y - 120, -100000, obj_death_ui);
+        dui.active = true;
+        dui.visible = true;
+        dui.image_alpha = 0;
+        dui.continue_created = false;
+
+        show_debug_message("DEATH UI CREATED ONCE");
+    }
+
+    exit;
 }

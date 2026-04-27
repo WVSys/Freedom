@@ -60,6 +60,7 @@
     {"id":{"name":"obj_skeleton","path":"objects/obj_skeleton/obj_skeleton.yy",},},
     {"id":{"name":"obj_speech_bubble","path":"objects/obj_speech_bubble/obj_speech_bubble.yy",},},
     {"id":{"name":"obj_start","path":"objects/obj_start/obj_start.yy",},},
+    {"id":{"name":"obj_starting_spawn","path":"objects/obj_starting_spawn/obj_starting_spawn.yy",},},
     {"id":{"name":"obj_stoned","path":"objects/obj_stoned/obj_stoned.yy",},},
     {"id":{"name":"obj_talk_marker","path":"objects/obj_talk_marker/obj_talk_marker.yy",},},
     {"id":{"name":"obj_title_controller","path":"objects/obj_title_controller/obj_title_controller.yy",},},

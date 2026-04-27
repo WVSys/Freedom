@@ -1,3 +1,12 @@
+if (global.game_paused)
+{
+    image_speed = 0;
+    exit;
+}
+else
+{
+    image_speed = 1;
+}
 can_interact = false;
 
 function merchant_say(_text)

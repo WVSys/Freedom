@@ -72,6 +72,7 @@ shield_runes = 10;
 sword_runes = 10;
 
 interact_target = noone;
+death_ui_created = false;
 
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
@@ -257,8 +258,8 @@ function say(_text)
 approach_phrases = [
     "I will avenge you, Father!",
     "I will make them pay!",
-    "I'm so sorry.",
-    ".......",
-    "Nothing will stop me!"
+    "I'm so sorry, Father.",
+    ".......Father, give me strength",
+    "I will not rest until they pay!"
 ];
 

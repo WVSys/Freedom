@@ -39,6 +39,7 @@
     {"name":"obj_skeleton","order":17,"path":"objects/obj_skeleton/obj_skeleton.yy",},
     {"name":"obj_speech_bubble","order":21,"path":"objects/obj_speech_bubble/obj_speech_bubble.yy",},
     {"name":"obj_start","order":23,"path":"objects/obj_start/obj_start.yy",},
+    {"name":"obj_starting_spawn","order":32,"path":"objects/obj_starting_spawn/obj_starting_spawn.yy",},
     {"name":"obj_stoned","order":22,"path":"objects/obj_stoned/obj_stoned.yy",},
     {"name":"obj_talk_marker","order":31,"path":"objects/obj_talk_marker/obj_talk_marker.yy",},
     {"name":"obj_title_controller","order":28,"path":"objects/obj_title_controller/obj_title_controller.yy",},

@@ -83,3 +83,15 @@ if (global.respawn_from_checkpoint || global.load_save)
     global.respawn_from_checkpoint = false;
 	global.load_save = false;
 }
+else if (global.new_game)
+{
+    var sp = instance_find(obj_starting_spawn, 0);
+
+    if (sp != noone)
+    {
+        x = sp.x;
+        y = sp.y;
+    }
+
+    global.new_game = false;
+}

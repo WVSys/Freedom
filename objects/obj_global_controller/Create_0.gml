@@ -56,3 +56,14 @@ continue_focused = false;
 continue_available = false;
 
 start_pressed = false;
+
+global.game_paused = false;
+global.tutorial_pause = false;
+
+pause_index = 0;
+
+pause_options = [
+    "Resume",
+    "Restart from Checkpoint",
+    "Quit to Title"
+];
