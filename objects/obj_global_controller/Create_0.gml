@@ -60,6 +60,16 @@ start_pressed = false;
 global.game_paused = false;
 global.tutorial_pause = false;
 
+if (!variable_global_exists("dialogue_active"))
+{
+    global.dialogue_active = false;
+}
+
+if (!variable_global_exists("intro_merchant_seen"))
+{
+    global.intro_merchant_seen = false;
+}
+
 pause_index = 0;
 
 pause_options = [

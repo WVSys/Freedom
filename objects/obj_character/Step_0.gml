@@ -1,11 +1,21 @@
-if (global.game_paused || global.tutorial_pause)
+if (global.game_paused)
 {
     image_speed = 0;
     exit;
 }
-else
+
+if (global.dialogue_active)
 {
+    hsp = 0;
+    vsp = 0;
+
+    move_state = MoveState.IDLE;
+    combat_state = CombatState.NONE;
+
+    sprite_index = spr_idle_stand1;
     image_speed = 1;
+
+    exit;
 }
 if (is_dead)
 {
