@@ -1,4 +1,4 @@
-var confirm_keyboard = keyboard_check_pressed(vk_enter);
+/*var confirm_keyboard = keyboard_check_pressed(vk_enter);
 
 var confirm_gamepad = false;
 
@@ -13,4 +13,4 @@ if (focused && (confirm_keyboard || confirm_gamepad))
 {
     global.load_save = false;
     room_goto(Forest);
-}
+}*/

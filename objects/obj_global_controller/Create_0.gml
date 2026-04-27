@@ -42,6 +42,8 @@ global.saved_shield_runes = 0;
 global.saved_sword_runes = 0;
 global.saved_hp_potions = 0;
 
+global.load_save = false;
+
 global.respawn_from_checkpoint = false;
 
 load_checkpoint();

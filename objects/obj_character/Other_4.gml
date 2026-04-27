@@ -7,7 +7,7 @@ with (obj_player_spawn)
     }
 }
 
-if (global.respawn_from_checkpoint)
+if (global.respawn_from_checkpoint || global.load_save)
 {
     load_checkpoint();
 
@@ -81,4 +81,5 @@ if (global.respawn_from_checkpoint)
     image_speed = 1;
 
     global.respawn_from_checkpoint = false;
+	global.load_save = false;
 }

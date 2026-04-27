@@ -3,6 +3,7 @@ save_file = "save.json";
 has_continue = file_exists(save_file);
 
 menu_index = 0; // 0 = Start, 1 = Continue
+confirm_overwrite = false;
 
 with (obj_start)
 {
@@ -18,7 +19,6 @@ if (has_continue)
         btn.visible = true;
         btn.focused = false;
         btn.image_alpha = 1;
-
         btn.image_xscale = 0.1610;
         btn.image_yscale = 0.1799;
     }

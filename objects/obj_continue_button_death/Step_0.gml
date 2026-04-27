@@ -35,6 +35,7 @@ var confirm = confirm_keyboard || confirm_gamepad;
 
 if (confirm)
 {
+	load_checkpoint();
     global.respawn_from_checkpoint = true;
     room_goto(Forest);
 }

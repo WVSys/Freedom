@@ -1,4 +1,4 @@
-if (!active) exit;
+/*if (!active) exit;
 
 var confirm_keyboard = keyboard_check_pressed(vk_enter);
 
@@ -14,5 +14,7 @@ if (gamepad_is_connected(0))
 if (focused && (confirm_keyboard || confirm_gamepad))
 {
     global.load_save = true;
+    global.respawn_from_checkpoint = false;
+
     room_goto(Forest);
-}
+}*/
