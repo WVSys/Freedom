@@ -11,6 +11,7 @@
     {"name":"Skeleton","order":3,"path":"folders/Sprites/Skeleton.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"fnt_speech_small","order":56,"path":"fonts/fnt_speech_small/fnt_speech_small.yy",},
     {"name":"obj_attack_hitbox","order":6,"path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},
     {"name":"obj_bone_burst","order":7,"path":"objects/obj_bone_burst/obj_bone_burst.yy",},
     {"name":"obj_camera_controller_cave","order":14,"path":"objects/obj_camera_controller_cave/obj_camera_controller_cave.yy",},

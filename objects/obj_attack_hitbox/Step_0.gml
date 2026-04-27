@@ -80,6 +80,15 @@ if (hitbox_type == "damage" && target_object == obj_character)
 
             show_debug_message("BLOCKED. Guard meter: " + string(blocker.guard_meter));
         }
+		if (blocker.guard_meter <= 0)
+        {
+            blocker.guard_meter = 0;
+            blocker.guard_broken = true;
+            blocker.is_blocking = false;
+            blocker.combat_state = CombatState.NONE;
+
+            show_debug_message("GUARD BROKEN");
+        }
 
         if (instance_exists(owner))
         {

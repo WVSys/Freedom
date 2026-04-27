@@ -1,13 +1,52 @@
 if (is_dead)
 {
     hsp = 0;
-    vsp = 0;
-	
-	 if (!instance_exists(obj_death_ui))
+
+    var on_ground_dead = place_meeting(x, y + 1, obj_wall);
+
+    // Let dead body fall until it hits the ground
+    if (!on_ground_dead)
     {
-        instance_create_layer(0, 200, "Instances", obj_death_ui);
+        vsp += grav;
+        if (vsp > max_fall) vsp = max_fall;
+
+        if (!place_meeting(x, y + vsp, obj_wall))
+        {
+            y += vsp;
+        }
+        else
+        {
+            while (!place_meeting(x, y + sign(vsp), obj_wall))
+            {
+                y += sign(vsp);
+            }
+
+            vsp = 0;
+        }
     }
+    else
+    {
+        vsp = 0;
+
+        // Once grounded, show death UI
+        if (!instance_exists(obj_death_ui))
+        {
+            var dui = instance_create_depth(0, 0, -100000, obj_death_ui);
+            dui.active = true;
+            dui.visible = true;
+            dui.image_alpha = 0;
+            dui.continue_created = false;
+
+            global.death_screen_active = true;
+        }
+    }
+
     exit;
+}
+
+if (speech_cooldown > 0)
+{
+    speech_cooldown--;
 }
 
 if (global.merchant_menu_open)
@@ -17,6 +56,24 @@ if (global.merchant_menu_open)
 	sprite_index = spr_idle_stand1;
     image_speed = 1;
     exit;
+}
+
+if (!is_dead)
+{
+    var dt = delta_time / 1000000; // converts microseconds to seconds
+
+    if (!is_blocking && guard_meter < guard_meter_max)
+    {
+        guard_meter = min(
+            guard_meter + guard_regen_per_second * dt,
+            guard_meter_max
+        );
+    }
+
+    if (guard_broken && guard_meter >= guard_recover_threshold)
+    {
+        guard_broken = false;
+    }
 }
 
 var move_x = 0;
@@ -43,6 +100,18 @@ if (gamepad_is_connected(0))
     
     // left shoulder for guard
     if (gamepad_button_check(0, gp_shoulderl)) guard_held = true;
+}
+
+// guard availability
+var tried_to_guard = guard_held;
+if (guard_broken || guard_meter <= 0)
+{
+    guard_held = false;
+	 if (tried_to_guard && speech_cooldown <= 0)
+    {
+        say("I can't block yet.");
+        speech_cooldown = 60;
+    }
 }
 
 // face direction
@@ -96,7 +165,7 @@ if (guard_held && on_ground && combat_state != CombatState.ATTACK1 && combat_sta
         shield_x2,
         shield_y2,
         guard_damage_cost,
-        2,
+        main_damage,
         shield_thickness,
         "guard"
     );

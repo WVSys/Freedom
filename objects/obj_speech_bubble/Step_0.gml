@@ -4,9 +4,9 @@ if (!instance_exists(owner))
     exit;
 }
 
-// Follow the merchant
-x = owner.x;
-y = owner.y - 48;
+// Follow the owner
+x = owner.x + x_offset;
+y = owner.y + y_offset;
 
 // Count down
 lifetime--;

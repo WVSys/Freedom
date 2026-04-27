@@ -5,7 +5,7 @@ if (is_dead)
 
     global.death_screen_active = true;
 
-    var dui = instance_create_depth(x, y-150, -100000, obj_death_ui);
+    var dui = instance_create_depth(x, y-120, -100000, obj_death_ui);
     dui.active = true;
     dui.visible = true;
     dui.image_alpha = 0;

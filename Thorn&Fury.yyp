@@ -31,6 +31,7 @@
   },
   "name":"Thorn&Fury",
   "resources":[
+    {"id":{"name":"fnt_speech_small","path":"fonts/fnt_speech_small/fnt_speech_small.yy",},},
     {"id":{"name":"obj_attack_hitbox","path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},},
     {"id":{"name":"obj_bone_burst","path":"objects/obj_bone_burst/obj_bone_burst.yy",},},
     {"id":{"name":"obj_camera_controller_cave","path":"objects/obj_camera_controller_cave/obj_camera_controller_cave.yy",},},

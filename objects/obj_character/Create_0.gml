@@ -19,9 +19,17 @@ is_dead = false;
 hp = 100;
 hp_max = 100;
 
+main_damage = 10;
+
 guard_meter_max = 15;
 guard_meter = guard_meter_max;
 guard_damage_cost = 25;
+guard_broken = false;
+guard_regen_per_second = 1;
+guard_recover_threshold = guard_meter_max * 0.25; // can guard again at 25%
+is_blocking = false;
+
+speech_cooldown = 0;
 
 helmet = false;
 chestplate = false;
@@ -61,7 +69,6 @@ interact_target = noone;
 move_state = MoveState.IDLE;
 combat_state = CombatState.NONE;
 
-is_blocking = false;
 invincible_timer = 2;
 move_x = 0;
 
@@ -193,4 +200,32 @@ function take_damage(amount)
 
     invincible = true;
     alarm[0] = 20;
+}
+
+function say(_text)
+{
+    // Reuse existing bubble instead of stacking
+    var existing = noone;
+
+    with (obj_speech_bubble)
+    {
+        if (owner == other.id)
+        {
+            existing = id;
+        }
+    }
+
+    if (existing != noone)
+    {
+        existing.text = _text;
+        existing.lifetime = 180;
+        return;
+    }
+
+    var bubble = instance_create_depth(x, y, -10000, obj_speech_bubble);
+    bubble.owner = id;
+    bubble.text = _text;
+	
+	bubble.x_offset = 0;
+    bubble.y_offset = -95;
 }
