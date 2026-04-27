@@ -349,6 +349,8 @@ if (combat_state == CombatState.ATTACK1)
         if (f == 0) i = 0;
         if (f == 1) i = 1;
         if (f == 2) i = 2;
+		if (f == 3) i = 3;
+		if (f == 4) i = 4;
 
         if (i != -1)
         {
@@ -546,6 +548,43 @@ if (global.debug && debug_no_gravity)
     if (keyboard_check_pressed(ord("E"))) air_arc_thickness[i] += 1;
 
     air_arc_thickness[i] = max(1, air_arc_thickness[i]);
+}
+
+if (global.debug)
+{
+    if (keyboard_check_pressed(ord("1"))) debug_arc_index = 0;
+    if (keyboard_check_pressed(ord("2"))) debug_arc_index = 1;
+    if (keyboard_check_pressed(ord("3"))) debug_arc_index = 2;
+    if (keyboard_check_pressed(ord("4"))) debug_arc_index = 3;
+	if (keyboard_check_pressed(ord("5"))) debug_arc_index = 4;
+
+    var i = debug_arc_index;
+
+    if (keyboard_check_pressed(ord("J"))) arc_x1[i] -= 1;
+    if (keyboard_check_pressed(ord("L"))) arc_x1[i] += 1;
+
+    if (keyboard_check_pressed(ord("I"))) arc_y1[i] -= 1;
+    if (keyboard_check_pressed(ord("K"))) arc_y1[i] += 1;
+
+    if (keyboard_check_pressed(ord("A"))) arc_x2[i] -= 1;
+    if (keyboard_check_pressed(ord("D"))) arc_x2[i] += 1;
+
+    if (keyboard_check_pressed(ord("W"))) arc_y2[i] -= 1;
+    if (keyboard_check_pressed(ord("S"))) arc_y2[i] += 1;
+
+    if (keyboard_check_pressed(ord("Q"))) arc_thickness[i] -= 1;
+    if (keyboard_check_pressed(ord("E"))) arc_thickness[i] += 1;
+
+    arc_thickness[i] = max(1, arc_thickness[i]);
+
+    show_debug_message(
+        "arc[" + string(i) + "] = " +
+        "x1:" + string(arc_x1[i]) + " " +
+        "y1:" + string(arc_y1[i]) + " " +
+        "x2:" + string(arc_x2[i]) + " " +
+        "y2:" + string(arc_y2[i]) + " " +
+        "thick:" + string(arc_thickness[i])
+    );
 }
 
 if (global.debug && keyboard_check_pressed(ord("Y")))

@@ -134,6 +134,20 @@ arc_x2[2] = 109;
 arc_y2[2] = 20;
 arc_thickness[2] = 2;
 
+// Arc segment 3: low slash
+arc_x1[3] = 109;
+arc_y1[3] = 20;
+arc_x2[3] = 105;
+arc_y2[3] = 34;
+arc_thickness[3] = 2;
+
+// Arc segment 4: low slash
+arc_x1[4] = 105;
+arc_y1[4] = 34;
+arc_x2[4] = 73;
+arc_y2[4] = 48;
+arc_thickness[4] = 2;
+
 debug_tune_shield = false;
 shield_x1 = -2;
 shield_y1 = -19;

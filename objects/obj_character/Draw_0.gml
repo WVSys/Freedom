@@ -8,9 +8,9 @@ if (global.debug)
     draw_set_color(c_lime);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
     draw_set_alpha(1);
-/*
+
     // Draw arc preview lines
-    for (var i = 0; i < 3; i++)
+    for (var i = 0; i < 5; i++)
     {
         var start_x = x + (arc_x1[i] * facing);
         var start_y = y + arc_y1[i];
@@ -52,7 +52,7 @@ if (global.debug)
     }
 
     draw_set_alpha(1);
-    draw_set_color(c_white);*/
+    draw_set_color(c_white);
     
     draw_set_color(c_white);
     draw_set_alpha(1);
