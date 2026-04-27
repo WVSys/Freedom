@@ -118,9 +118,9 @@ function enemy_enter_dead_state()
     vsp = 0;
     recoil_timer = 0;
 
-    if (spr_death != noone)
+    if (spr_death_logo != noone)
     {
-        sprite_index = spr_death;
+        sprite_index = spr_death_logo;
         image_index = 0;
         image_speed = 0.25;
     }

@@ -1,3 +1,4 @@
+player_was_near = player_near;
 player_near = false;
 
 if (instance_exists(obj_character))
@@ -6,7 +7,18 @@ if (instance_exists(obj_character))
     {
         player_near = true;
         obj_character.interact_target = id;
-        //show_debug_message("PLAYER IS NEAR MERCHANT");
+
+        // Runs only on the first frame the player enters the zone
+        if (!player_was_near)
+        {
+            if (instance_exists(merchant_id))
+            {
+                with (merchant_id)
+                {
+                    merchant_say("Hey there!");
+                }
+            }
+        }
     }
     else
     {
