@@ -1,6 +1,6 @@
 var box_x = 300;
 var box_y = 60;
-var box_w = 420;
+var box_w = 500;
 var box_h = 300;
 
 draw_set_color(c_black);
@@ -59,10 +59,10 @@ else
     }
 
     draw_text(rx, ry + 160, "Upgrade: "
-        + string(get_upgrade_cost_coins(item_name)) + "c, "
+        + string(get_upgrade_cost_coins(item_name)) + "coins, "
         + string(get_upgrade_cost_runes(item_name)) + " runes");
 
-    draw_text(rx, ry + 184, "Repair: " + string(get_repair_cost(item_name)) + "c");
+    draw_text(rx, ry + 184, "Repair: " + string(get_repair_cost(item_name)) + "coins");
 }
 
 if (message_timer > 0)

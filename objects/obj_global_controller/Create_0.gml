@@ -1,6 +1,6 @@
 global.debug = false;
 
-global.coins = 0;
+global.coins = 1000;
 
 global.merchant_menu_open = false;
 global.respawn_from_checkpoint = false;

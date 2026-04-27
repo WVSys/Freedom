@@ -59,10 +59,17 @@ gauntlets_durability_max = 0;
 sword_durability_max = 0;
 shield_durability_max = 0;
 
-hp_potions = 0;
-armor_runes = 0;
-shield_runes = 0;
-sword_runes = 0;
+hp_potions = 10;
+heal_active = false;
+heal_amount_remaining = 0;
+heal_tick_timer = 0;
+
+heal_per_tick = 1;
+heal_tick_rate = 10; // frames between each heal tick
+
+armor_runes = 10;
+shield_runes = 10;
+sword_runes = 10;
 
 interact_target = noone;
 
@@ -71,6 +78,9 @@ combat_state = CombatState.NONE;
 
 invincible_timer = 2;
 move_x = 0;
+
+can_say_approach_line = true;
+approach_say_cooldown = 0;
 
 hsp = 0;
 vsp = 0;
@@ -243,3 +253,12 @@ function say(_text)
 	bubble.x_offset = 0;
     bubble.y_offset = -95;
 }
+
+approach_phrases = [
+    "I will avenge you, Father!",
+    "I will make them pay!",
+    "I'm so sorry.",
+    ".......",
+    "Nothing will stop me!"
+];
+

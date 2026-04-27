@@ -499,6 +499,71 @@ else
     }
 }
 
+// Use HP potion
+if (keyboard_check_pressed(ord("H")))
+{
+    if (hp_potions > 0 && !heal_active && hp < hp_max)
+    {
+        hp_potions -= 1;
+
+        heal_active = true;
+        heal_amount_remaining = 20; // total HP restored over time
+        heal_tick_timer = 0;
+    }
+}
+
+// Heal over time
+if (heal_active)
+{
+    heal_tick_timer += 1;
+
+    if (heal_tick_timer >= heal_tick_rate)
+    {
+        heal_tick_timer = 0;
+
+        if (hp < hp_max && heal_amount_remaining > 0)
+        {
+            hp += heal_per_tick;
+            heal_amount_remaining -= heal_per_tick;
+
+            if (hp > hp_max)
+            {
+                hp = hp_max;
+            }
+        }
+
+        if (heal_amount_remaining <= 0 || hp >= hp_max)
+        {
+            heal_active = false;
+            heal_amount_remaining = 0;
+        }
+    }
+}
+
+// Cooldown timer
+if (approach_say_cooldown > 0)
+{
+    approach_say_cooldown--;
+
+    if (approach_say_cooldown <= 0)
+    {
+        can_say_approach_line = true;
+    }
+}
+
+// Detect collision marker
+var marker = instance_place(x, y, obj_talk_marker);
+
+if (marker != noone && can_say_approach_line)
+{
+    var phrase = approach_phrases[irandom(array_length(approach_phrases) - 1)];
+
+    say(phrase);
+
+    can_say_approach_line = false;
+    approach_say_cooldown = 180;
+}
+
 // Press T to toggle shield tuning mode
 if (global.debug && keyboard_check_pressed(ord("T"))) {
     debug_tune_shield = !debug_tune_shield;

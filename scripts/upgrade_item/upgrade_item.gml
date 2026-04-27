@@ -47,7 +47,7 @@ function upgrade_item(item_name)
             if (global.coins < coin_cost) return false;
             if (obj_character.sword_runes < rune_cost) return false;
 
-            obj_character.coins -= coin_cost;
+            global.coins -= coin_cost;
             obj_character.sword_runes -= rune_cost;
             obj_character.sword_level += 1;
             obj_character.sword_durability_max += 10;

@@ -166,6 +166,28 @@ draw_sprite_ext(
     c_white,        // color
     1               // alpha
 );
+
+//-------------------------------------------------------------------
+// HP potion
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_font(-1); // optional, uses default font
+
+draw_text(950, 145, " : " + string(hp_potions));
+
+draw_sprite_ext(
+    spr_hp_potion, // sprite
+    0,              // frame
+    925,         // x
+    145,         // y
+    1,            // x scale
+    1,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
 if (global.debug)
 {
     /*draw_set_alpha(1);
