@@ -10,7 +10,7 @@ attack_range = 150;
 target = obj_character;
 attack_cooldown = 25;
 attack_cooldown_max = 30;
-attack_damage = 5;
+attack_damage = 25;
 
 move_speed = 2;
 jump_speed = -10;

@@ -45,3 +45,12 @@ global.saved_hp_potions = 0;
 global.respawn_from_checkpoint = false;
 
 load_checkpoint();
+
+save_file = "save.json";
+
+start_focused = true;
+continue_focused = false;
+
+continue_available = false;
+
+start_pressed = false;
