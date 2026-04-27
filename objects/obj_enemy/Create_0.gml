@@ -49,6 +49,13 @@ coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
 
+rune_drop_x_offset = 0;
+rune_drop_y_offset = 0;
+rune_value = 1;
+rune_sword_chance = 100;
+rune_shield_chance = 0;
+rune_armor_chance = 0;
+
 // optional animation hooks
 spr_idle = noone;
 spr_walk = noone;

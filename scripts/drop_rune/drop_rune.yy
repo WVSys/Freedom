@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"drop_rune",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"drop_rune",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

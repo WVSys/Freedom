@@ -87,12 +87,12 @@ draw_set_valign(fa_top);
 draw_set_color(c_white);
 draw_set_font(-1); // optional, uses default font
 
-draw_text(950, 32, ": " + string(global.coins));
+draw_text(960, 32, ": " + string(global.coins));
 
 draw_sprite_ext(
     spr_coin, // sprite
     0,              // frame
-    925,         // x
+    932,         // x
     34,         // y
     1,            // x scale
     1,            // y scale
@@ -101,6 +101,71 @@ draw_sprite_ext(
     1               // alpha
 );
 
+//-------------------------------------------------------------------
+// armor runes
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_font(-1); // optional, uses default font
+
+draw_text(950, 54, " : " + string(armor_runes));
+
+draw_sprite_ext(
+    spr_armor_rune, // sprite
+    0,              // frame
+    925,         // x
+    54,         // y
+    1,            // x scale
+    1,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
+
+//-------------------------------------------------------------------
+// sword runes
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_font(-1); // optional, uses default font
+
+draw_text(950, 80, " : " + string(sword_runes));
+
+draw_sprite_ext(
+    spr_sword_rune, // sprite
+    0,              // frame
+    925,         // x
+    80,         // y
+    1,            // x scale
+    1,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
+
+//-------------------------------------------------------------------
+// shield runes
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_font(-1); // optional, uses default font
+
+draw_text(950, 110, " : " + string(shield_runes));
+
+draw_sprite_ext(
+    spr_shield_rune, // sprite
+    0,              // frame
+    925,         // x
+    110,         // y
+    1,            // x scale
+    1,            // y scale
+    0,              // rotation
+    c_white,        // color
+    1               // alpha
+);
 if (global.debug)
 {
     /*draw_set_alpha(1);
