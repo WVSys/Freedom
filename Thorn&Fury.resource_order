@@ -15,6 +15,7 @@
     {"name":"obj_bone_burst","order":7,"path":"objects/obj_bone_burst/obj_bone_burst.yy",},
     {"name":"obj_camera_controller_cave","order":14,"path":"objects/obj_camera_controller_cave/obj_camera_controller_cave.yy",},
     {"name":"obj_camera_controller_cave2","order":22,"path":"objects/obj_camera_controller_cave2/obj_camera_controller_cave2.yy",},
+    {"name":"obj_camera_controller_cave3","order":27,"path":"objects/obj_camera_controller_cave3/obj_camera_controller_cave3.yy",},
     {"name":"obj_camera_controller_forest","order":2,"path":"objects/obj_camera_controller_forest/obj_camera_controller_forest.yy",},
     {"name":"obj_cave_mouth","order":13,"path":"objects/obj_cave_mouth/obj_cave_mouth.yy",},
     {"name":"obj_cave2_exit","order":24,"path":"objects/obj_cave2_exit/obj_cave2_exit.yy",},
