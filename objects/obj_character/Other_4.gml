@@ -55,6 +55,8 @@ if (global.respawn_from_checkpoint || global.load_save)
     shield_runes = global.saved_shield_runes;
     sword_runes = global.saved_sword_runes;
     hp_potions = global.saved_hp_potions;
+	
+	global.intro_merchant_seen = global.saved_intro_merchant_seen;
 
     is_dead = false;
     invincible = false;

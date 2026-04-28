@@ -18,13 +18,29 @@ if (gamepad_is_connected(0))
     cancel_gamepad =
         gamepad_button_check_pressed(0, gp_face2); // B / Circle
 
-    up_gamepad =
-        gamepad_button_check_pressed(0, gp_padu) ||
-        gamepad_axis_value(0, gp_axislv) < -0.5;
+    up_gamepad = gamepad_button_check_pressed(0, gp_padu);
+    down_gamepad = gamepad_button_check_pressed(0, gp_padd);
 
-    down_gamepad =
-        gamepad_button_check_pressed(0, gp_padd) ||
-        gamepad_axis_value(0, gp_axislv) > 0.5;
+    var ly = gamepad_axis_value(0, gp_axislv);
+
+    if (abs(ly) < stick_deadzone)
+    {
+        stick_ready_y = true;
+    }
+
+    if (stick_ready_y)
+    {
+        if (ly < -stick_deadzone)
+        {
+            up_gamepad = true;
+            stick_ready_y = false;
+        }
+        else if (ly > stick_deadzone)
+        {
+            down_gamepad = true;
+            stick_ready_y = false;
+        }
+    }
 }
 
 var confirm = confirm_keyboard || confirm_gamepad;

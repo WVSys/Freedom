@@ -1,11 +1,25 @@
-if (global.game_paused || global.tutorial_pause)
+if (global.game_paused)
 {
     image_speed = 0;
     exit;
 }
 else
 {
+	image_speed = 1;
+}
+
+if (global.dialogue_active)
+{
+    hsp = 0;
+    vsp = 0;
+
+    move_state = MoveState.IDLE;
+    combat_state = CombatState.NONE;
+
+    sprite_index = spr_idle_stand1;
     image_speed = 1;
+
+    exit;
 }
 if (is_dead)
 {
@@ -93,7 +107,7 @@ if (keyboard_check(vk_right)) move_x += 1;
 
 var jump_pressed = keyboard_check_pressed(vk_space);
 var attack_pressed = keyboard_check_pressed(ord("F"));
-var guard_held = keyboard_check(ord("Z"));
+var guard_held = keyboard_check(ord("G"));
 
 // controller
 if (gamepad_is_connected(0))
@@ -101,14 +115,28 @@ if (gamepad_is_connected(0))
     var gx = gamepad_axis_value(0, gp_axislh);
     if (abs(gx) > deadzone) move_x = gx;
 
-    // A = jump
-    if (gamepad_button_check_pressed(0, gp_face1)) jump_pressed = true;
+    var near_merchant_zone = (
+        interact_target != noone
+        && interact_target.object_index == obj_merchant_zone
+    );
+
+    // A = jump, unless near merchant zone
+    if (!near_merchant_zone && gamepad_button_check_pressed(0, gp_face1))
+    {
+        jump_pressed = true;
+    }
 
     // X = attack
-    if (gamepad_button_check_pressed(0, gp_face3)) attack_pressed = true;
-    
+    if (gamepad_button_check_pressed(0, gp_face3))
+    {
+        attack_pressed = true;
+    }
+
     // left shoulder for guard
-    if (gamepad_button_check(0, gp_shoulderl)) guard_held = true;
+    if (gamepad_button_check(0, gp_shoulderl))
+    {
+        guard_held = true;
+    }
 }
 
 // guard availability
@@ -509,7 +537,8 @@ else
 }
 
 // Use HP potion
-if (keyboard_check_pressed(ord("H")))
+if (keyboard_check_pressed(ord("H")) 
+|| gamepad_button_check_pressed(0, gp_padu))
 {
     if (hp_potions > 0 && !heal_active && hp < hp_max)
     {
@@ -668,7 +697,7 @@ if (global.debug && keyboard_check_pressed(ord("Y")))
 
 if (instance_exists(interact_target))
 {
-    if (keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed(0, gp_face2))
+    if (keyboard_check_pressed(ord("E")) || gamepad_button_check_pressed(0, gp_face1))
     {
         interact_target.activate();
     }

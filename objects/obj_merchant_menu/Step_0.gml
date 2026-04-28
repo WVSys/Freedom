@@ -23,8 +23,8 @@ if (keyboard_check_pressed(vk_escape)) cancel = true;
 // controller
 if (gamepad_is_connected(0))
 {
-    var ry = gamepad_axis_value(0, gp_axisrv);
-    var rx = gamepad_axis_value(0, gp_axisrh);
+	var ry = gamepad_axis_value(0, gp_axislv);
+	var rx = gamepad_axis_value(0, gp_axislh);
 
     if (abs(ry) < stick_deadzone) stick_ready_y = true;
     if (abs(rx) < stick_deadzone) stick_ready_x = true;
