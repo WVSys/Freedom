@@ -48,6 +48,7 @@ coins_dropped = false;
 coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
+coin_drop_yoffset = 20;
 
 rune_drop_x_offset = 0;
 rune_drop_y_offset = 0;
@@ -109,7 +110,7 @@ function enemy_drop_coins()
 
         for (var i = 0; i < coin_count; i++)
         {
-            var c = instance_create_layer(x, y, "Instances", obj_coin);
+            var c = instance_create_layer(x, y+coin_drop_yoffset, "Instances", obj_coin);
             c.value = coin_value;
             c.hsp = random_range(-2.5, 2.5);
             c.vsp = random_range(-5, -2);

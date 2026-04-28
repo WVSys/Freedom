@@ -1,5 +1,11 @@
 if(keyboard_check_pressed(ord("U"))) global.debug = !global.debug
 if( keyboard_check_pressed(ord("M"))) global.tutorial_pause = !global.tutorial_pause;
+if (keyboard_check_pressed(ord("B")))
+{
+	show_debug_message("Going to Sanctum");
+	global.next_spawn = "sanctum";
+	room_goto(Sanctum);
+}
 
 
 if (keyboard_check_pressed(vk_f11)) {
@@ -201,4 +207,6 @@ if (global.game_paused && debug_callout_move)
         show_debug_message("----------------------------------------");
     }
 }
+
+
 

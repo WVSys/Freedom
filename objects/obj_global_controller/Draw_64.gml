@@ -24,6 +24,9 @@ draw_text(880, 165, "HP potion " );
 depth = -10000;
 draw_text(150, 40, string(obj_character.hp)+"/"+string(obj_character.hp_max));
 draw_text(150, 105, string(obj_character.guard_meter)+"/"+string(obj_character.guard_meter_max));
+draw_text(310, 105,"Guard Meter");
+draw_text(350, 40,"Health Meter");
+
 
 
 for (var i = 0; i < array_length(pause_options); i++)

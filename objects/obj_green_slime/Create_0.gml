@@ -17,5 +17,6 @@ coins_dropped = false;
 coin_drop_min = 1;
 coin_drop_max = 2;
 coin_value = 1;
+coin_drop_yoffset = -50;
 
 rune_drop_y_offset = -50;
