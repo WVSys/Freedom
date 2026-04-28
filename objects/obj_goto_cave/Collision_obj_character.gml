@@ -1,2 +1,2 @@
-global.next_spawn = "to_cave";
+global.next_spawn = "to cave";
 room_goto(Cave);

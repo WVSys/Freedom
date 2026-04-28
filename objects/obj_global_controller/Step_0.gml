@@ -114,7 +114,7 @@ if (confirm)
         global.load_save = false;
         global.new_game = false;
 
-        room_restart();
+		room_goto(Forest);
     }
     else if (pause_index == 2)
     {
