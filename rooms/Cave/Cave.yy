@@ -47,6 +47,7 @@
     {"name":"inst_444F75F9","path":"rooms/Cave/Cave.yy",},
     {"name":"inst_B7A4F46","path":"rooms/Cave/Cave.yy",},
     {"name":"inst_1C18E912","path":"rooms/Cave/Cave.yy",},
+    {"name":"inst_153EC181","path":"rooms/Cave/Cave.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -98,6 +99,7 @@
         {"$GMRInstance":"v4","%Name":"inst_1C18E912","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1C18E912","objectId":{"name":"obj_player_spawn","path":"objects/obj_player_spawn/obj_player_spawn.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_player_spawn","path":"objects/obj_player_spawn/obj_player_spawn.yy",},"propertyId":{"name":"spawn_id","path":"objects/obj_player_spawn/obj_player_spawn.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"exit_cave3\"",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":4960.0,"y":928.0,},
+        {"$GMRInstance":"v4","%Name":"inst_153EC181","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_153EC181","objectId":{"name":"obj_killzone","path":"objects/obj_killzone/obj_killzone.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":4.0,"scaleY":1.0,"x":928.0,"y":1056.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"cave_1","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"cave_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":68,"SerialiseWidth":313,"TileCompressedData":[
           -26,-2147483648,24,3912,3913,3914,3915,3916,3917,3918,3919,3920,3921,3922,3923,3924,3925,3926,3927,3928,
