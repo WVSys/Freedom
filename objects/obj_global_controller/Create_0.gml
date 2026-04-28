@@ -1,4 +1,5 @@
 global.debug = false;
+global.next_spawn = -1;
 
 global.coins = 1000;
 
