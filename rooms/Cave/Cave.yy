@@ -53,6 +53,8 @@
     {"name":"inst_568FE67D","path":"rooms/Cave/Cave.yy",},
     {"name":"inst_40758920","path":"rooms/Cave/Cave.yy",},
     {"name":"inst_75BE3295","path":"rooms/Cave/Cave.yy",},
+    {"name":"inst_612F7E6","path":"rooms/Cave/Cave.yy",},
+    {"name":"inst_63BD2B81","path":"rooms/Cave/Cave.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -110,6 +112,8 @@
         {"$GMRInstance":"v4","%Name":"inst_568FE67D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_568FE67D","objectId":{"name":"obj_killzone","path":"objects/obj_killzone/obj_killzone.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":6.0,"scaleY":1.0,"x":3552.0,"y":1088.0,},
         {"$GMRInstance":"v4","%Name":"inst_40758920","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_40758920","objectId":{"name":"obj_killzone","path":"objects/obj_killzone/obj_killzone.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":8.0,"scaleY":1.0,"x":3936.0,"y":1088.0,},
         {"$GMRInstance":"v4","%Name":"inst_75BE3295","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_75BE3295","objectId":{"name":"obj_killzone","path":"objects/obj_killzone/obj_killzone.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":8.0,"scaleY":1.0,"x":4416.0,"y":1088.0,},
+        {"$GMRInstance":"v4","%Name":"inst_612F7E6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_612F7E6","objectId":{"name":"obj_enemy_wall","path":"objects/obj_enemy_wall/obj_enemy_wall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":928.0,"y":960.0,},
+        {"$GMRInstance":"v4","%Name":"inst_63BD2B81","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_63BD2B81","objectId":{"name":"obj_enemy_wall","path":"objects/obj_enemy_wall/obj_enemy_wall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":608.0,"y":224.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"cave_1","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"cave_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":68,"SerialiseWidth":313,"TileCompressedData":[
           -26,-2147483648,24,3912,3913,3914,3915,3916,3917,3918,3919,3920,3921,3922,3923,3924,3925,3926,3927,3928,

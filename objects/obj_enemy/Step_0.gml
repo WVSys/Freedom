@@ -141,6 +141,32 @@ if (hsp < -move_speed) hsp = -move_speed;
 
 var move_step = hsp;
 
+var facing_dir = sign(move_step);
+
+// Only check edges if moving AND on ground
+if (move_step != 0 && on_ground)
+{
+    // wall directly in front
+    if (place_meeting(x + move_step, y, obj_enemy_wall))
+    {
+        hsp = 0;
+        move_step = 0;
+    }
+    else
+    {
+        // check if ground exists ahead
+        var ground_ahead =
+            place_meeting(x + facing_dir * 4, y + 1, obj_wall) ||
+            place_meeting(x + facing_dir * 4, y + 1, obj_enemy_wall);
+
+        if (!ground_ahead)
+        {
+            hsp = -hsp; // turn around
+            move_step = hsp;
+        }
+    }
+}
+
 if (move_step != 0)
 {
     var blocked = false;
