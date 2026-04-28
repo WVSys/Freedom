@@ -39,6 +39,7 @@
     {"id":{"name":"obj_camera_controller_cave2","path":"objects/obj_camera_controller_cave2/obj_camera_controller_cave2.yy",},},
     {"id":{"name":"obj_camera_controller_cave3","path":"objects/obj_camera_controller_cave3/obj_camera_controller_cave3.yy",},},
     {"id":{"name":"obj_camera_controller_cave4","path":"objects/obj_camera_controller_cave4/obj_camera_controller_cave4.yy",},},
+    {"id":{"name":"obj_camera_controller_cave5","path":"objects/obj_camera_controller_cave5/obj_camera_controller_cave5.yy",},},
     {"id":{"name":"obj_camera_controller_forest","path":"objects/obj_camera_controller_forest/obj_camera_controller_forest.yy",},},
     {"id":{"name":"obj_cave_mouth","path":"objects/obj_cave_mouth/obj_cave_mouth.yy",},},
     {"id":{"name":"obj_cave2_exit","path":"objects/obj_cave2_exit/obj_cave2_exit.yy",},},

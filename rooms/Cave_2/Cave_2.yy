@@ -20,6 +20,7 @@
     {"name":"inst_4EBA636D","path":"rooms/Cave_2/Cave_2.yy",},
     {"name":"inst_4A849F49","path":"rooms/Cave_2/Cave_2.yy",},
     {"name":"inst_3F499CD7","path":"rooms/Cave_2/Cave_2.yy",},
+    {"name":"inst_31CF509B","path":"rooms/Cave_2/Cave_2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -40,6 +41,7 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_player_spawn","path":"objects/obj_player_spawn/obj_player_spawn.yy",},"propertyId":{"name":"spawn_id","path":"objects/obj_player_spawn/obj_player_spawn.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"to_cave2\"",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1344.0,"y":608.0,},
         {"$GMRInstance":"v4","%Name":"inst_3F499CD7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3F499CD7","objectId":{"name":"obj_cave2_exit","path":"objects/obj_cave2_exit/obj_cave2_exit.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1408.0,"y":640.0,},
+        {"$GMRInstance":"v4","%Name":"inst_31CF509B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_31CF509B","objectId":{"name":"obj_killzone","path":"objects/obj_killzone/obj_killzone.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":32.0,"scaleY":1.0,"x":0.0,"y":768.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_1","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":48,"SerialiseWidth":86,"TileCompressedData":[
           -1032,-2147483648,23,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,-63,-2147483648,

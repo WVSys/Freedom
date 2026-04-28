@@ -16,6 +16,7 @@
     {"name":"obj_attack_hitbox","order":6,"path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},
     {"name":"obj_bone_burst","order":7,"path":"objects/obj_bone_burst/obj_bone_burst.yy",},
     {"name":"obj_camera_controller_cave","order":14,"path":"objects/obj_camera_controller_cave/obj_camera_controller_cave.yy",},
+    {"name":"obj_camera_controller_cave5","order":38,"path":"objects/obj_camera_controller_cave5/obj_camera_controller_cave5.yy",},
     {"name":"obj_camera_controller_forest","order":2,"path":"objects/obj_camera_controller_forest/obj_camera_controller_forest.yy",},
     {"name":"obj_cave_mouth","order":13,"path":"objects/obj_cave_mouth/obj_cave_mouth.yy",},
     {"name":"obj_coin","order":9,"path":"objects/obj_coin/obj_coin.yy",},
