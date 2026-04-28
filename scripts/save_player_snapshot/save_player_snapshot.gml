@@ -36,6 +36,8 @@ function save_player_snapshot()
     global.saved_shield_runes = obj_character.shield_runes;
     global.saved_sword_runes = obj_character.sword_runes;
     global.saved_hp_potions = obj_character.hp_potions;
+	
+	global.saved_intro_merchant_seen = global.intro_merchant_seen;
 
     save_checkpoint();
 }

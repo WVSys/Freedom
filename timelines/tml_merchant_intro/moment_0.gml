@@ -1,5 +1,5 @@
 show_debug_message("TIMELINE MOMENT 0 FIRED");
-
+//set_tutorial_focus("potion");
 if (instance_exists(merchant_id))
 {
     with (merchant_id)

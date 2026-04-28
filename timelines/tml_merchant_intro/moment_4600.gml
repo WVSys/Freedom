@@ -20,4 +20,3 @@ timeline_speed = 0;
 
 show_debug_message("Merchant intro timeline finished. Player unlocked.");
 
-instance_destroy();

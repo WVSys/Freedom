@@ -36,7 +36,9 @@ function save_checkpoint()
         saved_armor_runes : global.saved_armor_runes,
         saved_shield_runes : global.saved_shield_runes,
         saved_sword_runes : global.saved_sword_runes,
-        saved_hp_potions : global.saved_hp_potions
+        saved_hp_potions : global.saved_hp_potions,
+		
+		saved_intro_merchant_seen : global.saved_intro_merchant_seen,
     };
 
     var json = json_stringify(save_data);

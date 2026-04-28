@@ -1,3 +1,4 @@
+set_tutorial_focus("potion");
 if (instance_exists(merchant_id))
 {
     with (merchant_id)

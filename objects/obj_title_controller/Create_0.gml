@@ -23,3 +23,6 @@ if (has_continue)
         btn.image_yscale = 0.1799;
     }
 }
+
+stick_deadzone = 0.5;
+stick_ready_y = true;

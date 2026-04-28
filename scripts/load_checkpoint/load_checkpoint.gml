@@ -54,6 +54,8 @@ function load_checkpoint()
     global.saved_shield_runes = save_data.saved_shield_runes;
     global.saved_sword_runes = save_data.saved_sword_runes;
     global.saved_hp_potions = save_data.saved_hp_potions;
+	
+	global.saved_intro_merchant_seen = save_data.saved_intro_merchant_seen;
 
     show_debug_message("Checkpoint loaded. Coins: " + string(global.saved_coins));
 

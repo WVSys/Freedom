@@ -2,6 +2,6 @@ if (instance_exists(merchant_id))
 {
     with (merchant_id)
     {
-        merchant_say("But I will ask you this.");
+        merchant_say("But, let me ask you this.");
     }
 }
