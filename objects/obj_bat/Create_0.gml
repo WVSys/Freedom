@@ -19,7 +19,7 @@ hp_max = 50;
 move_speed = 3;
 attack_damage = 5;
 chase_range = 200;
-attack_range = 50;
+attack_range = 100;
 
 coin_drop_min = 51
 coin_drop_max = 3;

@@ -26,6 +26,13 @@ draw_text(150, 40, string(obj_character.hp)+"/"+string(obj_character.hp_max));
 draw_text(150, 105, string(obj_character.guard_meter)+"/"+string(obj_character.guard_meter_max));
 draw_text(310, 105,"Guard Meter");
 draw_text(350, 40,"Health Meter");
+draw_text(850, 250,"Keyboard Controls:");
+draw_text(850, 280,"Attack: G");
+draw_text(850, 310,"Guard: F");
+draw_text(850, 340,"HP potion: H");
+draw_text(850, 370,"Jump: Spacebar");
+draw_text(850, 400,"Movement: Left/Right arrows");
+draw_text(850, 430,"Lookup: Up arrow");
 
 
 

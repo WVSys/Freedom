@@ -106,8 +106,8 @@ if (keyboard_check(vk_left))  move_x -= 1;
 if (keyboard_check(vk_right)) move_x += 1;
 
 var jump_pressed = keyboard_check_pressed(vk_space);
-var attack_pressed = keyboard_check_pressed(ord("F"));
-var guard_held = keyboard_check(ord("G"));
+var attack_pressed = keyboard_check_pressed(ord("G"));
+var guard_held = keyboard_check(ord("F"));
 
 // controller
 if (gamepad_is_connected(0))

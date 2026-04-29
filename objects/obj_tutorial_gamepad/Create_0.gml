@@ -20,13 +20,13 @@ set_control = function(_mode) {
     switch (_mode) {
         case "attack":
             title_text = "ATTACK";
-            keyboard_text = "Keyboard: F";
+            keyboard_text = "Keyboard: G";
             gamepad_text = "Gamepad: X ";
             break;
 
         case "block":
             title_text = "BLOCK";
-            keyboard_text = "Keyboard: G";
+            keyboard_text = "Keyboard: F";
             gamepad_text = "Gamepad: Left Shoulder Btn";
             break;
 
