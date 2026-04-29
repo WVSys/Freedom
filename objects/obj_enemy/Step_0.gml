@@ -146,24 +146,44 @@ var facing_dir = sign(move_step);
 // Only check edges if moving AND on ground
 if (move_step != 0 && on_ground)
 {
-    // wall directly in front
-    if (place_meeting(x + move_step, y, obj_enemy_wall))
-    {
-        hsp = 0;
-        move_step = 0;
-    }
-    else
-    {
-        // check if ground exists ahead
-        var ground_ahead =
-            place_meeting(x + facing_dir * 4, y + 1, obj_wall) ||
-            place_meeting(x + facing_dir * 4, y + 1, obj_enemy_wall);
+    var facing_dir = sign(move_step);
 
-        if (!ground_ahead)
-        {
-            hsp = -hsp; // turn around
-            move_step = hsp;
-        }
+    // 🔥 Save last safe position
+    if (!place_meeting(x, y, obj_wall) && !place_meeting(x, y, obj_enemy_wall))
+    {
+        last_free_x = x;
+        last_free_y = y;
+    }
+
+    // 🔥 Check ground AHEAD FIRST (before anything else)
+    var ground_ahead =
+        place_meeting(x + facing_dir * 6, y + 2, obj_wall) ||
+        place_meeting(x + facing_dir * 6, y + 2, obj_enemy_wall);
+
+    if (!ground_ahead)
+    {
+        // STOP before stepping off
+        x = last_free_x;
+        y = last_free_y;
+
+        hsp = -hsp;
+        move_step = hsp;
+    }
+    else if (place_meeting(x + move_step, y, obj_enemy_wall))
+    {
+        // hit your invisible wall
+        hsp = -hsp;
+        move_step = hsp;
+    }
+
+    // 🔥 FAILSAFE: if somehow stuck anyway
+    if (place_meeting(x, y, obj_wall) || place_meeting(x, y, obj_enemy_wall))
+    {
+        x = last_free_x;
+        y = last_free_y;
+
+        hsp = -hsp;
+        move_step = hsp;
     }
 }
 

@@ -12,6 +12,10 @@ state = EnemyState.IDLE;
 hp = 100;
 hp_max = 100;
 
+// enemy unstuck
+last_free_x = x;
+last_free_y = y;
+
 hsp = 0;
 vsp = 0;
 target = obj_character;
