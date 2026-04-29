@@ -10,11 +10,16 @@ spr_attack = spr_werewolf_attack2;
 spr_hurt =spr_werewolf_hurt;
 spr_death = spr_werewolf_dead;
 
+elite = true;
+elite_red_amount = 0.25;
+elite_outline_color = c_yellow;
+elite_outline_thickness = 4;
+
 sprite_scale = 2;
 sprite_facing = 1;
 
 hp = 150;
-hp_max = 100;
+hp_max = 150;
 move_speed = 2;
 attack_damage = 15;
 

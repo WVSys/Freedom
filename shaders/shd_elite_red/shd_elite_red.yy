@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_elite_red",
+  "name":"shd_elite_red",
+  "parent":{
+    "name":"Thorn&Fury",
+    "path":"Thorn&Fury.yyp",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

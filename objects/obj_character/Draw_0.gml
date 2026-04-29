@@ -1,3 +1,4 @@
+//Chat GPT provided implementation to tune Hitboxes. Tuned by dev.
 // Draw sprite first
 draw_self();
 

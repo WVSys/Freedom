@@ -81,6 +81,7 @@
     {"name":"spawn_attack_hitbox","order":5,"path":"scripts/spawn_attack_hitbox/spawn_attack_hitbox.yy",},
     {"name":"spawn_rune","order":18,"path":"scripts/spawn_rune/spawn_rune.yy",},
     {"name":"upgrade_item","order":15,"path":"scripts/upgrade_item/upgrade_item.yy",},
+    {"name":"shd_elite_red","order":12,"path":"shaders/shd_elite_red/shd_elite_red.yy",},
     {"name":"spr_armor_rune","order":16,"path":"sprites/spr_armor_rune/spr_armor_rune.yy",},
     {"name":"spr_bat","order":30,"path":"sprites/spr_bat/spr_bat.yy",},
     {"name":"spr_battle_idle","order":1,"path":"sprites/spr_battle_idle/spr_battle_idle.yy",},

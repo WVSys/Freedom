@@ -12,6 +12,11 @@ state = EnemyState.IDLE;
 hp = 100;
 hp_max = 100;
 
+elite = false;
+elite_red_amount = 0.65;
+elite_outline_color = c_yellow;
+elite_outline_thickness = 2;
+
 hsp = 0;
 vsp = 0;
 target = obj_character;

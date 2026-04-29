@@ -1,4 +1,31 @@
-draw_self();
+if (elite)
+{
+    // Yellow outline / aura behind sprite.
+    var t = elite_outline_thickness;
+
+    draw_sprite_ext(sprite_index, image_index, x - t, y,     image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x + t, y,     image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x,     y - t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x,     y + t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+
+    draw_sprite_ext(sprite_index, image_index, x - t, y - t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x + t, y - t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x - t, y + t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x + t, y + t, image_xscale, image_yscale, image_angle, elite_outline_color, image_alpha);
+
+    // Red shader on the actual sprite.
+    shader_set(shd_elite_red);
+    shader_set_uniform_f(shader_get_uniform(shd_elite_red, "u_red_amount"), elite_red_amount);
+
+    draw_self();
+
+    shader_reset();
+}
+else
+{
+    draw_self();
+}
+
 if (global.debug)
 {	
 	draw_set_font(1);
