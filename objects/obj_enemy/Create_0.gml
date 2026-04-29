@@ -12,7 +12,7 @@ state = EnemyState.IDLE;
 hp = 100;
 hp_max = 100;
 
-hsp = 0;
+hsp = 1;
 vsp = 0;
 target = obj_character;
 enemy_blocker_object = object_index;

@@ -22,6 +22,8 @@ if (keyboard_check(vk_up)) {
 var ry = gamepad_axis_value(0, gp_axisrv);
 if (ry < -0.5) vertical_look = -look_up_amount;
 
+
+
 var target_y = obj_character.y - view_h / 2 + vertical_look;
 
 var cam_x = camera_get_view_x(cam);
