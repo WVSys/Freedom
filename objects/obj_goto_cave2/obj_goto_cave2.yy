@@ -34,5 +34,5 @@
     "path":"sprites/spr_hitbox_sword/spr_hitbox_sword.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }
