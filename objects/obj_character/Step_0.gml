@@ -202,7 +202,7 @@ if (guard_held && on_ground && combat_state != CombatState.ATTACK1 && combat_sta
         shield_x2,
         shield_y2,
         guard_damage_cost,
-        main_damage,
+        get_effective_sword_damage(),
         shield_thickness,
         "guard"
     );
@@ -222,6 +222,8 @@ if (combat_state == CombatState.NONE && attack_pressed)
 {
     if (on_ground)
     {
+		damage_sword(sword_durability_loss_per_ground_attack);
+		
         combat_state = CombatState.ATTACK1;
         attack_active = false;
         attack_spawned_frame = -1;
@@ -232,6 +234,8 @@ if (combat_state == CombatState.NONE && attack_pressed)
     }
     else if (!air_attack_used && can_start_air_attack)
     {
+		damage_sword(sword_durability_loss_per_ground_attack);
+		
         combat_state = CombatState.AIR_ATTACK;
         air_attack_active = false;
         air_attack_hits_done = 0;
@@ -398,7 +402,7 @@ if (combat_state == CombatState.ATTACK1)
                 arc_y1[i],
                 arc_x2[i],
                 arc_y2[i],
-                attack_damage,
+                get_effective_sword_damage(),
                 attack_hitbox_life,
                 arc_thickness[i]
             );
@@ -461,7 +465,7 @@ else if (combat_state == CombatState.AIR_ATTACK)
                     air_arc_y1[i],
                     air_arc_x2[i],
                     air_arc_y2[i],
-                    attack_damage,
+                    get_effective_sword_damage(),
                     attack_hitbox_life,
                     air_arc_thickness[i]
                 );

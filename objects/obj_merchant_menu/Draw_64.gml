@@ -38,17 +38,53 @@ if (item_name == "Save")
 else if (item_name == "HP Potion")
 {
     draw_text(rx, ry, "HP Potion");
-    draw_text(rx, ry + 24, "Cost: 25 coins");
+    draw_text(rx, ry + 24, "Cost: 5 coins");
 }
 else
 {
     draw_text(rx, ry, item_name);
     draw_text(rx, ry + 24, "Lv " + string(get_item_level(item_name)));
-    draw_text(rx, ry + 48, "Dur " + string(get_item_durability(item_name)) + "/" + string(get_item_max_durability(item_name)));
+	
+    var stats = menu_get_item_display_stats(item_name);
+
+    draw_text(
+        rx,
+        ry + 48,
+        "Dur " + string(stats.durability) + "/" + string(stats.durability_max)
+    );
+
+    if (item_name == "Sword")
+    {
+        draw_text(
+            rx,
+            ry + 66,
+            "Atk " + string(stats.effective_attack) + "/" + string(stats.attack)
+        );
+    }
+
+    if (item_name == "Shield")
+    {
+        draw_text(
+            rx,
+            ry + 66,
+            "Guard " + string(stats.guard_max)
+        );
+
+        draw_text(
+            rx,
+            ry + 84,
+            "Regen " + string(stats.guard_regen)
+        );
+    }
+
+    var action_y_start = ry + 90;
+
+    if (item_name == "Sword") action_y_start = ry + 110;
+    if (item_name == "Shield") action_y_start = ry + 130;
 
     for (var a = 0; a < array_length(actions); a++)
     {
-        var ayy = ry + 90 + a * 24;
+        var ayy = action_y_start + a * 24;
 
         if (menu_mode == "action" && a == action_index)
         {
@@ -58,7 +94,7 @@ else
         draw_text(rx, ayy, actions[a]);
     }
 
-    draw_text(rx, ry + 160, "Upgrade: "
+    draw_text(rx, ry + 170, "Upgrade: "
         + string(get_upgrade_cost_coins(item_name)) + "coins, "
         + string(get_upgrade_cost_runes(item_name)) + " runes");
 

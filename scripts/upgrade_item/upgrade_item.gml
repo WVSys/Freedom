@@ -1,10 +1,8 @@
-function upgrade_item(item_name)
-{
+function upgrade_item(item_name) {
     var coin_cost = get_upgrade_cost_coins(item_name);
     var rune_cost = get_upgrade_cost_runes(item_name);
 
-    switch (item_name)
-    {
+    switch (item_name) {
         case "Helmet":
         case "Chestplate":
         case "Greaves":
@@ -15,33 +13,30 @@ function upgrade_item(item_name)
             global.coins -= coin_cost;
             obj_character.armor_runes -= rune_cost;
 
-            switch (item_name)
-            {
+            switch (item_name) {
                 case "Helmet":
+                    obj_character.helmet = true;
                     obj_character.helmet_level += 1;
-                    obj_character.helmet_durability_max += 10;
-                    obj_character.helmet_durability = obj_character.helmet_durability_max;
-                break;
+                    break;
 
                 case "Chestplate":
+                    obj_character.chestplate = true;
                     obj_character.chestplate_level += 1;
-                    obj_character.chestplate_durability_max += 12;
-                    obj_character.chestplate_durability = obj_character.chestplate_durability_max;
-                break;
+                    break;
 
                 case "Greaves":
+                    obj_character.greaves = true;
                     obj_character.greaves_level += 1;
-                    obj_character.greaves_durability_max += 9;
-                    obj_character.greaves_durability = obj_character.greaves_durability_max;
-                break;
+                    break;
 
                 case "Gauntlets":
+                    obj_character.gauntlets = true;
                     obj_character.gauntlets_level += 1;
-                    obj_character.gauntlets_durability_max += 8;
-                    obj_character.gauntlets_durability = obj_character.gauntlets_durability_max;
-                break;
+                    break;
             }
-        break;
+
+            obj_character.refresh_equipment_stats(true);
+            break;
 
         case "Sword":
             if (global.coins < coin_cost) return false;
@@ -49,10 +44,13 @@ function upgrade_item(item_name)
 
             global.coins -= coin_cost;
             obj_character.sword_runes -= rune_cost;
+
+            obj_character.sword = true;
             obj_character.sword_level += 1;
-            obj_character.sword_durability_max += 10;
-            obj_character.sword_durability = obj_character.sword_durability_max;
-        break;
+
+            // Increases sword damage and durability max, then refills durability.
+            obj_character.refresh_equipment_stats(true);
+            break;
 
         case "Shield":
             if (global.coins < coin_cost) return false;
@@ -60,10 +58,13 @@ function upgrade_item(item_name)
 
             global.coins -= coin_cost;
             obj_character.shield_runes -= rune_cost;
+
+            obj_character.shield = true;
             obj_character.shield_level += 1;
-            obj_character.shield_durability_max += 10;
-            obj_character.shield_durability = obj_character.shield_durability_max;
-        break;
+
+            // Increases guard meter max, guard regen, shield durability max, then refills.
+            obj_character.refresh_equipment_stats(true);
+            break;
 
         default:
             return false;
