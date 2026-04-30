@@ -10,9 +10,8 @@ else
     image_speed = 1;
 }
 
-// --------------------------
+
 // PATH BACK-AND-FORTH
-// --------------------------
 // Handle reversing
 if (path_index != -1)
 {
@@ -26,7 +25,7 @@ if (path_index != -1)
     }
 }
 
-// ALWAYS face movement direction (this is the important part)
+// ALWAYS face movement direction
 if (path_speed > 0)
 {
     image_xscale = -1;
@@ -35,9 +34,9 @@ else if (path_speed < 0)
 {
     image_xscale = 1;
 }
-// --------------------------
-// DAMAGE PLAYER ON CONTACT
-// --------------------------
+
+// DAMAGE PLAYER
+
 if (hit_cooldown > 0)
 {
     hit_cooldown--;
@@ -45,15 +44,14 @@ if (hit_cooldown > 0)
 
 if (hit_cooldown <= 0 && place_meeting(x, y, obj_character))
 {
-    with (obj_character)
-    {
-        if (!is_dead)
-        {
-            hp -= 1;
-        }
-    }
+    var p = instance_place(x, y, obj_character);
 
-    hit_cooldown = 30;
+    if (p != noone && !p.is_dead)
+    {
+        p.take_damage(attack_damage);
+
+        hit_cooldown = 30;
+    }
 }
 
 if (state == EnemyState.DEAD)
