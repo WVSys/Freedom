@@ -15,7 +15,7 @@ if (!opened && place_meeting(x, y, obj_character))
     {
         var c = instance_create_layer(x, y, "Instances", obj_coin);
         c.hsp = random_range(-2, 2);
-        c.vsp = random_range(-8, -5);
+        c.vsp = random_range(-12, -7);
     }
 
     // ---- DROP RUNES ----
