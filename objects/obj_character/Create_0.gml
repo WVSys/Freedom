@@ -19,8 +19,6 @@ is_dead = false;
 hp = 100;
 hp_max = 100;
 
-main_damage = 10;
-
 guard_meter_max = 15;
 guard_meter = guard_meter_max;
 guard_damage_cost = 25;
@@ -49,15 +47,15 @@ helmet_durability = 0;
 chestplate_durability = 0;
 greaves_durability = 0;
 gauntlets_durability = 0;
-sword_durability = 0;
-shield_durability = 0;
+sword_durability = 20;
+shield_durability = 25;
 
 helmet_durability_max = 0;
 chestplate_durability_max = 0;
 greaves_durability_max = 0;
 gauntlets_durability_max = 0;
-sword_durability_max = 0;
-shield_durability_max = 0;
+sword_durability_max = 20;
+shield_durability_max = 25;
 
 hp_potions = 10;
 heal_active = false;
@@ -200,26 +198,26 @@ air_arc_thickness[4] = 2;
 
 debug_no_gravity = false;
 
-function take_damage(amount)
-{
+function take_damage(amount) {
     if (invincible || is_dead) return;
+
+    // Armor only loses durability. No defense scaling yet.
+    damage_armor(1);
+
     hp = clamp(hp - amount, 0, hp_max);
+
     show_debug_message("HP: " + string(hp));
 
-    if (hp <= 0)
-    {
+    if (hp <= 0) {
         hp = 0;
         is_dead = true;
         move_state = MoveState.DEAD;
         combat_state = CombatState.NONE;
-
         hsp = 0;
         vsp = 0;
-
         sprite_index = spr_character_dead;
         image_index = 0;
         image_speed = 1;
-
         exit;
     }
 
@@ -263,3 +261,174 @@ approach_phrases = [
     "I will not rest until they pay!"
 ];
 
+
+// ===============================
+// Equipment scaling configuration
+// ===============================
+
+// Sword
+sword_attack_damage_base = 8;
+sword_attack_damage_per_level = 2;
+sword_durability_base = 20;
+sword_durability_per_level = 10;
+sword_min_damage_modifier = 0.40; // 0 durability = 40% damage
+sword_durability_loss_per_ground_attack = 1;
+sword_durability_loss_per_air_attack = 2;
+
+// Shield
+shield_guard_meter_base = 15;
+shield_guard_meter_per_level = 5;
+shield_guard_regen_base = 1;
+shield_guard_regen_per_level = 0.25;
+
+shield_durability_base = 25;
+shield_durability_per_level = 10;
+
+shield_best_guard_damage_modifier = 0.80; // 100% durability = 20% less guard damage
+shield_worst_guard_damage_modifier = 1.10; // 0% durability = 10% more guard damage
+
+shield_durability_loss_multiplier = 1;
+
+// Armor durability scaling only
+helmet_durability_per_level = 10;
+chestplate_durability_per_level = 12;
+greaves_durability_per_level = 9;
+gauntlets_durability_per_level = 8;
+
+
+// Returns 0.0 to 1.0 durability percent.
+function get_durability_percent(_current, _max) {
+    if (_max <= 0) return 0;
+    return clamp(_current / _max, 0, 1);
+}
+
+
+// Recalculate derived equipment stats.
+// _refill = true after upgrades/load/start.
+// _refill = false when refreshing maxes without repairing.
+function refresh_equipment_stats(_refill) {
+    // Sword base scaling
+    attack_damage = sword_attack_damage_base + (sword_level * sword_attack_damage_per_level);
+    sword_durability_max = sword_durability_base + (sword_level * sword_durability_per_level);
+
+    // Shield base scaling
+    guard_meter_max = shield_guard_meter_base + (shield_level * shield_guard_meter_per_level);
+    guard_regen_per_second = shield_guard_regen_base + (shield_level * shield_guard_regen_per_level);
+    guard_recover_threshold = guard_meter_max * 0.25;
+
+    shield_durability_max = shield_durability_base + (shield_level * shield_durability_per_level);
+
+    // Armor durability only
+    helmet_durability_max = helmet_level * helmet_durability_per_level;
+    chestplate_durability_max = chestplate_level * chestplate_durability_per_level;
+    greaves_durability_max = greaves_level * greaves_durability_per_level;
+    gauntlets_durability_max = gauntlets_level * gauntlets_durability_per_level;
+
+    if (_refill) {
+        sword_durability = sword_durability_max;
+        shield_durability = shield_durability_max;
+
+        helmet_durability = helmet_durability_max;
+        chestplate_durability = chestplate_durability_max;
+        greaves_durability = greaves_durability_max;
+        gauntlets_durability = gauntlets_durability_max;
+
+        guard_meter = guard_meter_max;
+    } else {
+        sword_durability = clamp(sword_durability, 0, sword_durability_max);
+        shield_durability = clamp(shield_durability, 0, shield_durability_max);
+
+        helmet_durability = clamp(helmet_durability, 0, helmet_durability_max);
+        chestplate_durability = clamp(chestplate_durability, 0, chestplate_durability_max);
+        greaves_durability = clamp(greaves_durability, 0, greaves_durability_max);
+        gauntlets_durability = clamp(gauntlets_durability, 0, gauntlets_durability_max);
+
+        guard_meter = clamp(guard_meter, 0, guard_meter_max);
+    }
+}
+
+
+// Sword still works at 0 durability.
+// It just drops to 40% effectiveness.
+function get_effective_sword_damage() {
+    var durability_percent = get_durability_percent(sword_durability, sword_durability_max);
+
+    var damage_modifier = lerp(
+        sword_min_damage_modifier,
+        1,
+        durability_percent
+    );
+
+    return max(1, round(attack_damage * damage_modifier));
+}
+
+
+// Shield still works at 0 durability.
+// Full durability gives 20% guard damage reduction.
+// Zero durability gives 10% extra guard damage taken.
+function get_effective_guard_damage(_incoming_damage) {
+    var durability_percent = get_durability_percent(shield_durability, shield_durability_max);
+
+    var guard_damage_modifier = lerp(
+        shield_worst_guard_damage_modifier,
+        shield_best_guard_damage_modifier,
+        durability_percent
+    );
+
+    return max(1, ceil(_incoming_damage * guard_damage_modifier));
+}
+
+
+function damage_sword(_amount) {
+    if (!sword) return;
+
+    sword_durability = max(0, sword_durability - _amount);
+}
+
+
+function damage_shield(_amount) {
+    if (!shield) return;
+
+    var durability_loss = max(1, ceil(_amount * shield_durability_loss_multiplier));
+    shield_durability = max(0, shield_durability - durability_loss);
+}
+
+
+// Armor does not reduce damage yet.
+// It only wears down when the player takes damage.
+function damage_armor(_amount) {
+    var pieces = [];
+
+    if (helmet_durability > 0) array_push(pieces, "Helmet");
+    if (chestplate_durability > 0) array_push(pieces, "Chestplate");
+    if (greaves_durability > 0) array_push(pieces, "Greaves");
+    if (gauntlets_durability > 0) array_push(pieces, "Gauntlets");
+
+    if (array_length(pieces) <= 0) return;
+
+    var piece = pieces[irandom(array_length(pieces) - 1)];
+    var wear = max(1, _amount);
+
+    switch (piece) {
+        case "Helmet":
+            helmet_durability = max(0, helmet_durability - wear);
+            break;
+
+        case "Chestplate":
+            chestplate_durability = max(0, chestplate_durability - wear);
+            break;
+
+        case "Greaves":
+            greaves_durability = max(0, greaves_durability - wear);
+            break;
+
+        case "Gauntlets":
+            gauntlets_durability = max(0, gauntlets_durability - wear);
+            break;
+    }
+}
+
+
+// Initialize base equipment stats.
+// This fixes sword/shield starting with max durability of 0.
+refresh_equipment_stats(true);

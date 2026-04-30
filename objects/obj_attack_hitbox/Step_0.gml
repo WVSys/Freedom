@@ -75,10 +75,19 @@ if (hitbox_type == "damage" && target_object == obj_character)
 
         if (instance_exists(blocker))
         {
-            blocker.guard_meter -= damage;
-            blocker.guard_meter = max(0, blocker.guard_meter);
+            var effective_guard_damage = blocker.get_effective_guard_damage(damage);
 
-            show_debug_message("BLOCKED. Guard meter: " + string(blocker.guard_meter));
+			blocker.damage_shield(damage);
+
+			blocker.guard_meter -= effective_guard_damage;
+			blocker.guard_meter = max(0, blocker.guard_meter);
+
+			show_debug_message(
+			    "BLOCKED. Raw damage: " + string(damage)
+			    + " Effective guard damage: " + string(effective_guard_damage)
+			    + " Guard meter: " + string(blocker.guard_meter)
+			    + " Shield durability: " + string(blocker.shield_durability)
+			);
         }
 		if (blocker.guard_meter <= 0)
         {

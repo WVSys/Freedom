@@ -127,7 +127,7 @@ if (confirm)
         }
         else if (item_name == "HP Potion")
         {
-            var potion_cost = 25;
+            var potion_cost = 5;
 
             if (global.coins >= potion_cost)
             {

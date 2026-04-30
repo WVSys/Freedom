@@ -34,6 +34,10 @@ draw_text(850, 370,"Jump: Spacebar");
 draw_text(850, 400,"Movement: Left/Right arrows");
 draw_text(850, 430,"Lookup: Up arrow");
 
+draw_text(100, 630,"Sword");
+draw_text(100, 650,"Atk: "+ string(obj_character.get_effective_sword_damage()));
+
+
 
 
 for (var i = 0; i < array_length(pause_options); i++)
