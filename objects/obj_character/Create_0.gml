@@ -65,9 +65,9 @@ heal_tick_timer = 0;
 heal_per_tick = 1;
 heal_tick_rate = 10; // frames between each heal tick
 
-armor_runes = 10;
-shield_runes = 10;
-sword_runes = 10;
+armor_runes = 0;
+shield_runes = 0;
+sword_runes = 0;
 
 interact_target = noone;
 death_ui_created = false;

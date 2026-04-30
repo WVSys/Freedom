@@ -35,6 +35,23 @@ if (pause_pressed)
     global.game_paused = !global.game_paused;
 }
 
+if (!global.game_paused && !debug_callout_move)
+{
+	if (keyboard_check_pressed(ord("1"))) global.coins += 100;	
+    if (keyboard_check_pressed(ord("2"))) obj_character.armor_runes += 5;
+    if (keyboard_check_pressed(ord("3"))) obj_character.sword_runes += 5;
+    if (keyboard_check_pressed(ord("4"))) obj_character.shield_runes += 5;
+	if (keyboard_check_pressed(ord("5"))) obj_character.hp_potions += 5;
+}
+
+if (keyboard_check_pressed(ord("6")))
+{
+	global.saved_intro_merchant_seen = true;
+	global.intro_merchant_seen = true;
+}
+
+
+
 if (!global.game_paused)
 {
     exit;
@@ -207,6 +224,4 @@ if (global.game_paused && debug_callout_move)
         show_debug_message("----------------------------------------");
     }
 }
-
-
 

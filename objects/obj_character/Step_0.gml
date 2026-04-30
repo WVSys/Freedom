@@ -116,9 +116,9 @@ if (gamepad_is_connected(0))
     if (abs(gx) > deadzone) move_x = gx;
 
     var near_merchant_zone = (
-        interact_target != noone
-        && interact_target.object_index == obj_merchant_zone
-    );
+    instance_exists(interact_target)
+    && interact_target.object_index == obj_merchant_zone
+	);
 
     // A = jump, unless near merchant zone
     if (!near_merchant_zone && gamepad_button_check_pressed(0, gp_face1))

@@ -1,7 +1,7 @@
 global.debug = false;
 global.next_spawn = -1;
 
-global.coins = 1000;
+global.coins = 0;
 
 global.merchant_menu_open = false;
 global.respawn_from_checkpoint = false;
@@ -13,8 +13,8 @@ global.saved_helmet = false;
 global.saved_chestplate = false;
 global.saved_greaves = false;
 global.saved_gauntlets = false;
-global.saved_sword = false;
-global.saved_shield = false;
+global.saved_sword = true;
+global.saved_shield = true;
 
 global.saved_helmet_level = 0;
 global.saved_chestplate_level = 0;
