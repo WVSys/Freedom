@@ -18,6 +18,9 @@ elite_outline_thickness = 4;
 sprite_scale = 2;
 sprite_facing = 1;
 
+chase_range = 300;
+attack_range = 140;
+
 hp = 150;
 hp_max = 150;
 hp_bar_xoffset = 0;

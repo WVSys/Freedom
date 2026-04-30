@@ -81,6 +81,8 @@
     {"name":"spawn_attack_hitbox","order":5,"path":"scripts/spawn_attack_hitbox/spawn_attack_hitbox.yy",},
     {"name":"spawn_rune","order":18,"path":"scripts/spawn_rune/spawn_rune.yy",},
     {"name":"upgrade_item","order":15,"path":"scripts/upgrade_item/upgrade_item.yy",},
+    {"name":"boss_beam_buildup","order":16,"path":"sounds/boss_beam_buildup/boss_beam_buildup.yy",},
+    {"name":"boss_beam","order":15,"path":"sounds/boss_beam/boss_beam.yy",},
     {"name":"cave_sounds","order":2,"path":"sounds/cave_sounds/cave_sounds.yy",},
     {"name":"character_death","order":10,"path":"sounds/character_death/character_death.yy",},
     {"name":"coin_pickup","order":1,"path":"sounds/coin_pickup/coin_pickup.yy",},

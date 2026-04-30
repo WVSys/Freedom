@@ -26,8 +26,8 @@ spr_death = spr_gorgon_boss_death;
 sprite_scale = 2;
 sprite_facing = 1;
 
-hp = 100;
-hp_max = 100;
+hp = 1000;
+hp_max = 1000;
 move_speed = 1;
 attack_damage = 10;
 
@@ -38,6 +38,8 @@ coin_drop_yoffset = -50;
 
 enemy_blocker_object = obj_enemy;
 
+stagger_locked = false;
+
 attack_hitbox_x1 = 53;
 attack_hitbox_y1 = -12;
 attack_hitbox_x2 = 183;
@@ -47,7 +49,8 @@ attack_hitbox_thickness = 16;
 
 recoil_timer = 0;
 recoil_speed = 2.5;
-recoil_duration = 35;
+recoil_duration = 10;
+recoil_cooldown = 0;
 
 rune_drop_x_offset = 0;
 rune_drop_y_offset = -75;
@@ -74,5 +77,5 @@ beam_thickness = 5;
 
 // Approximate eye position relative to boss origin.
 // Tune these numbers in-game.
-beam_eye_x = 5;
+beam_eye_x = 45;
 beam_eye_y = -120;

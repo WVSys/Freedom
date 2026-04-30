@@ -1,7 +1,3 @@
-// ===============================
-// Boss beam interrupt cleanup
-// This must happen BEFORE event_inherited()
-// ===============================
 
 if (variable_instance_exists(id, "beam_active")) {
     if (beam_active && (state == EnemyState.HURT || state == EnemyState.DEAD)) {
@@ -31,18 +27,10 @@ if (variable_instance_exists(id, "beam_active")) {
 }
 
 
-// ===============================
-// Only run parent enemy behavior when boss is not beaming
-// ===============================
-
 if (!beam_active) {
     event_inherited();
 }
 
-
-// ===============================
-// Stop special behavior if paused/dead/hurt
-// ===============================
 
 if (global.game_paused || global.tutorial_pause) exit;
 if (state == EnemyState.DEAD || state == EnemyState.HURT) exit;
@@ -52,18 +40,14 @@ if (!beam_active) {
     event_inherited();
 }
 
-// Stop special behavior if the game is paused
 if (global.game_paused || global.tutorial_pause) exit;
 
-// Stop if boss should not act
 if (state == EnemyState.DEAD || state == EnemyState.HURT) exit;
 
-// Make sure player exists
 if (!instance_exists(obj_character)) exit;
 
 var player = instance_nearest(x, y, obj_character);
 var dist = point_distance(x, y, player.x, player.y);
-
 
 // ===============================
 // Eye Beam Cooldown
@@ -72,7 +56,6 @@ var dist = point_distance(x, y, player.x, player.y);
 if (beam_cooldown > 0) {
     beam_cooldown--;
 }
-
 
 // ===============================
 // Start Eye Beam Attack
@@ -83,22 +66,16 @@ if (!beam_active && beam_cooldown <= 0 && dist > attack_range && dist < beam_ran
     beam_has_fired = false;
     beam_timer = beam_windup;
 
-    // Stop boss movement
     hsp = 0;
 
-    // Put boss into attack state
     state = EnemyState.ATTACK;
-
-    // Face the player
+	audio_play_sound(boss_beam_buildup,1,false);
     facing = (player.x < x) ? -1 : 1;
     image_xscale = facing * sprite_scale * sprite_facing;
 
-    // Calculate world position of the eye
-    // IMPORTANT: this should match your Draw event
     var eye_world_x = x + (beam_eye_x * facing);
     var eye_world_y = y + beam_eye_y;
 
-    // Lock aim direction toward player
     beam_angle = point_direction(
         eye_world_x,
         eye_world_y,
@@ -107,7 +84,7 @@ if (!beam_active && beam_cooldown <= 0 && dist > attack_range && dist < beam_ran
     );
 
     // Use attack animation for beam windup
-    sprite_index = spr_attack;
+    sprite_index = spr_gorgon_boss_special;
     image_index = 0;
     image_speed = 0.5;
 }
@@ -123,7 +100,10 @@ if (beam_active) {
 
     beam_timer--;
 	if (beam_has_fired) {
-    beam_particle_timer--;
+		stagger_locked = true;
+		audio_stop_sound(boss_beam_buildup);
+		audio_play_sound(boss_beam,1,false);	
+		beam_particle_timer--;
 
     if (beam_particle_timer <= 0) {
         beam_particle_timer = beam_particle_spawn_rate;
@@ -201,7 +181,8 @@ if (beam_active) {
     if (beam_has_fired && beam_timer <= 0) {
         beam_active = false;
         beam_cooldown = beam_cooldown_max;
-
+		
+		stagger_locked = false;
         attack_active = false;
         state = EnemyState.CHASE;
     }

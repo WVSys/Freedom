@@ -55,11 +55,12 @@ ground_buffer_max = 4;
 facing = 1;
 is_turning = false;
 
+stagger_locked = false;
 recoil_timer = 0;
 recoil_speed = 2.5;
 recoil_duration = 35;
 recoil_cooldown = 0;
-recoil_cooldown_max = 90;
+recoil_cooldown_max = 100;
 
 coins_dropped = false;
 coin_drop_min = 1;
@@ -74,7 +75,7 @@ rune_sword_chance = 20;
 rune_shield_chance = 25;
 rune_armor_chance = 30;
 
-// optional animation hooks
+//set specific sprite for specific enemy
 spr_idle = noone;
 spr_walk = noone;
 spr_attack = noone;
@@ -174,6 +175,13 @@ function take_damage(amount)
         enemy_enter_dead_state();
         exit;
     }
+	
+	// Damage still happens, but stagger/flinch does not
+    if (stagger_locked)
+    {
+        return;
+    }
+
 
     if (state != EnemyState.HURT)
     {

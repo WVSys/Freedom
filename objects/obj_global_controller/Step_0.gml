@@ -146,6 +146,14 @@ if (confirm)
         global.respawn_from_checkpoint = false;
         global.load_save = false;
         global.new_game = false;
+		
+		if (instance_exists(obj_character)) {
+		    with (obj_character) {
+		        visible = false;
+		        instance_destroy();
+		    }
+		}
+
 
         room_goto(Title_Screen);
     }

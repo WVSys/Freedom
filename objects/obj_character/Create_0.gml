@@ -127,35 +127,35 @@ arc_x1[0] = 7;
 arc_y1[0] = -45;
 arc_x2[0] = 46;
 arc_y2[0] = -33;
-arc_thickness[0] = 2;
+arc_thickness[0] = 4;
 
 // Arc segment 1: middle slash
 arc_x1[1] = 46;
 arc_y1[1] = -33;
 arc_x2[1] = 79;
 arc_y2[1] = -10;
-arc_thickness[1] = 2;
+arc_thickness[1] = 4;
 
 // Arc segment 2: low slash
 arc_x1[2] = 79;
 arc_y1[2] = -10;
 arc_x2[2] = 109;
 arc_y2[2] = 20;
-arc_thickness[2] = 2;
+arc_thickness[2] = 4;
 
 // Arc segment 3: low slash
 arc_x1[3] = 109;
 arc_y1[3] = 20;
 arc_x2[3] = 105;
 arc_y2[3] = 34;
-arc_thickness[3] = 2;
+arc_thickness[3] = 4;
 
 // Arc segment 4: low slash
 arc_x1[4] = 105;
 arc_y1[4] = 34;
 arc_x2[4] = 73;
 arc_y2[4] = 48;
-arc_thickness[4] = 2;
+arc_thickness[4] = 4;
 
 debug_tune_shield = false;
 shield_x1 = -2;
@@ -170,31 +170,31 @@ air_arc_x1[0] = 26;
 air_arc_y1[0] = -47;
 air_arc_x2[0] = 46;
 air_arc_y2[0] = -34;
-air_arc_thickness[0] = 2;
+air_arc_thickness[0] = 4;
 
 air_arc_x1[1] = 48;
 air_arc_y1[1] = -32;
 air_arc_x2[1] = 66;
 air_arc_y2[1] = -16;
-air_arc_thickness[1] = 2;
+air_arc_thickness[1] = 4;
 
 air_arc_x1[2] = 68;
 air_arc_y1[2] = -14;
 air_arc_x2[2] = 98;
 air_arc_y2[2] = 22;
-air_arc_thickness[2] = 2;
+air_arc_thickness[2] = 4;
 
 air_arc_x1[3] = 96;
 air_arc_y1[3] = 26;
 air_arc_x2[3] = 73;
 air_arc_y2[3] = 20;
-air_arc_thickness[3] = 2;
+air_arc_thickness[3] = 4;
 
 air_arc_x1[4] = 70;
 air_arc_y1[4] = 19;
 air_arc_x2[4] = 45;
 air_arc_y2[4] = 10;
-air_arc_thickness[4] = 2;
+air_arc_thickness[4] = 4;
 
 debug_no_gravity = false;
 

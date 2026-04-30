@@ -13,10 +13,10 @@ spr_death = spr_golem_death;
 sprite_scale = 2;
 sprite_facing = -1;
 
-hp = 200;
+hp = 250;
 hp_max = 200;
 move_speed = 1;
-attack_damage = 10;
+attack_damage = 15;
 
 coin_drop_min = 3;
 coin_drop_max = 6;
