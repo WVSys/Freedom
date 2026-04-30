@@ -57,16 +57,17 @@ if (hit_cooldown <= 0 && place_meeting(x, y, obj_character))
 if (state == EnemyState.DEAD)
 {
     enemy_drop_coins();
-
-    drop_rune(
-        x+rune_drop_x_offset,
-        y+rune_drop_y_offset,
-        rune_value,
-        rune_sword_chance,
-        rune_shield_chance,
-        rune_armor_chance
-    );
-
+	if(runes_dropped)
+	{
+	    drop_rune(
+	        x+rune_drop_x_offset,
+	        y+rune_drop_y_offset,
+	        rune_value,
+	        rune_sword_chance,
+	        rune_shield_chance,
+	        rune_armor_chance
+	    );
+	}
     state_dead();
     exit;
 }
