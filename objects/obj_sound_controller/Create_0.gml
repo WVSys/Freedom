@@ -14,6 +14,8 @@ track3_volume = 0.5;
 sfx_volume = 1.0;
 
 random_ambience_sounds = [];
+random_ambience_instances = [];
+
 random_ambience_timer = room_speed * 5;
 random_ambience_volume = 0.6;
 random_ambience_min_time = room_speed * 4;

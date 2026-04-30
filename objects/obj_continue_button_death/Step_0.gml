@@ -46,6 +46,8 @@ if (confirm)
         is_dead = false;
     }
 
+    room_audio_silent();
+
     load_checkpoint();
     global.respawn_from_checkpoint = true;
     room_goto(Forest);

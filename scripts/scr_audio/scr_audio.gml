@@ -139,13 +139,33 @@ function random_ambience_set(_sounds) {
     }
 }
 
-function random_ambience_stop() {
-    if (!instance_exists(obj_sound_controller)) {
+function random_ambience_stop()
+{
+    if (!instance_exists(obj_sound_controller))
+    {
         return;
     }
 
-    with (obj_sound_controller) {
+    with (obj_sound_controller)
+    {
+        // Stop any ambience sounds that are already playing
+        for (var i = 0; i < array_length(random_ambience_instances); i++)
+        {
+            var _inst = random_ambience_instances[i];
+
+            if (_inst != noone)
+            {
+                audio_stop_sound(_inst);
+            }
+        }
+
+        // Clear active ambience handles
+        random_ambience_instances = [];
+
+        // Clear future ambience choices
         random_ambience_sounds = [];
+
+        // Reset timer
         random_ambience_timer = room_speed * 5;
     }
 }
