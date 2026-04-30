@@ -46,3 +46,6 @@ rune_sword_chance = 50;
 rune_shield_chance = 20;
 rune_armor_chance = 25;
 
+path_speed_value = 3;
+path_start(bat_path, path_speed_value, path_action_stop, false);
+hit_cooldown = 0;

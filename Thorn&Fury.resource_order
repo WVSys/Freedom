@@ -1,9 +1,9 @@
 {
   "FolderOrderSettings":[
     {"name":"group1","order":3,"path":"folders/group1.yy",},
-    {"name":"Sounds","order":12,"path":"folders/Sounds.yy",},
     {"name":"Objects","order":1,"path":"folders/Objects.yy",},
     {"name":"scripts","order":4,"path":"folders/scripts.yy",},
+    {"name":"Sounds","order":12,"path":"folders/Sounds.yy",},
     {"name":"Sprites","order":2,"path":"folders/Sprites.yy",},
     {"name":"Background","order":2,"path":"folders/Sprites/Background.yy",},
     {"name":"cave1","order":1,"path":"folders/Sprites/Background/cave1.yy",},

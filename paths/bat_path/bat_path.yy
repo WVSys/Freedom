@@ -1,7 +1,7 @@
 {
   "$GMPath":"",
   "%Name":"bat_path",
-  "closed":true,
+  "closed":false,
   "kind":0,
   "name":"bat_path",
   "parent":{
