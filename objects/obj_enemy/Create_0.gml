@@ -11,6 +11,8 @@ state = EnemyState.IDLE;
 
 hp = 100;
 hp_max = 100;
+hp_bar_xoffset = 0;
+hp_bar_yoffset = -12;
 
 // enemy unstuck
 last_free_x = x;
@@ -56,12 +58,15 @@ is_turning = false;
 recoil_timer = 0;
 recoil_speed = 2.5;
 recoil_duration = 35;
+recoil_cooldown = 0;
+recoil_cooldown_max = 90;
 
 coins_dropped = false;
 coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
 
+runes_dropped = false;
 rune_drop_x_offset = 0;
 rune_drop_y_offset = 0;
 rune_value = 1;
@@ -77,6 +82,8 @@ spr_turn = noone;
 spr_hurt = noone;
 spr_death = noone;
 
+can_flinch = true;
+
 attack_active = false;
 
 attack_hitbox_x1 = 0;
@@ -89,18 +96,19 @@ attack_hitbox_thickness = 12;
 function recoil_from_shield(blocker)
 {
     if (state == EnemyState.HURT) return;
+    if (recoil_cooldown > 0) return;
 
     var dir = sign(x - blocker.x);
 
     if (dir == 0)
     {
-        dir = blocker.facing;
+        dir = -blocker.facing;
     }
 
     hsp = dir * recoil_speed;
     recoil_timer = recoil_duration;
+    recoil_cooldown = recoil_cooldown_max;
 
-    // IMPORTANT: recoil interrupts attack, so reset attack flags
     attack_active = false;
     attack_cooldown = attack_cooldown_max;
 

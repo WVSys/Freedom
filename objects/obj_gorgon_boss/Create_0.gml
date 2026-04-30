@@ -4,6 +4,19 @@ event_inherited();
 image_xscale =1;
 image_yscale =1;
 
+beam_particle_spawn_rate = 2; // lower = more particles
+beam_particle_timer = 0;
+
+beam_particle_speed_min = 2;
+beam_particle_speed_max = 5;
+
+beam_particle_spread = 18;
+
+beam_particle_count = 8;
+beam_particle_spread = 14;
+beam_particle_length_min = 8;
+beam_particle_length_max = 22;
+
 spr_idle = spr_gorgon_boss_idle;
 spr_walk = spr_gorgon_boss_walk;
 spr_attack = spr_gorgon_boss_attack3;
@@ -42,3 +55,24 @@ rune_value = 1;
 rune_sword_chance = 100;
 rune_shield_chance = 0;
 rune_armor_chance = 0;
+
+beam_angle = 0;
+// Eye beam special attack
+beam_cooldown = 180;
+beam_cooldown_max = 180;
+
+beam_windup = 45;
+beam_fire_time = 18;
+beam_timer = 0;
+
+beam_active = false;
+beam_has_fired = false;
+
+beam_damage = 20;
+beam_range = 900;
+beam_thickness = 5;
+
+// Approximate eye position relative to boss origin.
+// Tune these numbers in-game.
+beam_eye_x = 5;
+beam_eye_y = -120;

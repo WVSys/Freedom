@@ -20,6 +20,8 @@ sprite_facing = 1;
 
 hp = 150;
 hp_max = 150;
+hp_bar_xoffset = 0;
+hp_bar_yoffset = -150;
 move_speed = 2;
 attack_damage = 15;
 
@@ -44,6 +46,6 @@ recoil_duration = 35;
 rune_drop_x_offset = 0;
 rune_drop_y_offset = -75;
 rune_value = 1;
-rune_sword_chance = 50;
+rune_sword_chance = 30;
 rune_shield_chance = 20;
 rune_armor_chance = 25;

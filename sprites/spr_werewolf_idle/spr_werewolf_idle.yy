@@ -30,7 +30,7 @@
   ],
   "name":"spr_werewolf_idle",
   "nineSlice":null,
-  "origin":6,
+  "origin":7,
   "parent":{
     "name":"Werewolf",
     "path":"folders/Sprites/Werewolf.yy",
@@ -103,7 +103,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":39,
     "yorigin":59,
   },
   "swatchColours":null,

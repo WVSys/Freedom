@@ -33,7 +33,7 @@
   ],
   "name":"spr_werewolf_walk",
   "nineSlice":null,
-  "origin":6,
+  "origin":7,
   "parent":{
     "name":"Werewolf",
     "path":"folders/Sprites/Werewolf.yy",
@@ -115,7 +115,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":44,
     "yorigin":78,
   },
   "swatchColours":null,

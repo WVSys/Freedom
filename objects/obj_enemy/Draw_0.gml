@@ -86,8 +86,8 @@ var bar_height = 6;
 var hp_ratio = hp / hp_max;
 
 //above the character
-var bx = x - bar_width / 2;
-var by = y - sprite_height / 2 + 12;
+var bx = x - (bar_width / 2) + hp_bar_xoffset;
+var by = y - sprite_height / 2 + hp_bar_yoffset;
 
 // Background
 draw_set_color(c_black);

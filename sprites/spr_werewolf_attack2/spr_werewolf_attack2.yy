@@ -26,7 +26,7 @@
   ],
   "name":"spr_werewolf_attack2",
   "nineSlice":null,
-  "origin":6,
+  "origin":7,
   "parent":{
     "name":"Werewolf",
     "path":"folders/Sprites/Werewolf.yy",
@@ -87,7 +87,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":48,
     "yorigin":84,
   },
   "swatchColours":null,

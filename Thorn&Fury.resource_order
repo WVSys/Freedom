@@ -28,6 +28,7 @@
     {"name":"obj_dialogue_controller","order":33,"path":"objects/obj_dialogue_controller/obj_dialogue_controller.yy",},
     {"name":"obj_enemy_wall","order":41,"path":"objects/obj_enemy_wall/obj_enemy_wall.yy",},
     {"name":"obj_enemy","order":10,"path":"objects/obj_enemy/obj_enemy.yy",},
+    {"name":"obj_eye_beam_particle","order":43,"path":"objects/obj_eye_beam_particle/obj_eye_beam_particle.yy",},
     {"name":"obj_global_controller","order":5,"path":"objects/obj_global_controller/obj_global_controller.yy",},
     {"name":"obj_golem","order":16,"path":"objects/obj_golem/obj_golem.yy",},
     {"name":"obj_goto_cave","order":11,"path":"objects/obj_goto_cave/obj_goto_cave.yy",},
