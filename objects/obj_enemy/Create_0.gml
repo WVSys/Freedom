@@ -16,6 +16,11 @@ hp_max = 100;
 last_free_x = x;
 last_free_y = y;
 
+elite = false;
+elite_red_amount = 0.25;
+elite_outline_color = c_yellow;
+elite_outline_thickness = 4;
+
 hsp = 0;
 vsp = 0;
 target = obj_character;
