@@ -35,7 +35,18 @@ var confirm = confirm_keyboard || confirm_gamepad;
 
 if (confirm)
 {
-	load_checkpoint();
+    with (obj_death_ui)
+    {
+        instance_destroy();
+    }
+
+    with (obj_character)
+    {
+        death_ui_created = false;
+        is_dead = false;
+    }
+
+    load_checkpoint();
     global.respawn_from_checkpoint = true;
     room_goto(Forest);
 }
