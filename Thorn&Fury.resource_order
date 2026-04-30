@@ -53,6 +53,7 @@
     {"name":"obj_tutorial_gamepad","order":35,"path":"objects/obj_tutorial_gamepad/obj_tutorial_gamepad.yy",},
     {"name":"obj_tutorial_highlight","order":36,"path":"objects/obj_tutorial_highlight/obj_tutorial_highlight.yy",},
     {"name":"obj_wall","order":3,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"bat_path","order":11,"path":"paths/bat_path/bat_path.yy",},
     {"name":"Cave","order":5,"path":"rooms/Cave/Cave.yy",},
     {"name":"Title_Screen","order":8,"path":"rooms/Title_Screen/Title_Screen.yy",},
     {"name":"buy_hp_potion","order":8,"path":"scripts/buy_hp_potion/buy_hp_potion.yy",},

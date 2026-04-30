@@ -18,7 +18,7 @@ hp = 50;
 hp_max = 50;
 move_speed = 3;
 attack_damage = 5;
-chase_range = 200;
+chase_range = 50;
 attack_range = 100;
 
 coin_drop_min = 51
@@ -45,4 +45,8 @@ rune_value = 1;
 rune_sword_chance = 50;
 rune_shield_chance = 20;
 rune_armor_chance = 25;
+
+facing_dir = 1;
+fly_y_offset = 0;
+dive_timer = 0;
 

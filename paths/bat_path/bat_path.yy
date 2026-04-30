@@ -1,0 +1,18 @@
+{
+  "$GMPath":"",
+  "%Name":"bat_path",
+  "closed":true,
+  "kind":0,
+  "name":"bat_path",
+  "parent":{
+    "name":"Thorn&Fury",
+    "path":"Thorn&Fury.yyp",
+  },
+  "points":[
+    {"speed":100.0,"x":447.0,"y":886.0,},
+    {"speed":100.0,"x":857.9999,"y":888.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

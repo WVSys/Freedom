@@ -1,4 +1,4 @@
-// OPEN CHEST (only once)
+// open chest
 if (!opened && place_meeting(x, y, obj_character))
 {
     opened = true;
@@ -49,7 +49,7 @@ if (!opened && place_meeting(x, y, obj_character))
 }
 
 
-// STOP ANIMATION AT LAST FRAME (prevents looping)
+// stop animation
 if (opened && sprite_index == spr_open)
 {
     if (image_index >= image_number - 1)

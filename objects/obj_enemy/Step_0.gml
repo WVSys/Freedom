@@ -148,14 +148,14 @@ if (move_step != 0 && on_ground)
 {
     var facing_dir = sign(move_step);
 
-    // 🔥 Save last safe position
+    // save last safe position
     if (!place_meeting(x, y, obj_wall) && !place_meeting(x, y, obj_enemy_wall))
     {
         last_free_x = x;
         last_free_y = y;
     }
 
-    // 🔥 Check ground AHEAD FIRST (before anything else)
+    // Check ground AHEAD FIRST
     var ground_ahead =
         place_meeting(x + facing_dir * 6, y + 2, obj_wall) ||
         place_meeting(x + facing_dir * 6, y + 2, obj_enemy_wall);
@@ -176,7 +176,7 @@ if (move_step != 0 && on_ground)
         move_step = hsp;
     }
 
-    // 🔥 FAILSAFE: if somehow stuck anyway
+    // if stuck, detects last safe position when not stuck
     if (place_meeting(x, y, obj_wall) || place_meeting(x, y, obj_enemy_wall))
     {
         x = last_free_x;
