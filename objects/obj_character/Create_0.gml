@@ -57,7 +57,7 @@ gauntlets_durability_max = 0;
 sword_durability_max = 20;
 shield_durability_max = 25;
 
-hp_potions = 10;
+hp_potions = 0;
 heal_active = false;
 heal_amount_remaining = 0;
 heal_tick_timer = 0;
@@ -211,6 +211,9 @@ function take_damage(amount) {
     if (hp <= 0) {
         hp = 0;
         is_dead = true;
+		
+		audio_play_sound(character_death, 10, false);
+		
         move_state = MoveState.DEAD;
         combat_state = CombatState.NONE;
         hsp = 0;

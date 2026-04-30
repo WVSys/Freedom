@@ -78,10 +78,11 @@ if (hitbox_type == "damage" && target_object == obj_character)
             var effective_guard_damage = blocker.get_effective_guard_damage(damage);
 
 			blocker.damage_shield(damage);
-
 			blocker.guard_meter -= effective_guard_damage;
 			blocker.guard_meter = max(0, blocker.guard_meter);
 
+			audio_play_sound(shield_block, 1, false);
+			
 			show_debug_message(
 			    "BLOCKED. Raw damage: " + string(damage)
 			    + " Effective guard damage: " + string(effective_guard_damage)

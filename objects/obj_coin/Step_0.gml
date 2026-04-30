@@ -35,5 +35,6 @@ else
 if (place_meeting(x, y, obj_character))
 {
     global.coins += value;
+	audio_play_sound(coin_pickup,1, false);
     instance_destroy();
 }

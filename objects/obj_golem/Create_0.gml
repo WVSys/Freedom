@@ -34,3 +34,7 @@ attack_hitbox_thickness = 16;
 recoil_timer = 0;
 recoil_speed = 2.5;
 recoil_duration = 35;
+
+snd_death = golem_death;
+snd_attack = noone;
+snd_hurt = noone;

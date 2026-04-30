@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"rune_pickup",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":7.5840135,
+  "exportDir":"",
+  "name":"rune_pickup",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"rune_pickup.mp3",
+  "volume":0.39,
+}

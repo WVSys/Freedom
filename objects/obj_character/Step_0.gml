@@ -224,6 +224,8 @@ if (combat_state == CombatState.NONE && attack_pressed)
     {
 		damage_sword(sword_durability_loss_per_ground_attack);
 		
+		audio_play_sound(sword_slash,1,false);
+		
         combat_state = CombatState.ATTACK1;
         attack_active = false;
         attack_spawned_frame = -1;
@@ -235,6 +237,8 @@ if (combat_state == CombatState.NONE && attack_pressed)
     else if (!air_attack_used && can_start_air_attack)
     {
 		damage_sword(sword_durability_loss_per_ground_attack);
+		
+		audio_play_sound(sword_slash,1,false);
 		
         combat_state = CombatState.AIR_ATTACK;
         air_attack_active = false;
