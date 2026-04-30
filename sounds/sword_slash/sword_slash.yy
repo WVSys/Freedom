@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"chest_opening",
+  "%Name":"sword_slash",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6720182,
+  "duration":2.1942856,
   "exportDir":"",
-  "name":"chest_opening",
+  "name":"sword_slash",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"chest_opening.mp3",
-  "volume":0.84,
+  "soundFile":"sword_slash.mp3",
+  "volume":1.0,
 }

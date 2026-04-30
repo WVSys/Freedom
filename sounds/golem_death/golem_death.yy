@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"chest_opening",
+  "%Name":"golem_death",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.6720182,
+  "duration":1.611814,
   "exportDir":"",
-  "name":"chest_opening",
+  "name":"golem_death",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"chest_opening.mp3",
-  "volume":0.84,
+  "soundFile":"golem_death.mp3",
+  "volume":1.0,
 }

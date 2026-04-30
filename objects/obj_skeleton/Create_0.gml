@@ -49,6 +49,10 @@ coin_drop_min = 1;
 coin_drop_max = 3;
 coin_value = 1;
 
+snd_death = skeleton_death;
+snd_attack = noone;
+snd_hurt = noone;
+
 spr_idle = spr_skeleton_idle;
 spr_walk = spr_skeleton_walking;
 spr_attack = spr_skeleton_attack;

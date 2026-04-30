@@ -211,6 +211,9 @@ function take_damage(amount) {
     if (hp <= 0) {
         hp = 0;
         is_dead = true;
+		
+		audio_play_sound(character_death, 10, false);
+		
         move_state = MoveState.DEAD;
         combat_state = CombatState.NONE;
         hsp = 0;

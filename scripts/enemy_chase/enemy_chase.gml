@@ -16,6 +16,11 @@ function enemy_chase() {
 
     if (dist <= attack_range) {
         state = EnemyState.ATTACK;
+		
+		if (snd_attack != noone) {
+		    audio_play_sound(snd_attack, 1, false);
+		}
+
         hsp = 0;
         attack_active = false;
         exit;

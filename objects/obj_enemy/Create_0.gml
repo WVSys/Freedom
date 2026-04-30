@@ -16,6 +16,10 @@ hp_max = 100;
 last_free_x = x;
 last_free_y = y;
 
+snd_death = noone;
+snd_attack = noone;
+snd_hurt = noone;
+
 elite = false;
 elite_red_amount = 0.25;
 elite_outline_color = c_yellow;
@@ -61,9 +65,9 @@ coin_value = 1;
 rune_drop_x_offset = 0;
 rune_drop_y_offset = 0;
 rune_value = 1;
-rune_sword_chance = 100;
-rune_shield_chance = 0;
-rune_armor_chance = 0;
+rune_sword_chance = 20;
+rune_shield_chance = 25;
+rune_armor_chance = 30;
 
 // optional animation hooks
 spr_idle = noone;
@@ -105,7 +109,7 @@ function recoil_from_shield(blocker)
     image_index = 0;
     image_speed = 1;
 
-    show_debug_message("Skeleton recoil triggered");
+    show_debug_message("Enemy recoil triggered");
 }
 
 function enemy_drop_coins()
@@ -118,10 +122,10 @@ function enemy_drop_coins()
 
         for (var i = 0; i < coin_count; i++)
         {
-            var c = instance_create_layer(x, y, "Instances", obj_coin);
+            var c = instance_create_layer(x, y-25, "Instances", obj_coin);
             c.value = coin_value;
             c.hsp = random_range(-2.5, 2.5);
-            c.vsp = random_range(-5, -2);
+            c.vsp = random_range(-6, -1);
         }
     }
 }
@@ -130,13 +134,18 @@ function enemy_enter_dead_state()
 {
     hp = 0;
     state = EnemyState.DEAD;
+	
+	if (snd_death != noone) {
+        audio_play_sound(snd_death, 1, false);
+    }
+	
     hsp = 0;
     vsp = 0;
     recoil_timer = 0;
 
-    if (spr_death_logo != noone)
+    if (spr_death != noone)
     {
-        sprite_index = spr_death_logo;
+        sprite_index = spr_death;
         image_index = 0;
         image_speed = 0.25;
     }
@@ -147,6 +156,10 @@ function take_damage(amount)
     if (state == EnemyState.DEAD) return;
 
     hp = clamp(hp - amount, 0, hp_max);
+	
+	 if (hp > 0 && snd_hurt != noone) {
+        audio_play_sound(snd_hurt, 10, false);
+    }
 
     if (hp <= 0)
     {

@@ -32,5 +32,6 @@ if (!landed)
 if (place_meeting(x, y, obj_character))
 {
     pickup_effect();
+	audio_play_sound(rune_pickup,1,false);
     instance_destroy();
 }
