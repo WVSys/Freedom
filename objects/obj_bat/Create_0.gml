@@ -46,7 +46,3 @@ rune_sword_chance = 50;
 rune_shield_chance = 20;
 rune_armor_chance = 25;
 
-facing_dir = 1;
-fly_y_offset = 0;
-dive_timer = 0;
-
