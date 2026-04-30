@@ -18,7 +18,7 @@ hp = 50;
 hp_max = 50;
 move_speed = 3;
 attack_damage = 5;
-chase_range = 200;
+chase_range = 50;
 attack_range = 100;
 
 coin_drop_min = 51
@@ -46,3 +46,6 @@ rune_sword_chance = 50;
 rune_shield_chance = 20;
 rune_armor_chance = 25;
 
+path_speed_value = 3;
+path_start(bat_path, path_speed_value, path_action_stop, false);
+hit_cooldown = 0;
