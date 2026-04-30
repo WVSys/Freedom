@@ -1,6 +1,9 @@
 global.debug = false;
 global.next_spawn = -1;
 
+// randomizes gold and rune drops from chests
+randomize();
+
 global.coins = 0;
 
 global.merchant_menu_open = false;
