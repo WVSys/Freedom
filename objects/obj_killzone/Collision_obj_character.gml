@@ -1,0 +1,1 @@
+other.take_damage(other.hp);
