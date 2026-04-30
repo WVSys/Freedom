@@ -1,8 +1,8 @@
-// OPEN CHEST (only once)
+
 if (!opened && place_meeting(x, y, obj_character))
 {
     opened = true;
-
+	audio_play_sound(chest_opening, 1, false);
     // start open animation properly
     sprite_index = spr_open;
     image_index = 0;
@@ -15,7 +15,7 @@ if (!opened && place_meeting(x, y, obj_character))
     {
         var c = instance_create_layer(x, y, "Instances", obj_coin);
         c.hsp = random_range(-2, 2);
-        c.vsp = random_range(-4, -2);
+        c.vsp = random_range(-8, -5);
     }
 
     // ---- DROP RUNES ----
@@ -49,7 +49,6 @@ if (!opened && place_meeting(x, y, obj_character))
 }
 
 
-// STOP ANIMATION AT LAST FRAME (prevents looping)
 if (opened && sprite_index == spr_open)
 {
     if (image_index >= image_number - 1)

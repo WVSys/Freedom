@@ -57,7 +57,7 @@ gauntlets_durability_max = 0;
 sword_durability_max = 20;
 shield_durability_max = 25;
 
-hp_potions = 10;
+hp_potions = 0;
 heal_active = false;
 heal_amount_remaining = 0;
 heal_tick_timer = 0;

@@ -46,8 +46,8 @@ if (!global.game_paused && !debug_callout_move)
 
 if (keyboard_check_pressed(ord("6")))
 {
-	global.saved_intro_merchant_seen = true;
-	global.intro_merchant_seen = true;
+	global.saved_intro_merchant_seen = !global.saved_intro_merchant_seen;
+	global.intro_merchant_seen = !global.intro_merchant_seen;
 }
 
 

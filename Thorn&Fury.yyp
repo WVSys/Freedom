@@ -11,6 +11,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"group1","folderPath":"folders/group1.yy","name":"group1","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Sounds","folderPath":"folders/Sounds.yy","name":"Sounds","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"scripts","folderPath":"folders/scripts.yy","name":"scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -124,6 +125,7 @@
     {"id":{"name":"spawn_rune","path":"scripts/spawn_rune/spawn_rune.yy",},},
     {"id":{"name":"upgrade_item","path":"scripts/upgrade_item/upgrade_item.yy",},},
     {"id":{"name":"shd_elite_red","path":"shaders/shd_elite_red/shd_elite_red.yy",},},
+    {"id":{"name":"chest_opening","path":"sounds/chest_opening/chest_opening.yy",},},
     {"id":{"name":"spr_armor_rune","path":"sprites/spr_armor_rune/spr_armor_rune.yy",},},
     {"id":{"name":"spr_bat","path":"sprites/spr_bat/spr_bat.yy",},},
     {"id":{"name":"spr_battle_idle","path":"sprites/spr_battle_idle/spr_battle_idle.yy",},},
