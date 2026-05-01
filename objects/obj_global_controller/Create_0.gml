@@ -46,6 +46,21 @@ if (!variable_global_exists("chestplate_collected"))
     global.chestplate_collected = false;
 }
 
+if (!variable_global_exists("greaves_collected"))
+{
+	global.greaves_collected = false;	
+}
+
+if (!variable_global_exists("helmet_collected"))
+{
+	global.helmet_collected = false;	
+}
+
+if (!variable_global_exists("gauntlets_collected"))
+{
+	global.gauntlets_collected = false;
+}
+
 global.saved_coins = 0;
 global.saved_armor_runes = 0;
 global.saved_shield_runes = 0;
