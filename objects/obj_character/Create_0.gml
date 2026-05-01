@@ -580,7 +580,6 @@ draw_equipment_visuals = true;
 
 // Returns which armor overlay sprite should be drawn for a given piece.
 // Right now this only supports attack armor.
-// Later, add idle/run/jump/etc. cases here.
 function get_equipment_overlay_sprite(_piece) {
     switch (_piece) {
         case "Helmet":
@@ -593,6 +592,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_helmet_jumping_attack;
 				case spr_idle_stand1:
                     return spr_idle_helmet;
+				case spr_jump:
+                    return spr_jump_helmet;
 				
             }
             break;
@@ -607,6 +608,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_chestplate_jumping_attack;
 				case spr_idle_stand1:
                     return spr_idle_chestplate;
+				case spr_jump:
+                    return spr_jump_chestplate;
             }
             break;
 
@@ -620,6 +623,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_greaves_jumping_attack;
 				case spr_idle_stand1:
                     return spr_idle_greaves;
+				case spr_jump:
+                    return spr_jump_greaves;
             }
             break;
 
@@ -633,6 +638,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_gauntlets_jumping_attack;
 				case spr_idle_stand1:
                     return spr_idle_gauntlets;
+				case spr_jump:
+                    return spr_jump_gauntlets;
             }
             break;
     }
@@ -655,7 +662,6 @@ function draw_equipment_piece(_piece, _equipped, _durability) {
     if (overlay_frames <= 0) return;
 
     // Match the character's current animation frame.
-    // The modulo keeps testing safe if the overlay has fewer frames.
     var overlay_frame = floor(image_index) mod overlay_frames;
 
     draw_sprite_ext(
@@ -672,7 +678,6 @@ function draw_equipment_piece(_piece, _equipped, _durability) {
 }
 
 // Central draw call for all armor visuals.
-// Add/remove pieces here without touching Draw_0.gml again.
 function draw_equipment_overlays() {
     draw_equipment_piece("Helmet", helmet, helmet_durability);
     draw_equipment_piece("Chestplate", chestplate, chestplate_durability);
