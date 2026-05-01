@@ -102,6 +102,18 @@ if (!is_dead)
     }
 }
 
+if (ending_lock)
+{
+    hsp = 0;
+    vsp = 0;
+
+    // optional: force idle animation
+    sprite_index = spr_idle_stand1;
+    image_speed = 1;
+
+    exit;
+}
+
 var move_x = 0;
 
 // keyboard movement
