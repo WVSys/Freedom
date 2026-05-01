@@ -594,6 +594,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_idle_helmet;
 				case spr_jump:
                     return spr_jump_helmet;
+				case spr_falling_down:
+                    return spr_falling_helmet;
 				
             }
             break;
@@ -610,6 +612,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_idle_chestplate;
 				case spr_jump:
                     return spr_jump_chestplate;
+				case spr_falling_down:
+                    return spr_falling_chestplate;
             }
             break;
 
@@ -625,6 +629,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_idle_greaves;
 				case spr_jump:
                     return spr_jump_greaves;
+				case spr_falling_down:
+                    return spr_falling_greaves;
             }
             break;
 
@@ -640,6 +646,8 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_idle_gauntlets;
 				case spr_jump:
                     return spr_jump_gauntlets;
+				case spr_falling_down:
+                    return spr_falling_gauntlets;
             }
             break;
     }
