@@ -218,9 +218,19 @@ debug_no_gravity = false;
 function take_damage(amount, attacker = noone) {
     if (invincible || is_dead) return;
 
-    damage_armor(1);
+	var armor_active =
+	    (helmet_durability > 0) ||
+	    (chestplate_durability > 0) ||
+	    (greaves_durability > 0) ||
+	    (gauntlets_durability > 0);
 
-    hp = clamp(hp - amount, 0, hp_max);
+	// damage armor first
+	damage_armor(amount);
+
+	// damage HP if ALL armor is broken
+	if (!armor_active) {
+	    hp = clamp(hp - amount, 0, hp_max);
+	}
     show_debug_message("HP: " + string(hp));
 
     if (hp <= 0) {
@@ -533,8 +543,8 @@ function damage_shield(_amount) {
 }
 
 
-// Armor does not reduce damage yet.
-// It only wears down when the player takes damage.
+// Armor blocks damage
+// it wears down when the player takes damage.
 function damage_armor(_amount) {
     var pieces = [];
 
@@ -543,28 +553,39 @@ function damage_armor(_amount) {
     if (greaves_durability > 0) array_push(pieces, "Greaves");
     if (gauntlets_durability > 0) array_push(pieces, "Gauntlets");
 
-    if (array_length(pieces) <= 0) return;
+    // if no armor, all damage goes to HP
+    if (array_length(pieces) <= 0) {
+        return _amount;
+    }
 
     var piece = pieces[irandom(array_length(pieces) - 1)];
     var wear = max(1, _amount);
 
+    var remaining = 0;
+
     switch (piece) {
         case "Helmet":
+            remaining = max(0, wear - helmet_durability);
             helmet_durability = max(0, helmet_durability - wear);
             break;
 
         case "Chestplate":
+            remaining = max(0, wear - chestplate_durability);
             chestplate_durability = max(0, chestplate_durability - wear);
             break;
 
         case "Greaves":
+            remaining = max(0, wear - greaves_durability);
             greaves_durability = max(0, greaves_durability - wear);
             break;
 
         case "Gauntlets":
+            remaining = max(0, wear - gauntlets_durability);
             gauntlets_durability = max(0, gauntlets_durability - wear);
             break;
     }
+
+    return remaining;
 }
 
 
