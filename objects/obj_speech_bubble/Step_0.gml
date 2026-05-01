@@ -4,11 +4,11 @@ if (!instance_exists(owner))
     exit;
 }
 
-// Follow the owner
+// follow the owner
 x = owner.x + x_offset;
 y = owner.y + y_offset;
 
-// Count down
+// count down
 lifetime--;
 
 if (lifetime <= 0)

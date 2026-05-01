@@ -8,7 +8,6 @@ if (variable_instance_exists(id, "beam_active")) {
 
         attack_active = false;
 
-        // Clear saved beam draw points if you use them
         if (variable_instance_exists(id, "beam_points_valid")) {
             beam_points_valid = false;
             beam_start_x = 0;
@@ -17,7 +16,7 @@ if (variable_instance_exists(id, "beam_active")) {
             beam_end_y = 0;
         }
 
-        // Destroy any active beam hitboxes owned by this boss
+        // destroy active beam hitboxes owned by this boss
         with (obj_attack_hitbox) {
             if (owner == other.id) {
                 instance_destroy();
@@ -35,7 +34,7 @@ if (!beam_active) {
 if (global.game_paused || global.tutorial_pause) exit;
 if (state == EnemyState.DEAD || state == EnemyState.HURT) exit;
 if (!instance_exists(obj_character)) exit;
-// If beam is NOT active, let parent enemy behavior run
+// if beam is NOT active, let parent enemy behavior run
 if (!beam_active) {
     event_inherited();
 }
@@ -49,17 +48,13 @@ if (!instance_exists(obj_character)) exit;
 var player = instance_nearest(x, y, obj_character);
 var dist = point_distance(x, y, player.x, player.y);
 
-// ===============================
-// Eye Beam Cooldown
-// ===============================
+// eye beam cooldown
 
 if (beam_cooldown > 0) {
     beam_cooldown--;
 }
 
-// ===============================
-// Start Eye Beam Attack
-// ===============================
+// start eye beam attack
 
 if (!beam_active && beam_cooldown <= 0 && dist > attack_range && dist < beam_range) {
     beam_active = true;
@@ -83,19 +78,17 @@ if (!beam_active && beam_cooldown <= 0 && dist > attack_range && dist < beam_ran
         player.y
     );
 
-    // Use attack animation for beam windup
+    // attack animation for beam windup
     sprite_index = spr_gorgon_boss_special;
     image_index = 0;
     image_speed = 0.5;
 }
 
 
-// ===============================
-// Handle Eye Beam Attack
-// ===============================
+// handle eye beam attack
 
 if (beam_active) {
-    // Keep boss still while using beam
+    // boss is still while using beam
     hsp = 0;
 
     beam_timer--;
@@ -145,9 +138,8 @@ if (beam_active) {
         }
     }
 }
-    // Fire once after windup finishes
+    // fire once after windup finishes
     if (!beam_has_fired && beam_timer <= 0) {
-        // These world coordinates should match your Draw event exactly
         var start_world_x = x + (beam_eye_x * facing);
         var start_world_y = y + beam_eye_y;
 
@@ -155,13 +147,13 @@ if (beam_active) {
         var end_world_y = start_world_y + lengthdir_y(beam_range, beam_angle);
 		
 
-        // Create hitbox directly instead of using spawn_attack_hitbox()
+        // create hitbox
         var hb = instance_create_layer(x, y, "Instances", obj_attack_hitbox);
 
         hb.owner = id;
         hb.target_object = obj_character;
 
-        // Store hitbox points relative to boss position
+        // store hitbox points relative to boss position
         hb.x1 = start_world_x - x;
         hb.y1 = start_world_y - y;
 
@@ -177,7 +169,7 @@ if (beam_active) {
         beam_timer = beam_fire_time;
     }
 
-    // End beam attack after active frames are over
+    // end beam attack
     if (beam_has_fired && beam_timer <= 0) {
         beam_active = false;
         beam_cooldown = beam_cooldown_max;

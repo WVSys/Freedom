@@ -6,11 +6,11 @@ if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(vk_down))
 if (keyboard_check_pressed(vk_enter))
 if (option == 0)
 {
-    // Reset ending state so it doesn't instantly retrigger
+    // reset ending state
     global.ending_started = false;
     global.death_screen_active = false;
 
-    // Respawn from checkpoint
+    // respawn from checkpoint
     global.respawn_from_checkpoint = true;
 	with (obj_character) {
 		ending_lock = false;	

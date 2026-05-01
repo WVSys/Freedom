@@ -30,7 +30,7 @@ if (is_dead)
 
     var on_ground_dead = place_meeting(x, y + 1, obj_wall);
 
-    // Let dead body fall until it hits the ground
+    // let dead body fall until it hits the ground
     if (!on_ground_dead)
     {
         vsp += grav;
@@ -54,7 +54,7 @@ if (is_dead)
     {
         vsp = 0;
 
-        // Once grounded, show death UI
+        // once grounded, show death UI
         if (!instance_exists(obj_death_ui))
         {
             var dui = instance_create_depth(0, 0, -100000, obj_death_ui);

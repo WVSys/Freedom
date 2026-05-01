@@ -60,7 +60,7 @@ rune_shield_chance = 0;
 rune_armor_chance = 0;
 
 beam_angle = 0;
-// Eye beam special attack
+// eye beam special attack
 beam_cooldown = 180;
 beam_cooldown_max = 180;
 
@@ -75,7 +75,7 @@ beam_damage = 20;
 beam_range = 900;
 beam_thickness = 5;
 
-// Approximate eye position relative to boss origin.
-// Tune these numbers in-game.
+// eye position relative to boss origin.
+// tune these numbers in-game.
 beam_eye_x = 45;
 beam_eye_y = -120;

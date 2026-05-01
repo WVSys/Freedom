@@ -15,9 +15,7 @@ if (touching_player)
 
     var first_contact = !player_was_near;
 
-    // --------------------
-    // First merchant intro
-    // --------------------
+    // first merchant intro
     if (first_contact)
     {
         if (instance_exists(merchant_id))
@@ -28,7 +26,7 @@ if (touching_player)
             {
                 show_debug_message("Player first contacted merchant zone.");
 
-                // Stop player and face merchant
+                // stop player and face merchant
                 with (obj_character)
                 {
                     hsp = 0;
@@ -51,13 +49,13 @@ if (touching_player)
                     }
                 }
 
-                // Lock gameplay
+                // lock gameplay
                 global.dialogue_active = true;
                 global.tutorial_paused = true;
 
                 tutorial_timeline_running = true;
 
-                // Create the timeline runner
+                // create the timeline runner
                 var runner = instance_create_depth(x, y, -100000, obj_merchant_intro_runner);
                 runner.merchant_id = merchant_id;
                 runner.zone_id = id;
@@ -68,9 +66,7 @@ if (touching_player)
         }
     }
 
-    // --------------------
-    // Repeat greeting after intro
-    // --------------------
+    // Repeat merchant greeting after intro
     if (global.intro_merchant_seen 
     && !global.dialogue_active 
     && !repeat_greeting_done)

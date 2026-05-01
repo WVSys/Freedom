@@ -1,18 +1,18 @@
-// Move particle
+// move particle
 x += hsp;
 y += vsp;
 
-// Fade out
+// fade out
 life--;
 
 if (life_max > 0) {
     particle_alpha = life / life_max;
 }
 
-// Shrink slightly
+// shrink slightly
 particle_size = max(0, particle_size - 0.05);
 
-// Destroy when finished
+// destroy when finished
 if (life <= 0 || particle_size <= 0) {
     instance_destroy();
 }

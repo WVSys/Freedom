@@ -5,10 +5,10 @@ var cam = view_camera[0];
 x = camera_get_view_x(cam) + camera_get_view_width(cam) / 2;
 y = camera_get_view_y(cam) + camera_get_view_height(cam) / 2;
 
-// Fade in
+// fade in
 image_alpha = min(image_alpha + fade_speed, 1);
 
-// Create continue button once fully visible
+// create continue button once fully visible
 if (image_alpha >= 1 && !continue_created)
 {
     continue_created = true;

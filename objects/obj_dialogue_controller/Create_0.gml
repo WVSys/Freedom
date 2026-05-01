@@ -34,17 +34,17 @@ show_current_line = function()
 
     var speaker_instance = noone;
 
-    // Player line
+    // player line
     if (speaker_ref == obj_character)
     {
         speaker_instance = instance_find(obj_character, 0);
     }
-    // Merchant object line
+    // merchant object line
     else if (speaker_ref == obj_merchant)
     {
         speaker_instance = instance_find(obj_merchant, 0);
     }
-    // Direct instance id, like merchant_id or id
+    // direct instance id, like merchant_id or id
     else if (instance_exists(speaker_ref))
     {
         speaker_instance = speaker_ref;
@@ -65,8 +65,6 @@ show_current_line = function()
         }
     }
 
-    // Auto-read timing:
-    // shorter lines stay at least 90 frames
-    // longer lines stay longer based on text length
+	// determine how long to read dialogue based on word counts
     line_timer = max(90, string_length(text) * 4);
 };

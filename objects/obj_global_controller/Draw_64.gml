@@ -137,9 +137,7 @@ for (var i = 0; i < array_length(pause_options); i++)
     }
 }
 
-// --------------------
 // Controller sprite
-// --------------------
 var cx = gui_w / 2 + controller_offset_x;
 var cy = gui_h / 2 + controller_offset_y;
 
@@ -150,9 +148,7 @@ draw_set_color(c_white);
 
 draw_sprite_ext(spr_gamepad, 0, cx, cy, controller_scale_x, controller_scale_y, 0, c_white, 1);
 
-// --------------------
 // Button callouts
-// --------------------
 draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);

@@ -10,9 +10,7 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-// --------------------
 // Guard meter highlight
-// --------------------
 if (highlight_mode == "guard") {
     var x1 = 24;
     var y1 = 58;
@@ -28,9 +26,7 @@ if (highlight_mode == "guard") {
     //draw_text(x2 + 18, y1 - 2, "Guard meter");
 }
 
-// --------------------
 // Coins highlight
-// --------------------
 if (highlight_mode == "coins") {
     var cx = 34;
     var cy = 122;
@@ -45,9 +41,7 @@ if (highlight_mode == "coins") {
     //draw_text(cx + 36, cy - 8, "Coins");
 }
 
-// --------------------
 // Runes highlight
-// --------------------
 if (highlight_mode == "runes") {
     var x1 = 24;
     var y1 = 145;
@@ -63,9 +57,7 @@ if (highlight_mode == "runes") {
     
 }
 
-// --------------------
 // Potions highlight
-// --------------------
 if (highlight_mode == "potions") {
     var x1 = 24;
     var y1 = 190;
@@ -81,9 +73,7 @@ if (highlight_mode == "potions") {
     //draw_text(x2 + 18, y1 + 2, "HP Potions");
 }
 
-// --------------------
 // Health highlight
-// --------------------
 if (highlight_mode == "health") {
     var x1 = 24;
     var y1 = 24;
@@ -99,9 +89,7 @@ if (highlight_mode == "health") {
     draw_text(x2 + 18, y1 - 2, "Health");
 }
 
-// --------------------
 // Upgrade highlight
-// --------------------
 if (highlight_mode == "upgrade") {
     var box_x = 300;
     var box_y = 60;
@@ -123,9 +111,7 @@ if (highlight_mode == "upgrade") {
     //draw_text(x2 + 10, y1, "Upgrade");
 }
 
-// --------------------
 // Repair highlight
-// --------------------
 if (highlight_mode == "repair") {
     var box_x = 300;
     var box_y = 60;

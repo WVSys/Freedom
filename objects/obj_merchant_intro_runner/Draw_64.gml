@@ -4,9 +4,7 @@ var gui_w = display_get_gui_width();
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-// -------------------------
-// Tutorial text panels
-// -------------------------
+// tutorial text panels
 
 if (show_attack_controls)
 {
@@ -69,9 +67,7 @@ if (show_rune_controls)
     draw_text(gui_w / 2, 185, "Match rune type to equipment type");
 }
 
-// -------------------------
-// Gamepad visual
-// -------------------------
+// gamepad visual
 
 var any_controls_showing =
     show_attack_controls ||

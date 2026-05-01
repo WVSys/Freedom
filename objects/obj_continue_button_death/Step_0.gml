@@ -4,7 +4,7 @@ if (!active) exit;
 
 image_alpha = min(image_alpha + fade_speed, 1);
 
-// Extra safety: only allow continue if the player is actually dead
+// allow continue if player is dead
 if (!instance_exists(obj_character)) exit;
 
 var player_dead = false;

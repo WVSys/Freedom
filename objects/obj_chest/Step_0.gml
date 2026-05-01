@@ -8,7 +8,7 @@ if (!opened && place_meeting(x, y, obj_character))
     image_index = 0;
     image_speed = 1;
 
-    // ---- DROP COINS ----
+    // drop coins
     var coin_amount = irandom_range(50, 100);
 
     repeat (coin_amount)
@@ -18,12 +18,12 @@ if (!opened && place_meeting(x, y, obj_character))
         c.vsp = random_range(-8, -5);
     }
 
-    // ---- DROP RUNES ----
+    // drop runes
     var armor_amt  = irandom_range(5, 10);
     var shield_amt = irandom_range(5, 10);
     var sword_amt  = irandom_range(5, 10);
 
-    // Armor runes
+    // armor runes
     repeat (armor_amt)
     {
         var r = instance_create_layer(x, y, "Instances", obj_rune);
@@ -31,7 +31,7 @@ if (!opened && place_meeting(x, y, obj_character))
         r.set_rune_sprite();
     }
 
-    // Shield runes
+    // shield runes
     repeat (shield_amt)
     {
         var r = instance_create_layer(x, y, "Instances", obj_rune);
@@ -39,7 +39,7 @@ if (!opened && place_meeting(x, y, obj_character))
         r.set_rune_sprite();
     }
 
-    // Sword runes
+    // sword runes
     repeat (sword_amt)
     {
         var r = instance_create_layer(x, y, "Instances", obj_rune);

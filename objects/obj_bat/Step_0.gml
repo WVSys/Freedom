@@ -11,8 +11,7 @@ else
 }
 
 
-// PATH BACK-AND-FORTH
-// Handle reversing
+// reverse movement
 if (path_index != -1)
 {
     if (path_position >= 0.99)
@@ -25,7 +24,7 @@ if (path_index != -1)
     }
 }
 
-// ALWAYS face movement direction
+// movement direction
 if (path_speed > 0)
 {
     image_xscale = -1;
@@ -35,7 +34,7 @@ else if (path_speed < 0)
     image_xscale = 1;
 }
 
-// DAMAGE PLAYER
+// damage player
 
 if (hit_cooldown > 0)
 {

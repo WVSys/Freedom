@@ -109,8 +109,7 @@ if (hitbox_type == "damage" && target_object == obj_character)
         exit;
     }
 }
-// Guard hitboxes do NOT attack.
-// They only exist so enemy attack hitboxes can collide with them.
+// Guard hitbox
 if (hitbox_type == "guard")
 {
     if (life <= 0) {
@@ -145,7 +144,7 @@ if (hitbox_type == "damage" && target_object == obj_character)
             var g_top    = min(gy1, gy2) - pad;
             var g_bottom = max(gy1, gy2) + pad;
 
-            // Sample points along enemy attack line
+            // points along enemy attack line
             var steps = 12;
 
             for (var s = 0; s <= steps; s++)
@@ -192,7 +191,7 @@ if (hitbox_type == "damage" && target_object == obj_character)
     }
 }
 
-// Normal damage collision
+// normal damage collision
 var hit = collision_line(
     start_x,
     start_y,
@@ -203,7 +202,7 @@ var hit = collision_line(
     true
 );
 
-// Extra lines for thickness
+// extra lines for thickness
 if (hit == noone) {
     hit = collision_line(
         start_x,

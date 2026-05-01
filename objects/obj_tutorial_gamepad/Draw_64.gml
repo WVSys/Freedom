@@ -7,9 +7,8 @@ var gui_w = display_get_gui_width();
 var cx = gui_w / 2;
 var cy = 300;
 var a = 0.45 + 0.25 * sin(pulse);
-// --------------------
+
 // Text panel
-// --------------------
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
@@ -25,9 +24,7 @@ draw_set_color(c_yellow);
 draw_text(cx, 135, keyboard_text);
 draw_text(cx, 165, gamepad_text);
 
-// --------------------
 // Buttons only
-// --------------------
 var bx = cx;
 var by = cy;
 

@@ -49,12 +49,12 @@ var move_up = up_keyboard || up_gamepad;
 var move_down = down_keyboard || down_gamepad;
 
 
-// OVERWRITE CONFIRMATION MODE
+// overwrite save
 if (confirm_overwrite)
 {
     if (confirm)
     {
-        // Start fresh and overwrite old save later
+        // start fresh and overwrite old save
         if (file_exists(save_file))
         {
             file_delete(save_file);
@@ -88,7 +88,7 @@ if (confirm_overwrite)
 }
 
 
-// NORMAL MENU MODE
+// normal menu
 if (has_continue && (move_up || move_down))
 {
     menu_index = 1 - menu_index;
@@ -108,7 +108,7 @@ if (confirm)
 {
     if (menu_index == 0)
     {
-        // Start selected
+        // start selected save file
         if (file_exists(save_file))
         {
             confirm_overwrite = true;
@@ -134,7 +134,7 @@ if (confirm)
     }
     else if (menu_index == 1 && has_continue)
     {
-        // Continue selected
+        // continue selected
         global.load_save = true;
         global.respawn_from_checkpoint = false;
         global.new_game = false;

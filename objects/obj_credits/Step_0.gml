@@ -2,7 +2,7 @@ if (!finished)
 {
     y_offset -= scroll_speed;
 
-    // When fully scrolled past
+    // scroll past credits
     if (y_offset < -array_length(credits_text) * 40)
     {
         finished = true;

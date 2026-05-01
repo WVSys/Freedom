@@ -2,9 +2,7 @@
 event_inherited();
 
 
-// ===============================
-// Camera draw bounds
-// ===============================
+// camera draw bounds
 
 var cam = view_camera[0];
 
@@ -13,7 +11,7 @@ var cam_y = camera_get_view_y(cam);
 var cam_w = camera_get_view_width(cam);
 var cam_h = camera_get_view_height(cam);
 
-// Extra margin keeps the beam from looking like it ends exactly at screen edge
+
 var beam_draw_margin = 64;
 
 var view_left   = cam_x - beam_draw_margin;
@@ -22,9 +20,9 @@ var view_top    = cam_y - beam_draw_margin;
 var view_bottom = cam_y + cam_h + beam_draw_margin;
 
 
-// ===============================
-// Debug boss collision box / eye origin
-// ===============================
+
+// DEBUG boss collision box / eye origin
+
 
 if (global.debug) {
     draw_set_alpha(0.35);
@@ -43,9 +41,7 @@ if (global.debug) {
 }
 
 
-// ===============================
-// Draw eye beam windup / active beam
-// ===============================
+// draw eye beam windup / active beam
 
 if (variable_instance_exists(id, "beam_active") && beam_active) {
     var sx = x + (beam_eye_x * facing);
@@ -54,22 +50,22 @@ if (variable_instance_exists(id, "beam_active") && beam_active) {
     var ex = sx + lengthdir_x(beam_range, beam_angle);
     var ey = sy + lengthdir_y(beam_range, beam_angle);
 
-    // Clamp visual endpoint to camera bounds only
+    // clamp visual endpoint to camera bounds
     var draw_ex = clamp(ex, view_left, view_right);
     var draw_ey = clamp(ey, view_top, view_bottom);
 
     if (!beam_has_fired) {
-        // Warning aim line
+        // warning aim line
         draw_set_alpha(0.35);
         draw_set_color(c_red);
         draw_line_width(sx, sy, draw_ex, draw_ey, 3);
         draw_set_alpha(1);
     } else {
-        // Active beam visual
+        // active beam visual
         draw_set_alpha(0.85);
         draw_set_color(c_lime);
 
-        // Cap visual width to reduce offscreen wedge artifacts
+        // cap visual width to reduce offscreen wedge artifacts
         var visual_beam_width = min(beam_thickness * 2, 24);
 
         draw_line_width(sx, sy, draw_ex, draw_ey, visual_beam_width);
@@ -84,9 +80,6 @@ if (variable_instance_exists(id, "beam_active") && beam_active) {
 }
 
 
-// ===============================
-// Final draw-state cleanup
-// ===============================
 
 draw_set_alpha(1);
 draw_set_color(c_white);

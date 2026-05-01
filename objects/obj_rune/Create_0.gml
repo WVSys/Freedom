@@ -5,7 +5,7 @@ landed = false;
 
 value = 1;
 
-// Default type in case enemy does not set it
+// default type in case enemy does not set it
 rune_type = "none";
 
 image_speed = 1;

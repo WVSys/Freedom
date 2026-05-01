@@ -1,10 +1,10 @@
 draw_set_alpha(particle_alpha);
 draw_set_color(particle_color);
 
-// Main particle
+// main particle
 draw_circle(x, y, particle_size, false);
 
-// Small streak behind it
+// small streak behind it
 var speed_dir = point_direction(0, 0, hsp, vsp);
 var tx = x - lengthdir_x(trail_length, speed_dir);
 var ty = y - lengthdir_y(trail_length, speed_dir);

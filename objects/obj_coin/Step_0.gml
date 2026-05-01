@@ -29,7 +29,7 @@ if (!landed)
 }
 else
 {
-    // optional: idle sparkle / bob / wait
+   
 }
 
 if (place_meeting(x, y, obj_character))
