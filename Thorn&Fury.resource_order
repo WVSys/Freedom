@@ -22,6 +22,7 @@
     {"name":"obj_camera_controller_forest","order":2,"path":"objects/obj_camera_controller_forest/obj_camera_controller_forest.yy",},
     {"name":"obj_cave_mouth","order":13,"path":"objects/obj_cave_mouth/obj_cave_mouth.yy",},
     {"name":"obj_cave5_exit","order":40,"path":"objects/obj_cave5_exit/obj_cave5_exit.yy",},
+    {"name":"obj_chestplate","order":47,"path":"objects/obj_chestplate/obj_chestplate.yy",},
     {"name":"obj_coin","order":9,"path":"objects/obj_coin/obj_coin.yy",},
     {"name":"obj_continue_button_death","order":27,"path":"objects/obj_continue_button_death/obj_continue_button_death.yy",},
     {"name":"obj_continue","order":24,"path":"objects/obj_continue/obj_continue.yy",},

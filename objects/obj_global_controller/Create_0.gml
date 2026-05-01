@@ -41,6 +41,11 @@ global.saved_gauntlets_durability_max = 0;
 global.saved_sword_durability_max = 0;
 global.saved_shield_durability_max = 0;
 
+if (!variable_global_exists("chestplate_collected"))
+{
+    global.chestplate_collected = false;
+}
+
 global.saved_coins = 0;
 global.saved_armor_runes = 0;
 global.saved_shield_runes = 0;
