@@ -619,6 +619,10 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_falling_helmet;
 				case spr_landing:
                     return spr_landing_helmet;
+				case spr_character_damage:
+                    return spr_damage_helmet;
+				case spr_guard:
+                    return spr_blocking_helmet;
 				
             }
             break;
@@ -628,7 +632,7 @@ function get_equipment_overlay_sprite(_piece) {
                 case spr_first_attack:
                     return spr_chestplate_attack1;
 				case spr_walking:
-                    return spr_gauntlets_walking;
+                    return spr_chestplate_walking;
 				case spr_jump_attack:
                     return spr_chestplate_jumping_attack;
 				case spr_idle_stand1:
@@ -639,6 +643,10 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_falling_chestplate;
 				case spr_landing:
                     return spr_landing_chestplate;
+				case spr_character_damage:
+                    return spr_damage_chestplate;
+				case spr_guard:
+                    return spr_blocking_chestplate;
             }
             break;
 
@@ -658,6 +666,10 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_falling_greaves;
 				case spr_landing:
                     return spr_landing_greaves;
+				case spr_character_damage:
+                    return spr_damage_greaves;
+				case spr_guard:
+                    return spr_blocking_greaves;
             }
             break;
 
@@ -666,7 +678,7 @@ function get_equipment_overlay_sprite(_piece) {
                 case spr_first_attack:
                     return spr_gauntlets_attack1;
 				case spr_walking:
-                    return spr_chestplate_walking;
+                    return spr_gauntlets_walking;
 				case spr_jump_attack:
                     return spr_gauntlets_jumping_attack;
 				case spr_idle_stand1:
@@ -677,6 +689,10 @@ function get_equipment_overlay_sprite(_piece) {
                     return spr_falling_gauntlets;
 				case spr_landing:
                     return spr_landing_gauntlets;
+				case spr_character_damage:
+                    return spr_damage_gauntlets;
+				case spr_guard:
+                    return spr_blocking_gauntlets;
             }
             break;
     }
