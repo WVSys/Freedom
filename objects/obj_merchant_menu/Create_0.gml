@@ -1,6 +1,7 @@
 menu_mode = "category";
 category_index = 0;
 action_index = 0;
+can_interact = true; // for tutorial
 
 categories = [];
 array_push(categories, "Save");

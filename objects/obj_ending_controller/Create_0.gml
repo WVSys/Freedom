@@ -1,0 +1,1 @@
+global.ending_started = false;

@@ -1,0 +1,1 @@
+option = 0; // 0 = restart, 1 = quit

@@ -671,3 +671,20 @@ function draw_equipment_overlays() {
     draw_equipment_piece("Greaves", greaves, greaves_durability);
     draw_equipment_piece("Gauntlets", gauntlets, gauntlets_durability);
 }
+
+// Starts ending
+function start_ending_sequence()
+{
+    // Lock player
+    hsp = 0;
+    vsp = 0;
+    ending_lock = true;
+
+    // Say the line
+    say("I've avenged you father.");
+
+    // Delay before credits
+    alarm[5] = room_speed * 3; // 3 seconds
+}
+
+ending_lock = false;
