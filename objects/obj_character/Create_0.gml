@@ -123,7 +123,7 @@ hurt_control_lock = true;
 
 spr_hurt = spr_character_damage;
 
-snd_hurt = noone;
+snd_hurt = character_pain;
 
 attack_active = false;
 attack_spawned_frame = -1;

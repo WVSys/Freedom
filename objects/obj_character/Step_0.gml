@@ -362,6 +362,8 @@ if (combat_state == CombatState.NONE)
 {
     if (on_ground && !was_on_ground && vsp >= 0)
     {
+		audio_play_sound(character_landing, 1, false);
+
         move_state = MoveState.LAND;
         image_index = 0;
         image_speed = 1;
