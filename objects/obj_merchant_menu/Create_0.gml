@@ -6,12 +6,12 @@ can_interact = true; // for tutorial
 categories = [];
 array_push(categories, "Save");
 
-array_push(categories, "Helmet");
-array_push(categories, "Chestplate");
-array_push(categories, "Greaves");
-array_push(categories, "Gauntlets");
-array_push(categories, "Sword");
-array_push(categories, "Shield");
+if (obj_character.helmet)     array_push(categories, "Helmet");
+if (obj_character.chestplate) array_push(categories, "Chestplate");
+if (obj_character.greaves)    array_push(categories, "Greaves");
+if (obj_character.gauntlets)  array_push(categories, "Gauntlets");
+if (obj_character.sword)      array_push(categories, "Sword");
+if (obj_character.shield)     array_push(categories, "Shield");
 
 array_push(categories, "HP Potion");
 
