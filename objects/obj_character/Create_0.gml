@@ -587,6 +587,9 @@ function get_equipment_overlay_sprite(_piece) {
             switch (sprite_index) {
                 case spr_first_attack:
                     return spr_helmet_attack1;
+				case spr_walking:
+                    return spr_helmet_walking;
+				
             }
             break;
 
@@ -594,6 +597,8 @@ function get_equipment_overlay_sprite(_piece) {
             switch (sprite_index) {
                 case spr_first_attack:
                     return spr_chestplate_attack1;
+				case spr_walking:
+                    return spr_gauntlets_walking;
             }
             break;
 
@@ -601,6 +606,8 @@ function get_equipment_overlay_sprite(_piece) {
             switch (sprite_index) {
                 case spr_first_attack:
                     return spr_greaves_attack1;
+				case spr_walking:
+                    return spr_greaves_walking;
             }
             break;
 
@@ -608,6 +615,8 @@ function get_equipment_overlay_sprite(_piece) {
             switch (sprite_index) {
                 case spr_first_attack:
                     return spr_gauntlets_attack1;
+				case spr_walking:
+                    return spr_chestplate_walking;
             }
             break;
     }
