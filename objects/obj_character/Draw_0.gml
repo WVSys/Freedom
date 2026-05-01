@@ -2,6 +2,10 @@
 // Draw sprite first
 draw_self();
 
+// Draw modular armor overlays after the base character
+draw_equipment_overlays();
+
+
 if (global.debug)
 {
     // Optional: character collision box

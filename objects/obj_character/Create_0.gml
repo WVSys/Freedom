@@ -30,10 +30,10 @@ is_blocking = false;
 
 speech_cooldown = 0;
 
-helmet = false;
-chestplate = false;
-greaves = false;
-gauntlets = false;
+helmet = true;
+chestplate = true;
+greaves = true;
+gauntlets = true;
 sword = true;
 shield = true;
 
@@ -569,5 +569,88 @@ function damage_armor(_amount) {
 
 
 // Initialize base equipment stats.
-// This fixes sword/shield starting with max durability of 0.
 refresh_equipment_stats(true);
+
+// ===============================
+// Equipment visual overlay testing
+// ===============================
+
+// Toggle this off if overlays get annoying during testing.
+draw_equipment_visuals = true;
+
+// Returns which armor overlay sprite should be drawn for a given piece.
+// Right now this only supports attack armor.
+// Later, add idle/run/jump/etc. cases here.
+function get_equipment_overlay_sprite(_piece) {
+    switch (_piece) {
+        case "Helmet":
+            switch (sprite_index) {
+                case spr_first_attack:
+                    return spr_helmet_attack1;
+            }
+            break;
+
+        case "Chestplate":
+            switch (sprite_index) {
+                case spr_first_attack:
+                    return spr_chestplate_attack1;
+            }
+            break;
+
+        case "Greaves":
+            switch (sprite_index) {
+                case spr_first_attack:
+                    return spr_greaves_attack1;
+            }
+            break;
+
+        case "Gauntlets":
+            switch (sprite_index) {
+                case spr_first_attack:
+                    return spr_gauntlets_attack1;
+            }
+            break;
+    }
+
+    return -1;
+}
+
+// Draw one equipment piece if it exists, has durability,
+// and has a sprite for the current animation.
+function draw_equipment_piece(_piece, _equipped, _durability) {
+    if (!draw_equipment_visuals) return;
+    if (is_dead) return;
+    if (!_equipped) return;
+    if (_durability <= 0) return;
+
+    var overlay_sprite = get_equipment_overlay_sprite(_piece);
+    if (overlay_sprite == -1) return;
+
+    var overlay_frames = sprite_get_number(overlay_sprite);
+    if (overlay_frames <= 0) return;
+
+    // Match the character's current animation frame.
+    // The modulo keeps testing safe if the overlay has fewer frames.
+    var overlay_frame = floor(image_index) mod overlay_frames;
+
+    draw_sprite_ext(
+        overlay_sprite,
+        overlay_frame,
+        x,
+        y,
+        image_xscale,
+        image_yscale,
+        image_angle,
+        image_blend,
+        image_alpha
+    );
+}
+
+// Central draw call for all armor visuals.
+// Add/remove pieces here without touching Draw_0.gml again.
+function draw_equipment_overlays() {
+    draw_equipment_piece("Helmet", helmet, helmet_durability);
+    draw_equipment_piece("Chestplate", chestplate, chestplate_durability);
+    draw_equipment_piece("Greaves", greaves, greaves_durability);
+    draw_equipment_piece("Gauntlets", gauntlets, gauntlets_durability);
+}
