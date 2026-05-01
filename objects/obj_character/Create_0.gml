@@ -30,10 +30,10 @@ is_blocking = false;
 
 speech_cooldown = 0;
 
-helmet = true;
-chestplate = true;
-greaves = true;
-gauntlets = true;
+helmet = false;
+chestplate = false;
+greaves = false;
+gauntlets = false;
 sword = true;
 shield = true;
 

@@ -34,8 +34,89 @@ draw_text(850, 370,"Jump: Spacebar");
 draw_text(850, 400,"Movement: Left/Right arrows");
 draw_text(850, 430,"Lookup: Up arrow");
 
-draw_text(100, 630,"Sword");
-draw_text(100, 650,"Atk: "+ string(obj_character.get_effective_sword_damage()));
+var start_x = 100;
+var start_y = 600;
+var gap = 140;
+
+var equip_x = start_x;
+
+// SWORD
+if (obj_character.sword)
+{
+    draw_text(equip_x, start_y, "Sword");
+
+    draw_text(equip_x, start_y + 20,
+        "Atk: " + string(obj_character.get_effective_sword_damage())
+    );
+
+    draw_text(equip_x, start_y + 40,
+        "Dur: " + string(obj_character.sword_durability) + "/" + string(obj_character.sword_durability_max)
+    );
+
+    equip_x += gap;
+}
+
+// SHIELD
+if (obj_character.shield)
+{
+    draw_text(equip_x, start_y, "Shield");
+
+    draw_text(equip_x, start_y + 20,
+        "Guard: " + string(obj_character.guard_meter) + "/" + string(obj_character.guard_meter_max)
+    );
+
+    draw_text(equip_x, start_y + 40,
+        "Dur: " + string(obj_character.shield_durability) + "/" + string(obj_character.shield_durability_max)
+    );
+
+    equip_x += gap;
+}
+
+// HELMET
+if (obj_character.helmet)
+{
+    draw_text(equip_x, start_y, "Helmet");
+
+    draw_text(equip_x, start_y + 20,
+        "Dur: " + string(obj_character.helmet_durability) + "/" + string(obj_character.helmet_durability_max)
+    );
+
+    equip_x += gap;
+}
+
+// CHESTPLATE
+if (obj_character.chestplate)
+{
+    draw_text(equip_x, start_y, "Chestplate");
+
+    draw_text(equip_x, start_y + 20,
+        "Dur: " + string(obj_character.chestplate_durability) + "/" + string(obj_character.chestplate_durability_max)
+    );
+
+    equip_x += gap;
+}
+
+// GREAVES
+if (obj_character.greaves)
+{
+    draw_text(equip_x, start_y, "Greaves");
+
+    draw_text(equip_x, start_y + 20,
+        "Dur: " + string(obj_character.greaves_durability) + "/" + string(obj_character.greaves_durability_max)
+    );
+
+    equip_x += gap;
+}
+
+// GAUNTLETS
+if (obj_character.gauntlets)
+{
+    draw_text(equip_x, start_y, "Gauntlets");
+
+    draw_text(equip_x, start_y + 20,
+        "Dur: " + string(obj_character.gauntlets_durability) + "/" + string(obj_character.gauntlets_durability_max)
+    );
+}
 
 
 
