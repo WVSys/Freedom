@@ -4,6 +4,12 @@ if (!global.merchant_menu_open)
     exit;
 }
 
+// for tutorial
+if (global.menu_input_lock && !can_interact)
+{
+    exit;
+}
+
 var move_up = false;
 var move_down = false;
 var move_left = false;
