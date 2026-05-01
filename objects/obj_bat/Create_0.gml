@@ -14,10 +14,10 @@ spr_death = noone;
 sprite_scale = 2;
 sprite_facing = -1;
 
-hp = 10;
-hp_max = 10;
+hp = 5;
+hp_max = 5;
 move_speed = 3;
-attack_damage = 5;
+attack_damage = 2;
 chase_range = 50;
 attack_range = 100;
 
@@ -28,10 +28,10 @@ coin_drop_yoffset = -50;
 
 enemy_blocker_object = obj_enemy;
 
-attack_hitbox_x1 = 75;
-attack_hitbox_y1 = -12;
-attack_hitbox_x2 = 123;
-attack_hitbox_y2 = -10;
+attack_hitbox_x1 = 0;
+attack_hitbox_y1 = 0;
+attack_hitbox_x2 = 0;
+attack_hitbox_y2 = 0;
 attack_hitbox_life = 2;
 attack_hitbox_thickness = 10;
 

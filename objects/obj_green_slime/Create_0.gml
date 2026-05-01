@@ -1,8 +1,8 @@
 // Inherit the parent event
 event_inherited();
 
-hp = 25;
-hp_max = 25;
+hp = 15;
+hp_max = 15;
 spr_idle = noone;
 spr_walk = spr_green_slime;
 spr_attack = noone;
