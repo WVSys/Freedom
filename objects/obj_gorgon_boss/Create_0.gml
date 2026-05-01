@@ -40,12 +40,12 @@ enemy_blocker_object = obj_enemy;
 
 stagger_locked = false;
 
-attack_hitbox_x1 = 53;
-attack_hitbox_y1 = -12;
-attack_hitbox_x2 = 183;
-attack_hitbox_y2 = -10;
+attack_hitbox_x1 = 10;
+attack_hitbox_y1 = -30;
+attack_hitbox_x2 = 113;
+attack_hitbox_y2 = -44;
 attack_hitbox_life = 2;
-attack_hitbox_thickness = 16;
+attack_hitbox_thickness = 18;
 
 recoil_timer = 0;
 recoil_speed = 2.5;

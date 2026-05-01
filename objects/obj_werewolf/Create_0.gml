@@ -35,12 +35,12 @@ coin_drop_yoffset = -50;
 
 enemy_blocker_object = obj_enemy;
 
-attack_hitbox_x1 = 53;
-attack_hitbox_y1 = -12;
-attack_hitbox_x2 = 183;
-attack_hitbox_y2 = -10;
+attack_hitbox_x1 = 54;
+attack_hitbox_y1 = -35;
+attack_hitbox_x2 = 111;
+attack_hitbox_y2 = -182;
 attack_hitbox_life = 2;
-attack_hitbox_thickness = 16;
+attack_hitbox_thickness = 24;
 
 recoil_timer = 0;
 recoil_speed = 2.5;
