@@ -7,7 +7,10 @@ else
 {
 	image_speed = 1;
 }
-
+if (move_state == MoveState.HURT) {
+    state_hurt();
+    exit;
+}
 if (global.dialogue_active)
 {
     hsp = 0;

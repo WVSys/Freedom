@@ -2,6 +2,7 @@ enum MoveState {
     IDLE,
     RUN,
     JUMP,
+	HURT,
     FALL,
     LAND,
     DEAD
@@ -108,6 +109,22 @@ invincible = false;
 
 facing = 1;
 
+// ===============================
+// Hurt / recoil tuning
+// ===============================
+hurt_timer = 0;
+hurt_duration = 18;
+
+hurt_recoil_speed = 5;
+hurt_recoil_friction = 0.72;
+
+hurt_pop_speed = -3;
+hurt_control_lock = true;
+
+spr_hurt = spr_character_damage;
+
+snd_hurt = noone;
+
 attack_active = false;
 attack_spawned_frame = -1;
 attack_damage = 8;
@@ -127,35 +144,35 @@ arc_x1[0] = 7;
 arc_y1[0] = -45;
 arc_x2[0] = 46;
 arc_y2[0] = -33;
-arc_thickness[0] = 4;
+arc_thickness[0] = 6;
 
 // Arc segment 1: middle slash
 arc_x1[1] = 46;
 arc_y1[1] = -33;
 arc_x2[1] = 79;
 arc_y2[1] = -10;
-arc_thickness[1] = 4;
+arc_thickness[1] = 6;
 
 // Arc segment 2: low slash
 arc_x1[2] = 79;
 arc_y1[2] = -10;
 arc_x2[2] = 109;
 arc_y2[2] = 20;
-arc_thickness[2] = 4;
+arc_thickness[2] = 6;
 
 // Arc segment 3: low slash
 arc_x1[3] = 109;
 arc_y1[3] = 20;
 arc_x2[3] = 105;
 arc_y2[3] = 34;
-arc_thickness[3] = 4;
+arc_thickness[3] = 6;
 
 // Arc segment 4: low slash
 arc_x1[4] = 105;
 arc_y1[4] = 34;
 arc_x2[4] = 73;
 arc_y2[4] = 48;
-arc_thickness[4] = 4;
+arc_thickness[4] = 6;
 
 debug_tune_shield = false;
 shield_x1 = -2;
@@ -170,62 +187,181 @@ air_arc_x1[0] = 26;
 air_arc_y1[0] = -47;
 air_arc_x2[0] = 46;
 air_arc_y2[0] = -34;
-air_arc_thickness[0] = 4;
+air_arc_thickness[0] = 6;
 
 air_arc_x1[1] = 48;
 air_arc_y1[1] = -32;
 air_arc_x2[1] = 66;
 air_arc_y2[1] = -16;
-air_arc_thickness[1] = 4;
+air_arc_thickness[1] = 6;
 
 air_arc_x1[2] = 68;
 air_arc_y1[2] = -14;
 air_arc_x2[2] = 98;
 air_arc_y2[2] = 22;
-air_arc_thickness[2] = 4;
+air_arc_thickness[2] = 6;
 
 air_arc_x1[3] = 96;
 air_arc_y1[3] = 26;
 air_arc_x2[3] = 73;
 air_arc_y2[3] = 20;
-air_arc_thickness[3] = 4;
+air_arc_thickness[3] = 6;
 
 air_arc_x1[4] = 70;
 air_arc_y1[4] = 19;
 air_arc_x2[4] = 45;
 air_arc_y2[4] = 10;
-air_arc_thickness[4] = 4;
+air_arc_thickness[4] = 6;
 
 debug_no_gravity = false;
 
-function take_damage(amount) {
+function take_damage(amount, attacker = noone) {
     if (invincible || is_dead) return;
 
-    // Armor only loses durability. No defense scaling yet.
     damage_armor(1);
 
     hp = clamp(hp - amount, 0, hp_max);
-
     show_debug_message("HP: " + string(hp));
 
     if (hp <= 0) {
         hp = 0;
         is_dead = true;
-		
-		audio_play_sound(character_death, 10, false);
-		
+
+        audio_play_sound(character_death, 10, false);
+
         move_state = MoveState.DEAD;
         combat_state = CombatState.NONE;
+
         hsp = 0;
         vsp = 0;
+
         sprite_index = spr_character_dead;
         image_index = 0;
         image_speed = 1;
+
         exit;
     }
 
+    enter_hurt_state(attacker);
+
     invincible = true;
     alarm[0] = 20;
+}
+
+function enter_hurt_state(attacker = noone) {
+    if (is_dead) return;
+
+    var recoil_dir = -facing;
+
+    if (instance_exists(attacker)) {
+        recoil_dir = sign(x - attacker.x);
+
+        if (recoil_dir == 0) {
+            recoil_dir = -facing;
+        }
+    } else {
+        var nearest_enemy = instance_nearest(x, y, obj_enemy);
+
+        if (nearest_enemy != noone) {
+            recoil_dir = sign(x - nearest_enemy.x);
+
+            if (recoil_dir == 0) {
+                recoil_dir = -facing;
+            }
+        }
+    }
+
+    hsp = recoil_dir * hurt_recoil_speed;
+
+    if (place_meeting(x, y + 1, obj_wall) || vsp > 0) {
+        vsp = hurt_pop_speed;
+    }
+
+    hurt_timer = hurt_duration;
+
+    move_state = MoveState.HURT;
+    combat_state = CombatState.NONE;
+
+    attack_active = false;
+    attack_spawned_frame = -1;
+
+    is_blocking = false;
+    air_attack_active = false;
+
+    if (snd_hurt != noone) {
+        audio_play_sound(snd_hurt, 10, false);
+    }
+
+    if (spr_hurt != noone) {
+        sprite_index = spr_hurt;
+        image_index = 0;
+        image_speed = 1;
+    }
+
+    show_debug_message("Player hurt recoil triggered");
+}
+
+function state_hurt() {
+    hurt_timer--;
+
+    // Gravity.
+    if (!place_meeting(x, y + 1, obj_wall) || vsp < 0) {
+        vsp += grav;
+
+        if (vsp > max_fall) {
+            vsp = max_fall;
+        }
+    }
+
+    // Horizontal recoil movement.
+    if (hsp != 0) {
+        if (!place_meeting(x + hsp, y, obj_wall)) {
+            x += hsp;
+        } else {
+            while (!place_meeting(x + sign(hsp), y, obj_wall)) {
+                x += sign(hsp);
+            }
+
+            hsp = 0;
+        }
+    }
+
+    // Vertical movement.
+    if (vsp != 0) {
+        if (!place_meeting(x, y + vsp, obj_wall)) {
+            y += vsp;
+        } else {
+            while (!place_meeting(x, y + sign(vsp), obj_wall)) {
+                y += sign(vsp);
+            }
+
+            vsp = 0;
+        }
+    }
+
+    hsp *= hurt_recoil_friction;
+
+    if (abs(hsp) < 0.1) {
+        hsp = 0;
+    }
+
+    if (spr_hurt != noone) {
+        sprite_index = spr_hurt;
+    }
+
+    if (hurt_timer <= 0) {
+        hurt_timer = 0;
+        hsp = 0;
+
+        if (place_meeting(x, y + 1, obj_wall)) {
+            move_state = MoveState.IDLE;
+        } else {
+            move_state = MoveState.FALL;
+        }
+
+        image_index = 0;
+        image_speed = 1;
+    }
 }
 
 function say(_text)

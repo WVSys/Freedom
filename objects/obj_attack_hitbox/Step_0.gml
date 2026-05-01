@@ -237,7 +237,7 @@ if (hit != noone && hit != owner)
     switch (hitbox_type)
     {
         case "damage":
-            hit.take_damage(damage);
+            hit.take_damage(damage, owner);
         break;
 
         default:
