@@ -131,6 +131,7 @@
     {"name":"spr_character_dead","order":24,"path":"sprites/spr_character_dead/spr_character_dead.yy",},
     {"name":"spr_chestplate_jumping_attack","order":9,"path":"sprites/spr_chestplate_jumping_attack/spr_chestplate_jumping_attack.yy",},
     {"name":"spr_chestplate_walking","order":7,"path":"sprites/spr_chestplate_walking/spr_chestplate_walking.yy",},
+    {"name":"spr_chestplate","order":27,"path":"sprites/spr_chestplate/spr_chestplate.yy",},
     {"name":"spr_coin","order":10,"path":"sprites/spr_coin/spr_coin.yy",},
     {"name":"spr_conintue_death","order":20,"path":"sprites/spr_conintue_death/spr_conintue_death.yy",},
     {"name":"spr_continue","order":4,"path":"sprites/spr_continue/spr_continue.yy",},

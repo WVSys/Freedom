@@ -187,6 +187,7 @@
     {"id":{"name":"spr_chestplate_attack1","path":"sprites/spr_chestplate_attack1/spr_chestplate_attack1.yy",},},
     {"id":{"name":"spr_chestplate_jumping_attack","path":"sprites/spr_chestplate_jumping_attack/spr_chestplate_jumping_attack.yy",},},
     {"id":{"name":"spr_chestplate_walking","path":"sprites/spr_chestplate_walking/spr_chestplate_walking.yy",},},
+    {"id":{"name":"spr_chestplate","path":"sprites/spr_chestplate/spr_chestplate.yy",},},
     {"id":{"name":"spr_coin","path":"sprites/spr_coin/spr_coin.yy",},},
     {"id":{"name":"spr_conintue_death","path":"sprites/spr_conintue_death/spr_conintue_death.yy",},},
     {"id":{"name":"spr_continue","path":"sprites/spr_continue/spr_continue.yy",},},
