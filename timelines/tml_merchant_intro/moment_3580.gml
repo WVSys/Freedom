@@ -1,8 +1,8 @@
 global.menu_input_lock = true;
-// OPEN MENU FIRST
+// opens menu
 global.merchant_menu_open = true;
 
-// THEN create it
+// creates menu
 if (!instance_exists(obj_merchant_menu))
 {
     var menu = instance_create_layer(0, 0, "Instances", obj_merchant_menu);
@@ -26,7 +26,7 @@ if (!instance_exists(obj_merchant_menu))
     menu.action_index = 0; // Upgrade
 }
 show_rune_controls = false;
-show_merchant_options = true;
+show_merchant_upgrade = true;
 set_tutorial_focus("upgrade");
 
 if (instance_exists(merchant_id))

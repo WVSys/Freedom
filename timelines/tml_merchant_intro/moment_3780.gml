@@ -1,4 +1,6 @@
-
+show_merchant_upgrade = false;
+show_merchant_repair = true;
+set_tutorial_focus("repair");
 
 if (instance_exists(merchant_id))
 {

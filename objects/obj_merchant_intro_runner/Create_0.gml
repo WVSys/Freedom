@@ -5,6 +5,8 @@ show_attack_controls = false;
 show_block_controls = false;
 show_potion_controls = false;
 show_rune_controls = false;
+show_merchant_upgrade = false;
+show_merchant_repair = false;
 
 timeline_running = false;
 timeline_index = -1;
@@ -81,5 +83,14 @@ set_tutorial_focus = function(_mode) {
             pad.set_control("rune");
             h.highlight_mode = "runes";
             break;
+		
+		case "upgrade":
+			pad.set_control("upgrade");
+			h.highlight_mode = "upgrade";
+			break;
+			
+		case "repair":
+			pad.set_control("repair");
+			h.highlight_mode = "repair";
     }
 };
