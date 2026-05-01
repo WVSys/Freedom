@@ -1,5 +1,6 @@
 global.debug = false;
 global.next_spawn = -1;
+global.menu_input_lock = false; // for tutorial
 
 // randomizes gold and rune drops from chests
 randomize();
