@@ -99,5 +99,29 @@ if (highlight_mode == "health") {
     draw_text(x2 + 18, y1 - 2, "Health");
 }
 
+// --------------------
+// Upgrade highlight
+// --------------------
+if (highlight_mode == "upgrade") {
+    var box_x = 300;
+    var box_y = 60;
+
+    var rx = box_x + 220;
+    var ry = box_y + 50;
+
+    var x1 = rx - 10;
+    var y1 = ry + 160;
+    var x2 = rx + 260;
+    var y2 = ry + 190;
+
+    draw_set_alpha(a);
+    draw_set_color(c_yellow);
+    draw_rectangle(x1, y1, x2, y2, false);
+
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    //draw_text(x2 + 10, y1, "Upgrade");
+}
+
 draw_set_alpha(1);
 draw_set_color(c_white);

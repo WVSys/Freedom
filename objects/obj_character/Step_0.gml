@@ -107,7 +107,7 @@ if (ending_lock)
     hsp = 0;
     vsp = 0;
 
-    // optional: force idle animation
+    // force idle animation
     sprite_index = spr_idle_stand1;
     image_speed = 1;
 
