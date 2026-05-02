@@ -91,6 +91,7 @@
     {"name":"upgrade_item","order":15,"path":"scripts/upgrade_item/upgrade_item.yy",},
     {"name":"boss_beam_buildup","order":16,"path":"sounds/boss_beam_buildup/boss_beam_buildup.yy",},
     {"name":"boss_beam","order":15,"path":"sounds/boss_beam/boss_beam.yy",},
+    {"name":"boss_music","order":19,"path":"sounds/boss_music/boss_music.yy",},
     {"name":"cave_sounds","order":2,"path":"sounds/cave_sounds/cave_sounds.yy",},
     {"name":"character_death","order":10,"path":"sounds/character_death/character_death.yy",},
     {"name":"character_landing","order":17,"path":"sounds/character_landing/character_landing.yy",},

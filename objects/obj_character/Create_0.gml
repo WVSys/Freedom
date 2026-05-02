@@ -136,6 +136,7 @@ attack_hitbox_x2 = 70;
 attack_hitbox_y2 = 6;
 attack_hitbox_thickness = 8;
 
+//ChatGPT was used to scaffold real time tuning of hitbox
 //tuning arc hitbox
 debug_arc_index = 1;
 
@@ -592,8 +593,9 @@ function damage_armor(_amount) {
 // Initialize base equipment stats.
 refresh_equipment_stats(true);
 
+//ChatGPT provided initial scaffold for armor overlay
 // ===============================
-// Equipment visual overlay testing
+// Equipment visual overlay 
 // ===============================
 
 // Toggle this off if overlays get annoying during testing.

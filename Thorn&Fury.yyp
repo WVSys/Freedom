@@ -141,6 +141,7 @@
     {"id":{"name":"shd_elite_red","path":"shaders/shd_elite_red/shd_elite_red.yy",},},
     {"id":{"name":"boss_beam_buildup","path":"sounds/boss_beam_buildup/boss_beam_buildup.yy",},},
     {"id":{"name":"boss_beam","path":"sounds/boss_beam/boss_beam.yy",},},
+    {"id":{"name":"boss_music","path":"sounds/boss_music/boss_music.yy",},},
     {"id":{"name":"cave_sounds","path":"sounds/cave_sounds/cave_sounds.yy",},},
     {"id":{"name":"character_death","path":"sounds/character_death/character_death.yy",},},
     {"id":{"name":"character_landing","path":"sounds/character_landing/character_landing.yy",},},
