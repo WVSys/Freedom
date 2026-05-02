@@ -38,6 +38,10 @@ coin_drop_yoffset = -50;
 
 enemy_blocker_object = obj_enemy;
 
+snd_death = Gorgon_death_scream;
+snd_attack = noone;
+snd_hurt = noone;
+
 stagger_locked = false;
 
 attack_hitbox_x1 = 10;

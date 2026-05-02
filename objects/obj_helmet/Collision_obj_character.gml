@@ -9,6 +9,6 @@ with (other)
         helmet_durability = helmet_durability_max;
     }
 }
-
+audio_play_sound(armor_find,1, false);
 global.helmet_collected = true;
 instance_destroy();

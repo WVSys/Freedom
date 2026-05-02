@@ -22,3 +22,7 @@ coin_value = 1;
 coin_drop_yoffset = -50;
 
 rune_drop_y_offset = -50;
+
+snd_death = slime_death;
+snd_attack = noone;
+snd_hurt = slime_hurt;

@@ -11,6 +11,7 @@ with (other)
         show_debug_message("Picked up Chestplate!");
     }
 }
+audio_play_sound(armor_find,1, false);
 
 global.chestplate_collected = true;
 

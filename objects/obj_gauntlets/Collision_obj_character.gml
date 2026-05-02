@@ -9,6 +9,6 @@ with (other)
         gauntlets_durability = gauntlets_durability_max;
     }
 }
-
+audio_play_sound(armor_find,1, false);
 global.gauntlets_collected = true;
 instance_destroy();

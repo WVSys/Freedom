@@ -36,5 +36,5 @@ recoil_speed = 2.5;
 recoil_duration = 35;
 
 snd_death = golem_death;
-snd_attack = noone;
+snd_attack = golem_attack;
 snd_hurt = noone;
