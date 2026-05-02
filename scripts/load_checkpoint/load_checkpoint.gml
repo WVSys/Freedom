@@ -56,6 +56,11 @@ function load_checkpoint()
     global.saved_hp_potions = save_data.saved_hp_potions;
 	
 	global.saved_intro_merchant_seen = save_data.saved_intro_merchant_seen;
+	
+	global.helmet_collected = global.saved_helmet;
+    global.chestplate_collected = global.saved_chestplate;
+    global.greaves_collected = global.saved_greaves;
+    global.gauntlets_collected = global.saved_gauntlets;
 
     show_debug_message("Checkpoint loaded. Coins: " + string(global.saved_coins));
 
