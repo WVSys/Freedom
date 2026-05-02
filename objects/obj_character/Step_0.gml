@@ -297,7 +297,6 @@ if (combat_state == CombatState.NONE && attack_pressed)
                 }
             }
 
-            // final cleanup
             while (place_meeting(x, y, obj_wall))
             {
                 y -= 1;
@@ -570,7 +569,7 @@ if (keyboard_check_pressed(ord("H"))
         hp_potions -= 1;
 
         heal_active = true;
-        heal_amount_remaining = 20; // total HP restored over time
+        heal_amount_remaining = 100; // total HP restored over time
         heal_tick_timer = 0;
     }
 }
