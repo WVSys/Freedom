@@ -1,7 +1,7 @@
-if (instance_exists(obj_character))
+if (instance_exists(merchant_id))
 {
-    with (obj_character)
+    with (merchant_id)
     {
-        say("It is.");
+        merchant_say("After that, you decide whether vengeance is worth dying for.");
     }
 }
