@@ -728,3 +728,9 @@ if (instance_exists(interact_target))
 }
 
 interact_target = noone;
+// CHEAT: toggle invincibility with "9"
+if (keyboard_check_pressed(ord("9"))) {
+    invincible_cheat = !invincible_cheat;
+
+    show_debug_message("Invincibility Cheat: " + string(invincible_cheat));
+}

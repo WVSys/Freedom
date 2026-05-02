@@ -216,7 +216,7 @@ air_arc_thickness[4] = 6;
 debug_no_gravity = false;
 
 function take_damage(amount, attacker = noone) {
-    if (invincible || is_dead) return;
+    if (invincible || invincible_cheat || is_dead) return;
 
 	var armor_active =
 	    (helmet_durability > 0) ||
@@ -754,3 +754,4 @@ function start_ending_sequence()
 }
 
 ending_lock = false;
+invincible_cheat = false;
