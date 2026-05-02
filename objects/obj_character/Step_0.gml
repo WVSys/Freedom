@@ -481,7 +481,7 @@ else if (combat_state == CombatState.AIR_ATTACK)
             {
                 spawn_attack_hitbox(
                     id,
-                    obj_skeleton_old,
+                    obj_enemy,
                     air_arc_x1[i],
                     air_arc_y1[i],
                     air_arc_x2[i],
