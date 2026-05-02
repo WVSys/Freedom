@@ -1,7 +1,7 @@
 // Inherit the parent event
 event_inherited();
 
-
+//ChatGPT assisted
 // camera draw bounds
 
 var cam = view_camera[0];
