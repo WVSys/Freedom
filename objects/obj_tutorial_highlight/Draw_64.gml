@@ -98,9 +98,9 @@ if (highlight_mode == "upgrade") {
     var ry = box_y + 50;
 
     var x1 = rx - 55;
-    var y1 = ry + 90;
+    var y1 = ry + 115;
     var x2 = rx + 65;
-    var y2 = ry + 110;
+    var y2 = ry + 135;
 
     draw_set_alpha(a);
     draw_set_color(c_yellow);
@@ -120,9 +120,31 @@ if (highlight_mode == "repair") {
     var ry = box_y + 50;
 
     var x1 = rx - 55;
-    var y1 = ry + 115;
+    var y1 = ry + 135;
     var x2 = rx + 65;
-    var y2 = ry + 135;
+    var y2 = ry + 155;
+
+    draw_set_alpha(a);
+    draw_set_color(c_yellow);
+    draw_rectangle(x1, y1, x2, y2, false);
+
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    //draw_text(x2 + 10, y1, "Repair");
+}
+
+// Repair highlight
+if (highlight_mode == "save") {
+    var box_x = 300;
+    var box_y = 60;
+
+    var rx = box_x + 220;
+    var ry = box_y + 50;
+
+    var x1 = rx - 55;
+    var y1 = ry + 55;
+    var x2 = rx + 65;
+    var y2 = ry + 55;
 
     draw_set_alpha(a);
     draw_set_color(c_yellow);

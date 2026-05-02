@@ -12,10 +12,10 @@ if (!instance_exists(obj_merchant_menu))
 
     menu.menu_mode = "category";
 
-    // sets menu option to gauntlets for tutorial progression
+    // sets menu option to sword for tutorial progression
     for (var i = 0; i < array_length(menu.categories); i++)
     {
-        if (menu.categories[i] == "Gauntlets")
+        if (menu.categories[i] == "Sword")
         {
             menu.category_index = i;
             break;

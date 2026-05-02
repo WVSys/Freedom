@@ -7,6 +7,7 @@ show_potion_controls = false;
 show_rune_controls = false;
 show_merchant_upgrade = false;
 show_merchant_repair = false;
+show_merchant_save = false;
 
 timeline_running = false;
 timeline_index = -1;
@@ -92,5 +93,11 @@ set_tutorial_focus = function(_mode) {
 		case "repair":
 			pad.set_control("repair");
 			h.highlight_mode = "repair";
+			break;
+			
+		case "save":
+			pad.set_control("save");
+			h.highlight_mode = "save";
+			break;
     }
 };

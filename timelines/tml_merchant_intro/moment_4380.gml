@@ -1,7 +1,8 @@
-if (instance_exists(obj_character))
+
+if (instance_exists(merchant_id))
 {
-    with (obj_character)
+    with (merchant_id)
     {
-        say("And after that?");
+        merchant_say("There's a lone skeleton ahead. Practice on that before chasing legends.");
     }
 }
